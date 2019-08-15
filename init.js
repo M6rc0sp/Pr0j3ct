@@ -1,7 +1,10 @@
 var express = require('express');
 var app = express();
+var cors = require("cors");
 
-const route = require('./route')
+app.use(cors());
+
+const route = require('./router/route')
 
 app.get('/', function(req, res) {
   res.send('Olá Mundo!');
@@ -9,8 +12,8 @@ app.get('/', function(req, res) {
 
 app.get('/admin', route);
 
-app.listen(3000, function() {
-  console.log('App de Exemplo escutando na porta 3000!');
+app.listen(3001, function() {
+  console.log('App de Exemplo escutando na porta 3001!');
 });
 
 module.exports = app;
