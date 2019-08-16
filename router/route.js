@@ -1,11 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var fs = require('fs');
-var json = require('../package.json')
+var json = require('../teste.json')
 
 router.get('/admin', function(req, res) {
-  res.send(json.dependencies.express);
-  console.log(json.dependencies.express);
+  res.send(json);
+  console.log(json);
 });
 
 module.exports = router;
