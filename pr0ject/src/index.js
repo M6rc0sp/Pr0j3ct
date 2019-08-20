@@ -6,6 +6,7 @@ import './index.css';
 import App from './App';
 //import * as serviceWorker from './serviceWorker';
 import login from './components/login/login';
+import manager from './components/manager/manager'
 
 
 const routing = (
@@ -13,6 +14,7 @@ const routing = (
   <div>
    <Route exact path="/" component={App}/>
    <Route path="/login" component={login}/>
+   <Route path="/manager" component={manager}/>
   </div>
 </Router>
 )

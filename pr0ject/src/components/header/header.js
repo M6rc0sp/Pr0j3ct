@@ -1,6 +1,6 @@
 // Importando o React
 import React, {Component} from "react";
-
+import axios from 'axios';
 import bg from '../../static/images/logo.svg';
 import fb from '../../static/images/icons/facebook.svg';
 import tt from '../../static/images/icons/twitter.svg';
@@ -22,16 +22,15 @@ class Header extends Component {
 	}
 
 	callAPI() {
-		fetch("http://localhost:3001/admin")
-			.then(res => res.json())
-			.then(res => this.setState(
-				{
-					site: res,
-					titulo: res.titulo
-				}
-			));
-			console.log(this.state.site.titulo)
+		axios.get('http://localhost:3001/admin')
+      .then((res) => {
 
+          console.log("ente aki", res.data)
+          this.setState({
+              titulo: res.data.titulo,
+              subtitulo: res.data.subtitulo
+          });
+        })
 	}
 
 	componentWillMount() {
@@ -61,8 +60,8 @@ class Header extends Component {
             </div>
           </div>
           <div class="site-banner">
-            <h1 class="site-banner-title">{this.state.site.titulo}</h1>
-            <p class="site-banner-desc">{this.state.site.subtitulo}</p>
+            <h1 class="site-banner-title">{this.state.titulo}</h1>
+            <p class="site-banner-desc">{this.state.subtitulo}</p>
           </div>
           <nav class="site-nav">
             <div class="site-nav-left">
