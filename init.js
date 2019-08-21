@@ -15,7 +15,7 @@ app.get('/', function(req, res) {
   res.send('Olá Mundo!');
 });
 
-app.post('/', route);
+app.post('/intro', route);
 
 app.get('/admin', route);
 
