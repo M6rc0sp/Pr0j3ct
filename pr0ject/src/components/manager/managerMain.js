@@ -17,10 +17,12 @@ class ManagerMain extends Component {
   callAPI() {
     axios.get('http://localhost:3001/intro')
         .then((res) => {	
+            console.log("res",res)
+            console.log(res.data)
             let data = [];
 
-            for (var i in res.data) {
-                data.push({ titulo: res.data.titulo[i], texo: res.data.texto[i] })
+            for (var i in res.data.site) {
+                data.push({ titulo: res.data.site[i].titulo, texto: res.data.site[i].texto })
             }
 
             this.setState({ list: data })
@@ -41,7 +43,7 @@ class ManagerMain extends Component {
     }
 
     submitIntro(event) {
-        axios.put('http://localhost:3001/intro', { 'titulo': this.state.titulo, 'texto': this.state.texto })
+        axios.put('http://localhost:3001/intro', { 'titulo': this.state.list[0].titulo, 'texto': this.state.list[0].texto })
             .then((res) => {
                 console.log(res)	
             })
@@ -63,14 +65,15 @@ class ManagerMain extends Component {
                     <div class="row">
                         <div class="col-lg-8 mx-auto text-justify word-spacing: 10px">
                             <div class="light my-4">                                
-                                    <h1>Corpo do Site <button onClick={this.addPost}>+</button></h1>
+                                    <h1 className="text-center" >Corpo do Site <button onClick={this.addPost}>+</button></h1>
                                         {
                                             this.state.list.map(function (list, index) {
                                                 return (
-                                                    <form key={index} onSubmit={() => this.submitIntro(index)} class="text-center" id='intro'>
+                                                    <form key={index} onSubmit={() => this.submitIntro()} class="text-center" id='intro'>
+                                                        {console.log(list)}
                                                         <label key={index} class="col-lg-12 mx-auto">
                                                             <input key={index+"inp"} type="text" value={list.titulo} />
-                                                            <textarea key={index+"text"} class="col-lg-12 mx-auto" value={list.texto} onChange={() => this.handleChange(index)} />
+                                                            <textarea key={index+"text"} class="col-lg-12 mx-auto" value={list.texto} onChange={() => this.handleChange()} />
                                                             <input key={index+"i"} type="submit" value="Enviar" />
                                                         </label>
                                                     </form> 

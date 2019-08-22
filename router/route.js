@@ -52,11 +52,12 @@ router.put('/admin', async (req, res) => {
 router.get('/intro', async (req, res) => {
   const modeljson = await model.find({});
   console.log(modeljson);
-  let titulo = modeljson[0].titulo;
-  let texto = modeljson[0].texto;
+  let site = [];
+  for (var i in modeljson) {
+    site.push({ titulo: modeljson[i].titulo, texto: modeljson[i].texto })
+  }
   const data = {
-    titulo: titulo,
-    texto: texto
+    site: site
   };
   try {
     return res.status(201).json(data);
@@ -70,7 +71,7 @@ router.put('/intro', async (req, res) => {
   const modelData = await model.find({});
   modelData[0].titulo = req.body.titulo;
   modelData[0].texto = req.body.texto;
-  modelData[0].save();
+  modelData.save();
   console.log(modelData);
   
   try {
