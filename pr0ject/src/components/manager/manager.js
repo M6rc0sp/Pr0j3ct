@@ -8,8 +8,8 @@ class Manager extends Component {
     render (){
       return(
         <section class="bg-primary3" id="about">
-			<ManagerHeader/>
-			<ManagerMain/>
+          <ManagerHeader/>
+          <ManagerMain/>
         </section> 
         );
       }

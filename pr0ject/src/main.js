@@ -9,33 +9,24 @@ class Main extends Component {
   constructor(props) {
 		super(props);
 		this.state = {
-		site: [],
+		list: [],
 		};
 	}
-
-/*callAPI() {
-		fetch("http://localhost:3001/", { method: 'POST' })
-			.then(res => res.json())
-			.then(res => this.setState(
-				{
-					site: res
-				}
-			));
-			console.log("aqui é o main", this.state.titulo)
-
-  }*/
 
 	callAPI() {
 		axios.get('http://localhost:3001/intro')
       .then((res) => {
+            console.log("res",res)
+            console.log(res.data)
+            let data = [];
 
-          console.log("ente aki", res.data)
-          this.setState({
-              titulo: res.data.titulo,
-              texto: res.data.texto
+            for (var i in res.data.site) {
+                data.push({ titulo: res.data.site[i].titulo, texto: res.data.site[i].texto })
+            }
+
+            this.setState({ list: data })
+            console.log("list",this.state.list)
           });
-          
-        })
 	}
 
 	componentWillMount() {
@@ -45,16 +36,21 @@ class Main extends Component {
     return(
       <section class="bg-primary3" id="about">
         <div class="container">
-          <div class="row">
-
-            <div class="col-lg-8 mx-auto text-justify word-spacing: 10px">
-              <h1 class="text-center" >{this.state.titulo}</h1>
-              <div class="light my-4">
-                <br />
-                <p >{this.state.texto} </p>         
-            </div>
-          </div>
-        </div>
+        {
+          this.state.list.map(function (list, index) {
+            return (
+              <div class="row">
+                <div class="col-lg-8 mx-auto text-justify word-spacing: 10px">
+                  <h1 class="text-center">{list.titulo}</h1>
+                  <div class="light my-4">
+                    <br/>
+                    <p>{list.texto}</p>         
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        }
         </div>
       </section> 
       );

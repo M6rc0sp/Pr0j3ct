@@ -71,7 +71,7 @@ router.put('/intro', async (req, res) => {
   const modelData = await model.find({});
   modelData[0].titulo = req.body.titulo;
   modelData[0].texto = req.body.texto;
-  modelData.save();
+  modelData[0].save();
   console.log(modelData);
   
   try {
