@@ -44,7 +44,7 @@ class ManagerMainLoader extends Component {
 
     submitIntro = e => {
         const { id } = e.target;
-        axios.put('http://localhost:3001/intro', { 'titulo': this.state.list[0].titulo, 'texto': this.state.list[0].texto })
+        axios.put('http://localhost:3001/intro', { 'titulo': this.state.list[id].titulo, 'texto': this.state.list[id].texto, 'id': id })
             .then((res) => {
                 console.log(res)	
             })
@@ -55,10 +55,10 @@ class ManagerMainLoader extends Component {
         <div>
             {
             this.state.list.map((list, index) => (
-                <form key={index+1} onSubmit={this.submitIntro} class="text-center" id='intro'>
-                    <label key={index+2} class="col-lg-12 mx-auto">
+                <form key={index+1} onSubmit={this.submitIntro} className="text-center" id={index}>
+                    <label key={index+2} className="col-lg-12 mx-auto">
                         <input key={index+3} id={index} name="titulo" type="text" defaultValue={list.titulo} onChange={this.handleChange}/>
-                        <textarea key={index+4} id={index} name="texto" class="col-lg-12 mx-auto" defaultValue={list.texto} onChange={this.handleChange}/>
+                        <textarea key={index+4} id={index} name="texto" className="col-lg-12 mx-auto" defaultValue={list.texto} onChange={this.handleChange}/>
                         <input type="submit" value="Enviar"/>
                     </label>
                 </form> 

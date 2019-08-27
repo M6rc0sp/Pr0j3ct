@@ -17,12 +17,12 @@ class ManagerMain extends Component {
     render (){
         
         return(
-            <section class="bg-primary3" id="about">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto text-justify word-spacing: 10px">
-                            <div class="light my-4">                                
-                                <h1 className="text-center" >Corpo do Site <button onClick={this.addPost}>+</button></h1>
+            <section className="bg-primary3" id="about">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-8 mx-auto text-justify word-spacing: 10px">
+                            <div className="light my-4">                                
+                                <h1 className="text-center">Corpo do Site <button onClick={this.addPost}>+</button></h1>
                                 <ManagerMainLoader/>
                             </div>
                         </div>

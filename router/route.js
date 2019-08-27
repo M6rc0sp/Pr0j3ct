@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var model = require('../models/model');
 var intro = require('../models/intro');
+var user = require('../models/user')
 
 router.post('/intro', async (req, res) => {
   console.log("Aqui vem o req.body:");
@@ -18,6 +19,39 @@ router.post('/intro', async (req, res) => {
       return res.sendStatus(500);
     }
 
+});
+
+router.post('/session', async (req, res) => {
+  console.log("Aqui vem o req.body:");
+  console.log(req.body);
+    const data = new user({
+      user: "123",
+      password: "123",
+    });
+
+    try {
+      const newModel = await data.save();
+      return res.status(201).json(newModel);
+    } catch (err) {
+      return res.sendStatus(500);
+    }
+
+});
+
+router.get('/session', async (req, res) => {
+  const userjson = await user.find({});
+  console.log(userjson);
+  let user1 = userjson[0].user;
+  let password = userjson[0].password;
+  const data = {
+    user: user1,
+    password: password
+  };
+  try {
+    return res.status(201).json(data);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
 });
 
 router.get('/admin', async (req, res) => {
@@ -68,10 +102,11 @@ router.get('/intro', async (req, res) => {
 
 router.put('/intro', async (req, res) => {
   console.log("aqui começa ", req.body)
+  let id = req.body.id;
   const modelData = await model.find({});
-  modelData[0].titulo = req.body.titulo;
-  modelData[0].texto = req.body.texto;
-  modelData[0].save();
+  modelData[id].titulo = req.body.titulo;
+  modelData[id].texto = req.body.texto;
+  modelData[id].save();
   console.log(modelData);
   
   try {

@@ -34,15 +34,15 @@ class Main extends Component {
   }
   render (){
     return(
-      <section class="bg-primary3" id="about">
-        <div class="container">
+      <section className="bg-primary3" id="about">
+        <div className="container">
         {
           this.state.list.map(function (list, index) {
             return (
-              <div class="row">
-                <div class="col-lg-8 mx-auto text-justify word-spacing: 10px">
-                  <h1 class="text-center">{list.titulo}</h1>
-                  <div class="light my-4">
+              <div key={index} className="row">
+                <div className="col-lg-8 mx-auto text-justify word-spacing: 10px">
+                  <h1 className="text-center">{list.titulo}</h1>
+                  <div className="light my-4">
                     <br/>
                     <p>{list.texto}</p>         
                   </div>

@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import photo from './../../images/header.jpg';
+
+var background = {
+    backgroundImage: "url("+photo+")",
+    color: "black",
+  }
 
 class ManagerHeader extends Component {
 
@@ -13,7 +19,7 @@ class ManagerHeader extends Component {
 	this.headerTitleChange = this.headerTitleChange.bind(this);
     this.headerSubtitleChange = this.headerSubtitleChange.bind(this);
     this.submitHeader = this.submitHeader.bind(this);
-  }
+    }
 
 	callAPI() {
 		axios.get('http://localhost:3001/admin')
@@ -48,11 +54,11 @@ class ManagerHeader extends Component {
 
     render (){
       return(
-        <section class="bg-primary3" id="about">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-8 mx-auto text-justify word-spacing: 10px">
-						<form onSubmit={this.submitHeader} class="text-center" id='header'>
+        <header className="site-head" style={background}>
+			<div className="container">
+				<div className="row">
+					<div className="col-lg-8 mx-auto text-justify word-spacing: 10px">
+						<form onSubmit={this.submitHeader} className="text-center" id='header'>
                             <h1>Cabeçalho</h1>
                             <br/>
 							<label>
@@ -69,7 +75,7 @@ class ManagerHeader extends Component {
 					</div>
 				</div>
 			</div>
-        </section> 
+        </header>
         );
       }
 	}
