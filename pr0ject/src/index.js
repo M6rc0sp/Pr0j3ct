@@ -6,8 +6,7 @@ import './index.css';
 import App from './App';
 //import * as serviceWorker from './serviceWorker';
 import manager from './components/manager/manager'
-import signup from './components/signup/index'
-import signin from './components/signin/index'
+import login from './components/signin/login'
 import { isAuthenticated } from "./services/auth";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -27,9 +26,8 @@ const routing = (
 <Router>
   <Switch>
    <Route exact path="/" component={App}/>
-   <PrivateRoute path="/manager" component={manager}/>
-   <Route path="/admin" component={signup} />
-   <Route path="/login" component={signin} />
+   <PrivateRoute path="/admin" component={manager} />
+   <Route path="/login" component={login} />
    <Route path="*" component={() => <h1>Page not found</h1>} />
   </Switch>
 </Router>

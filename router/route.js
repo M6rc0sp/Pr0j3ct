@@ -1,27 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var model = require('../models/model');
+var post = require('../models/post');
 var intro = require('../models/intro');
 var user = require('../models/user')
 
-router.post('/intro', async (req, res) => {
-  console.log("Aqui vem o req.body:");
-  console.log(req.body);
-    const data = new model({
-      titulo: "Título",
-      texto: "Texto",
-    });
-
-    try {
-      const newModel = await data.save();
-      return res.status(201).json(newModel);
-    } catch (err) {
-      return res.sendStatus(500);
-    }
-
-});
-
-router.post('/session', async (req, res) => {
+/*router.post('/session', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
     const data = new user({
@@ -36,23 +19,7 @@ router.post('/session', async (req, res) => {
       return res.sendStatus(500);
     }
 
-});
-
-router.get('/session', async (req, res) => {
-  const userjson = await user.find({});
-  console.log(userjson);
-  let user1 = userjson[0].user;
-  let password = userjson[0].password;
-  const data = {
-    user: user1,
-    password: password
-  };
-  try {
-    return res.status(201).json(data);
-  } catch (err) {
-    return res.sendStatus(500);
-  }
-});
+});*/
 
 router.get('/admin', async (req, res) => {
   const introjson = await intro.find({});
@@ -83,12 +50,29 @@ router.put('/admin', async (req, res) => {
   }
 });
 
-router.get('/intro', async (req, res) => {
-  const modeljson = await model.find({});
-  console.log(modeljson);
+router.post('/post', async (req, res) => {
+  console.log("Aqui vem o req.body:");
+  console.log(req.body);
+    const data = new post({
+      titulo: "Título",
+      texto: "Texto",
+    });
+
+    try {
+      const newModel = await data.save();
+      return res.status(201).json(newModel);
+    } catch (err) {
+      return res.sendStatus(500);
+    }
+
+});
+
+router.get('/post', async (req, res) => {
+  const postjson = await post.find({});
+  console.log(postjson);
   let site = [];
-  for (var i in modeljson) {
-    site.push({ titulo: modeljson[i].titulo, texto: modeljson[i].texto })
+  for (var i in postjson) {
+    site.push({ titulo: postjson[i].titulo, texto: postjson[i].texto, id: postjson[i]._id })
   }
   const data = {
     site: site
@@ -100,18 +84,36 @@ router.get('/intro', async (req, res) => {
   }
 });
 
-router.put('/intro', async (req, res) => {
+router.put('/post', async (req, res) => {
   console.log("aqui começa ", req.body)
   let id = req.body.id;
-  const modelData = await model.find({});
-  modelData[id].titulo = req.body.titulo;
-  modelData[id].texto = req.body.texto;
-  modelData[id].save();
-  console.log(modelData);
+  const postData = await post.find({});
+  postData[id].titulo = req.body.titulo;
+  postData[id].texto = req.body.texto;
+  postData[id].save();
+  console.log(postData);
   
   try {
     return res.sendStatus(204);
   } catch (err) {
+    return res.sendStatus(500);
+  }
+});
+
+router.delete('/post/', async (req, res) => {
+  console.log('executed');
+  try {
+    console.log(req)
+    const deletedService = await post.findByIdAndRemove(req.body.id);
+
+    if (!deletedService) {
+      return res.sendStatus(404);
+    }
+
+    return res.sendStatus(204);
+  } catch (err) {
+    console.log(err);
+
     return res.sendStatus(500);
   }
 });

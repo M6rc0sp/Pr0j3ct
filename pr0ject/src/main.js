@@ -14,7 +14,7 @@ class Main extends Component {
 	}
 
 	callAPI() {
-		axios.get('http://localhost:3001/intro')
+		axios.get('http://localhost:3001/post')
       .then((res) => {
             console.log("res",res)
             console.log(res.data)

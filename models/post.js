@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const config = require('../config');
 
-const modelSchema = new mongoose.Schema({
+const postSchema = new mongoose.Schema({
 	titulo: {
 		type: String,
     	required: true,
@@ -13,6 +13,6 @@ const modelSchema = new mongoose.Schema({
 });
 
 mongoose.connect(`mongodb://localhost/${config.database}`, { useNewUrlParser: true });
-const model = mongoose.model('model', modelSchema);
+const post = mongoose.model('post', postSchema);
 
-module.exports = model;
+module.exports = post;

@@ -14,13 +14,13 @@ class ManagerMainLoader extends Component {
     }
 
   callAPI() {
-    axios.get('http://localhost:3001/intro')
+    axios.get('http://localhost:3001/post')
         .then((res) => {	
             console.log(res.data)
             let data = [];
 
             for (var i in res.data.site) {
-                data.push({ titulo: res.data.site[i].titulo, texto: res.data.site[i].texto })
+                data.push({ titulo: res.data.site[i].titulo, texto: res.data.site[i].texto, id: res.data.site[i].id })
             }
 
             this.setState({ list: data })
@@ -50,6 +50,18 @@ class ManagerMainLoader extends Component {
             })
     }
 
+    rmPost(e) {
+        const { id } = e.target;
+        console.log('id é', id)
+        axios.delete('http://localhost:3001/post', {'id': id })
+            .then((res) => {
+                console.log(res)	
+                console.log(id)
+            })
+        //window.location.reload();
+        e.preventDefault();
+    }
+
     render(){
         return (
         <div>
@@ -58,6 +70,7 @@ class ManagerMainLoader extends Component {
                 <form key={index+1} onSubmit={this.submitIntro} className="text-center" id={index}>
                     <label key={index+2} className="col-lg-12 mx-auto">
                         <input key={index+3} id={index} name="titulo" type="text" defaultValue={list.titulo} onChange={this.handleChange}/>
+                        <button id={list.id} className="buttonPlus" onClick={this.rmPost}>-</button>
                         <textarea key={index+4} id={index} name="texto" className="col-lg-12 mx-auto" defaultValue={list.texto} onChange={this.handleChange}/>
                         <input type="submit" value="Enviar"/>
                     </label>

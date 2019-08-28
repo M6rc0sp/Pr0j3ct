@@ -1,3 +1,9 @@
 textarea{
     height: 300px;
 }
+
+.buttonPlus{
+    border-radius: 100%;
+    text-align: center;
+    vertical-align: center;
+}

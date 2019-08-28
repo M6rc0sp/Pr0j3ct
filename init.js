@@ -10,24 +10,22 @@ app.use(bodyParser.json())
 app.use(cors());
 
 const route = require('./router/route')
-//const auth = require('./pr0ject/src/services/api')
+const auth = require('./router/auth')
 
 app.get('/', function(req, res) {
   res.send('Olá Mundo!');
 });
 
-app.post('/intro', route);
+app.post('/auth', auth);
+app.get('/auth', auth);
+app.use('/auth', auth);
 
-app.post('/session', route);
-
-app.get('/session', route);
+app.post('/post', route);
+app.get('/post', route);
+app.put('/post', route);
+app.delete('/post', route)
 
 app.get('/admin', route);
-
-app.get('/intro', route);
-
-app.put('/intro', route);
-
 app.put('/admin', route);
 
 app.listen(3001, function() {
