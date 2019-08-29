@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var post = require('../models/post');
 var intro = require('../models/intro');
-var user = require('../models/user')
 
 /*router.post('/session', async (req, res) => {
   console.log("Aqui vem o req.body:");
@@ -56,6 +55,7 @@ router.post('/post', async (req, res) => {
     const data = new post({
       titulo: "Título",
       texto: "Texto",
+      img: "img",
     });
 
     try {
@@ -64,7 +64,6 @@ router.post('/post', async (req, res) => {
     } catch (err) {
       return res.sendStatus(500);
     }
-
 });
 
 router.get('/post', async (req, res) => {
@@ -72,7 +71,7 @@ router.get('/post', async (req, res) => {
   console.log(postjson);
   let site = [];
   for (var i in postjson) {
-    site.push({ titulo: postjson[i].titulo, texto: postjson[i].texto, id: postjson[i]._id })
+    site.push({ titulo: postjson[i].titulo, texto: postjson[i].texto, id: postjson[i]._id, img: postjson[i].img })
   }
   const data = {
     site: site
@@ -90,6 +89,7 @@ router.put('/post', async (req, res) => {
   const postData = await post.find({});
   postData[id].titulo = req.body.titulo;
   postData[id].texto = req.body.texto;
+  postData[id].img = req.body.img;
   postData[id].save();
   console.log(postData);
   
@@ -100,10 +100,10 @@ router.put('/post', async (req, res) => {
   }
 });
 
-router.delete('/post/', async (req, res) => {
+router.delete('/post', async (req, res) => {
   console.log('executed');
   try {
-    console.log(req)
+    console.log(req.body)
     const deletedService = await post.findByIdAndRemove(req.body.id);
 
     if (!deletedService) {

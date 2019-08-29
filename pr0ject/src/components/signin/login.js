@@ -2,12 +2,10 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import jwt from'jsonwebtoken';
 import React, { Component } from "react";
-//import { Link, withRouter } from "react-router-dom";
 //import config from './service/config';
 import { login } from "../../services/auth";
-//import { getToken } from "./service/auth";
-//import { Route } from 'react-router-dom';
-//import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
+import { Card, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
+import './login.css'
 
 class App extends Component {
   constructor() {
@@ -22,10 +20,10 @@ class App extends Component {
     this.textoUsuario = this.textoUsuario.bind(this)
     this.textoPassword = this.textoPassword.bind(this)
     this.loginSubmit = this.loginSubmit.bind(this)
-    this.Criar = this.Criar.bind(this)
+    //this.Criar = this.Criar.bind(this)
   }
  
-  Criar(event) {
+  /*Criar(event) {
     const data = {
       user: this.state.user,
       password: this.state.password,
@@ -44,7 +42,7 @@ class App extends Component {
         // console.log("Dados do erro: " + error.response.data) //HTTP STATUS TEXT
 
       })
-  }
+  }*/
   textoUsuario(event) {
     this.setState({ user: event.target.value })
   }
@@ -53,7 +51,7 @@ class App extends Component {
     this.setState({ password: event.target.value })
   }
   sair=()=>{
-    this.props.history.push("/manager"); //lembrar q é assim q se redireciona com react
+    this.props.history.push("/admin"); //lembrar q é assim q se redireciona com react
 }
   loginSubmit(event) {
     
@@ -88,16 +86,23 @@ class App extends Component {
 
   render() {
     return (
-      <div className="vid-container">
-        <form className="inner-container">
-          <div className="box">
-            <input placeholder="Usuário" autoFocus type="text" value={this.state.user} onChange={this.textoUsuario} />
-            <input placeholder="Senha" type="password" value={this.state.password} onChange={this.textoPassword} />
-            <button type="button" onClick={this.loginSubmit} >Login</button>   
-            <span id="menErro"> {this.state.erro} </span>
-          </div>
-        </form>
-      </div>
+      <Card className="col-sm-3">
+        <Card.Body>
+          <Card.Title>Login</Card.Title>
+              <ListGroup className="list-group-flush">
+              <form>
+                <ListGroupItem>
+                  <input placeholder="Usuário" autoFocus type="text" value={this.state.user} onChange={this.textoUsuario} />
+                </ListGroupItem>
+                <ListGroupItem>
+                  <input placeholder="Senha" type="password" value={this.state.password} onChange={this.textoPassword} />
+                </ListGroupItem>
+                </form>
+              </ListGroup>
+              <Button type="button" onClick={this.loginSubmit} >Login</Button>   
+              <span id="menErro"> {this.state.erro} </span>
+        </Card.Body>
+      </Card>
     );
   }
 }
