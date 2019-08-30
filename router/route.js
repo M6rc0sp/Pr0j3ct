@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var post = require('../models/post');
 var intro = require('../models/intro');
+var fs = require('fs');
+var config = require('../config.js')
 
 /*router.post('/session', async (req, res) => {
   console.log("Aqui vem o req.body:");
@@ -55,7 +57,7 @@ router.post('/post', async (req, res) => {
     const data = new post({
       titulo: "Título",
       texto: "Texto",
-      img: "img",
+      img: "abc",
     });
 
     try {
@@ -71,7 +73,7 @@ router.get('/post', async (req, res) => {
   console.log(postjson);
   let site = [];
   for (var i in postjson) {
-    site.push({ titulo: postjson[i].titulo, texto: postjson[i].texto, id: postjson[i]._id, img: postjson[i].img })
+    site.push({ titulo: postjson[i].titulo, texto: postjson[i].texto, img: postjson[i].img, id: postjson[i]._id })
   }
   const data = {
     site: site
@@ -104,8 +106,14 @@ router.delete('/post', async (req, res) => {
   console.log('executed');
   try {
     console.log(req.body)
+    let link = req.body.img
+    console.log(link)
     const deletedService = await post.findByIdAndRemove(req.body.id);
-
+    fs.unlinkSync(config.dir+'\\'+link, function (err) {
+      if (err) throw err;
+      // if no error, file has been deleted successfully
+      console.log('File deleted!');
+    }); 
     if (!deletedService) {
       return res.sendStatus(404);
     }

@@ -21,7 +21,7 @@ class ManagerMainLoader extends Component {
             let data = [];
 
             for (var i in res.data.site) {
-                data.push({ titulo: res.data.site[i].titulo, texto: res.data.site[i].texto, id: res.data.site[i].id })
+                data.push({ titulo: res.data.site[i].titulo, texto: res.data.site[i].texto, img: res.data.site[i].img, id: res.data.site[i].id })
             }
 
             this.setState({ list: data })
@@ -34,14 +34,9 @@ class ManagerMainLoader extends Component {
     }
   
     handleChange = e => {
-        const { name, value, id, files } = e.target
+        const { name, value, id } = e.target
         const newList = this.state.list.slice();
-        if ([name] == "img"){
-            console.log('é uma img')
-            newList[id][name] = files[0];
-        } else {
-            newList[id][name] = value; 
-        }
+        newList[id][name] = value; 
         console.log("this is me", newList, "index", id)
         this.setState({ list: newList });
         console.log("pingos nos is", [name], value)
@@ -53,8 +48,9 @@ class ManagerMainLoader extends Component {
         axios.put('http://localhost:3001/post', 
             { 
             'titulo': this.state.list[id].titulo,
-             'texto': this.state.list[id].texto,
-               'id': id 
+            'texto': this.state.list[id].texto,
+            'img': this.state.list[id].img,
+            'id': id 
             })
             .then((res) => {
                 console.log(res)	
@@ -62,37 +58,52 @@ class ManagerMainLoader extends Component {
     }
 
     onChangeHandler=event=>{
+        const { files } = event.target;
         this.setState({
-          img: event.target.files[0],
+          img: files,
           loaded: 0,
         })
       }
 
     onClickHandler = (e) => {
+        const { id } = e.target;
+        console.log(id)
         e.preventDefault();
         const data = new FormData() 
         data.append('file', this.state.img)
-        axios.post("http://localhost:3001/upload", data, { 
+        const file = new Blob([this.state.img], { type: 'image/png' });// WORKS much better (if you know what MIME type you want.)
+
+        const formData = new FormData();
+        formData.append('test', file);
+        axios.post("http://localhost:3001/upload", formData, { 
             //receive two parameter endpoint url ,form data
         })
         .then(res => {
-            // then print response status
+        const newList = this.state.list.slice();
+        newList[id].img = res.data[0].path; 
+        console.log(res.data[0].path)
+        this.setState({ list: newList });
+        console.log(res)
+        console.log(this.state)
         console.log(res.statusText)
         })
     }
 
-    rmPost(e) {
-        const { id } = e.target;
-        console.log('id é', id)
+    rmPost =(e)=> {
+        e.preventDefault();
+        const { id, name } = e.target;
+        console.log(e.target)
+        console.log(this.state.list[name])
+        console.log('id é', id, "num é", name)
         axios.delete('http://localhost:3001/post/', 
             {
-             data:{'id': id} 
+             data:{'id': id, 'img': this.state.list[name].img} 
             })
             .then((res) => {
                 console.log(res)
             })
-        window.location.reload();
-        e.preventDefault();
+       window.location.reload();
+        
     }
 
     render(){
@@ -102,12 +113,14 @@ class ManagerMainLoader extends Component {
             this.state.list.map((list, index) => (
                 <form key={index+1} onSubmit={this.submitIntro} className="text-center" id={index}>
                     <label key={index+2} className="col-lg-12 mx-auto">
-                        <input type="file" name="img" id={index} onChange={this.onChangeHandler}/><button onClick={this.onClickHandler}>.</button>
+                        <input type="file" name="img" key={index+5} onChange={this.onChangeHandler}/><button id={index} onClick={this.onClickHandler}>Adicionar foto</button>
                         <br/>
                         <input key={index+3} id={index} name="titulo" type="text" defaultValue={list.titulo} onChange={this.handleChange}/>
-                        <button id={list.id} className="buttonPlus" onClick={this.rmPost}>-</button>
+                        <button id={list.id} name={index} onClick={this.rmPost}>Remover postagem</button>
                         <textarea key={index+4} id={index} name="texto" className="col-lg-12 mx-auto" defaultValue={list.texto} onChange={this.handleChange}/>
                         <input type="submit" value="Enviar"/>
+                        <br/>
+                        <br/>
                     </label>
                 </form> 
             ))

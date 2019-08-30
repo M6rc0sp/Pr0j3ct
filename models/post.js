@@ -10,7 +10,7 @@ const postSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	img: { data: Buffer, contentType: String},
+	img: { type: String},
 });
 
 mongoose.connect(`mongodb://localhost/${config.database}`, { useNewUrlParser: true });

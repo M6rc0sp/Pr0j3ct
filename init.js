@@ -13,26 +13,26 @@ app.use(cors());
 //files upload by multer
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-  cb(null, 'public/img')
-},
-filename: function (req, file, cb) {
-  cb(null, Date.now() + '-' +file.originalname )
-}
+    cb(null, './pr0ject/public/img')
+  },
+  filename: function (req, file, cb) {
+   cb(null, Date.now() + '-' +file.originalname+'.png')
+  }
 })
 
-var upload = multer({ storage: storage }).single('file')
+var upload = multer({ storage: storage })
 
-app.post('/upload', async function(req, res) {
-  upload(req, res, function (err) {
-    console.log(req.body.file)
-         if (err instanceof multer.MulterError) {
+app.post('/upload', upload.any(), (req, res) => {
+  //upload(req, res, (err) => {
+    console.log("let me in:", req.files)
+        /* if (err instanceof multer.MulterError) {
              return res.status(500).json(err)
          } else if (err) {
              return res.status(500).json(err)
-         }
-    return res.status(200).send(req.body)
+         }*/
+    return res.status(200).send(req.files)
 
-  })
+ // })
 
 });
 
