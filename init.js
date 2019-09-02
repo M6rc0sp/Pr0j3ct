@@ -56,8 +56,8 @@ app.get('/post', route);
 app.put('/post', route);
 app.delete('/post', route)
 
-app.listen(3001, function() {
-  console.log('App de Exemplo escutando na porta 3001!');
-});
+var porta = process.env.PORT || 3001;
+app.listen(porta);
+console.log('App de Exemplo escutando na porta'+porta+'!');
 
 module.exports = app;
