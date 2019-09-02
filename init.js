@@ -4,6 +4,18 @@ var cors = require('cors');
 var multer = require('multer');
 const bodyParser = require('body-parser');
 
+// ... other imports 
+const path = require("path")
+
+// ... other app.use middleware 
+app.use(express.static(path.join(__dirname, "client", "build")))
+
+// ...
+// Right before your app.listen(), add this:
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "pr0ject", "build", "index.html"));
+});
+
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(bodyParser.json())
