@@ -13,6 +13,10 @@
     "client": "cd pr0ject && npm start",
     "server": "nodemon init.js",
     "start-dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "start": "nodemon init.js"
-  }
+    "start": "nodemon init.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+  },
+  "engines": {
+    "node": "10.16.1"
+}
 }
