@@ -3,8 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "@babel/preset-react": "^7.0.0",
     "axios": "^0.19.0",
+    "babel-loader": "^8.0.6",
     "bootstrap": "^4.3.1",
+    "css-loader": "^3.2.0",
+    "file-loader": "^4.2.0",
     "jsonwebtoken": "^8.5.1",
     "ra-data-simple-rest": "^2.9.6",
     "react": "^16.9.0",
@@ -15,10 +23,13 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "^3.1.1",
     "styled-components": "^4.3.2",
-    "universal-cookie": "^4.0.2"
+    "universal-cookie": "^4.0.2",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.39.3",
+    "webpack-dev-server": "^3.8.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "webpack-dev-server --inline --hot",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -38,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.7"
   }
 }
