@@ -17,20 +17,17 @@ const bodyParser = require('body-parser');
 //  app.use(allowCrossDomain);
 //});   
 
-app.use(express.static(__dirname + '/public'));
+//app.use(express.static(__dirname + '/public'));
 
 // ... other imports 
 const path = require("path")
 
-// ... other app.use middleware 
-app.use(express.static(path.join(__dirname, "client", "build")))
-
-// ...
-// Right before your app.listen(), add this:
-//app.get("*", (req, res) => {
- //   res.sendFile(path.join(__dirname, "pr0ject", "public", "index.html"));
- //   console.log(path.join(__dirname, "pr0ject", "public", "index.html"))
-//});
+/*Adds the react production build to serve react requests*/
+app.use(express.static(path.join(__dirname, "/pr0ject/build")));
+/*React root*/
+app.get("*", (req, res) => {
+res.sendFile(path.join(__dirname + "/pr0ject/build/index.html"));
+});
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
