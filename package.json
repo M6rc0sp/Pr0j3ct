@@ -10,10 +10,11 @@
     "nodemon": "^1.19.1"
   },
   "scripts": {
-      "start": "npm install && node init.js",
-      "heroku-postbuild": "cd pr0ject && npm install && npm run build"
+      "start": "yarn && node init.js",
+      "heroku-postbuild": "cd pr0ject && yarn && yarn run build"
   },
   "engines": {
-    "node": "10.16.1"
+    "node": "10.16.1",
+    "yarn": "1.17.3"
 }
 }
