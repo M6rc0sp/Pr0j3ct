@@ -15,19 +15,10 @@ const bodyParser = require('body-parser');
 
 //app.use(function() {
 //  app.use(allowCrossDomain);
-//});   
-
-//app.use(express.static(__dirname + '/public'));
+//});
 
 // ... other imports 
 const path = require("path")
-
-/*Adds the react production build to serve react requests*/
-app.use(express.static(path.join(__dirname, "/pr0ject/build")));
-/*React root*/
-app.get("*", (req, res) => {
-res.sendFile(path.join(__dirname + "/pr0ject/build/index.html"));
-});
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -65,21 +56,25 @@ app.post('/upload', upload.any(), (req, res) => {
 const route = require('./router/route')
 const auth = require('./router/auth')
 
-app.get('/', function(req, res) {
-  res.send('Olá Mundo!');
-});
-
 app.use('/auth', auth);
 app.post('/auth', auth);
 app.get('/auth', auth);
 
-app.get('/admin', route);
+app.use('/admin', route);
 app.put('/admin', route);
+app.get('/admin', route);
 
-app.post('/post', route);
+app.use('/post', route);
 app.get('/post', route);
 app.put('/post', route);
-app.delete('/post', route)
+app.delete('/post', route);
+
+/*Adds the react production build to serve react requests*/
+app.use(express.static(path.join(__dirname, "/pr0ject/build")));
+/*React root*/
+app.get("all", (req, res) => {
+  res.sendFile(path.join(__dirname + "/pr0ject/build/index.html"));
+});
 
 var porta = process.env.PORT || 3001;
 app.listen(porta);
