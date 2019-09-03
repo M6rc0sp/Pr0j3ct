@@ -5,17 +5,19 @@ var multer = require('multer');
 const bodyParser = require('body-parser');
 
 //permission for access etween react and node
-var allowCrossDomain = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+///var allowCrossDomain = function(req, res, next) {
+//  res.header('Access-Control-Allow-Origin', "*");
+ // res.header("Access-Control-Allow-Headers", "X-Requested-With");
   //res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   //res.header('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-}
+ // next();
+//}
 
-app.use(function() {
-  app.use(allowCrossDomain);
-});   
+//app.use(function() {
+//  app.use(allowCrossDomain);
+//});   
+
+app.use(express.static(__dirname + '/public'));
 
 // ... other imports 
 const path = require("path")
@@ -25,10 +27,10 @@ app.use(express.static(path.join(__dirname, "client", "build")))
 
 // ...
 // Right before your app.listen(), add this:
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "pr0ject", "public", "index.html"));
-    console.log(path.join(__dirname, "pr0ject", "public", "index.html"))
-});
+//app.get("*", (req, res) => {
+ //   res.sendFile(path.join(__dirname, "pr0ject", "public", "index.html"));
+ //   console.log(path.join(__dirname, "pr0ject", "public", "index.html"))
+//});
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
