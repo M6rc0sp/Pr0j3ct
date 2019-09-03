@@ -10,11 +10,8 @@
     "nodemon": "^1.19.1"
   },
   "scripts": {
-    "client": "cd pr0ject && npm start",
-    "server": "nodemon init.js",
-    "start-dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "start": "nodemon init.js",
-    "heroku-postbuild": "yarn && cd pr0ject && yarn && npm build"
+      "start": "npm install && node init.js",
+      "heroku-postbuild": "cd pr0ject && npm install && npm run build"
   },
   "engines": {
     "node": "10.16.1"
