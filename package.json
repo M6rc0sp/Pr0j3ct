@@ -12,9 +12,9 @@
   "scripts": {
     "client": "cd pr0ject && npm start",
     "server": "nodemon init.js",
-    "start-dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client && PORT=16255\"",
+    "start-dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "start": "nodemon init.js",
-    "heroku-postbuild": "cd pr0ject && npm install --only=dev && npm install && npm run build PORT=16255"
+    "heroku-postbuild": "\"npm run start-dev\" cd pr0ject && npm install --only=dev && npm install && npm start"
   },
   "engines": {
     "node": "10.16.1"
