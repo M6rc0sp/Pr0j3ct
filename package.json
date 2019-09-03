@@ -14,7 +14,7 @@
     "server": "nodemon init.js",
     "start-dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "start": "nodemon init.js",
-    "heroku-postbuild": "yarn add concurrently && yarn && cd pr0ject && npm install --only=dev && npm install && cd ../ && npm run client"
+    "heroku-postbuild": "yarn add concurrently && yarn && cd pr0ject && npm install --only=dev && npm install && npm start"
   },
   "engines": {
     "node": "10.16.1"
