@@ -5,10 +5,6 @@ import photo from './public/img/1567176103251-blob.png';
 // Importando o component Home
 // Importando os components necessários da lib react-materialize
 
-var background = {
-  backgroundImage: "url("+photo+")",
-}
-
 class Main extends Component {
 
   constructor(props) {
