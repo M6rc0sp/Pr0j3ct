@@ -16,7 +16,7 @@ class Main extends Component {
 	}
 
 	callAPI() {
-		axios.get('http://localhost:3001/post')
+		axios.get('https://profdantas.herokuapp.com/post')
       .then((res) => {
             console.log("res",res)
             console.log(res.data)
