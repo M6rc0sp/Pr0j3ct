@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const config = require('../config');
 var uri = process.env.MONGOLAB_URI;
+console.log(uri)
 
 const introSchema = new mongoose.Schema({
 	titulo: {

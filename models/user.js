@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const config = require('../config');
 var uri = process.env.MONGOLAB_URI;
+console.log(uri)
+console.log('bd tbm dá console.log')
 
 const userSchema = new mongoose.Schema({
 	user: {
