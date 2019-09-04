@@ -1,5 +1,5 @@
 module.exports = {
-    database: 'site',
+    database: 'heroku_8g99fd99',
     dir: __dirname,
     imgpath: __dirname+'\\pr0ject\\public\\img\\',
   };
