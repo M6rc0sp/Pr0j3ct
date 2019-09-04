@@ -2,7 +2,7 @@ import Axios from 'axios';
 import {getToken} from './auth';
 
 const api = Axios.create({
-  baseURL: "http://localhost:3001"
+  baseURL: "https://profdantas.herokuapp.com/"
 });
 
 api.interceptors.request.use(async config => {

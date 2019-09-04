@@ -22,7 +22,7 @@ class ManagerHeader extends Component {
     }
 
 	callAPI() {
-		axios.get('/hdr')
+		axios.get('https://profdantas.herokuapp.com/hdr')
 		.then((res) => {
 			this.setState({
 				titulo: res.data.titulo,
@@ -45,7 +45,7 @@ class ManagerHeader extends Component {
     }
 
     submitHeader(event) {
-        axios.put('/hdr', { 'titulo': this.state.titulo, 'subtitulo': this.state.subtitulo })
+        axios.put('https://profdantas.herokuapp.com/hdr', { 'titulo': this.state.titulo, 'subtitulo': this.state.subtitulo })
             .then((res) => {
                 console.log(res)
             })
