@@ -15,7 +15,7 @@ class ManagerMainLoader extends Component {
     }
 
   callAPI() {
-    axios.get('http://localhost:3001/post')
+    axios.get('/post')
         .then((res) => {	
             console.log(res.data)
             let data = [];
@@ -45,7 +45,7 @@ class ManagerMainLoader extends Component {
 
     submitIntro = e => {
         const { id } = e.target;
-        axios.put('http://localhost:3001/post', 
+        axios.put('/post', 
             { 
             'titulo': this.state.list[id].titulo,
             'texto': this.state.list[id].texto,
@@ -75,7 +75,7 @@ class ManagerMainLoader extends Component {
 
         const formData = new FormData();
         formData.append('test', file);
-        axios.post("http://localhost:3001/upload", formData, { 
+        axios.post("/upload", formData, { 
             //receive two parameter endpoint url ,form data
         })
         .then(res => {
@@ -95,7 +95,7 @@ class ManagerMainLoader extends Component {
         console.log(e.target)
         console.log(this.state.list[name])
         console.log('id é', id, "num é", name)
-        axios.delete('http://localhost:3001/post/', 
+        axios.delete('/post/', 
             {
              data:{'id': id, 'img': this.state.list[name].img} 
             })

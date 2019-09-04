@@ -21,7 +21,7 @@ class Header extends Component {
 	}
 
 	callAPI() {
-		axios.get('http://localhost:3001/hdr')
+		axios.get('/hdr')
       .then((res) => {
 
           console.log("ente aki", res.data)

@@ -6,7 +6,7 @@ class ManagerMain extends Component {
     
     addPost(e) {
         e.preventDefault();
-        axios.post('http://localhost:3001/post')
+        axios.post('/post')
             .then((res) => {
                 console.log(res)	
             })

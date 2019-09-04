@@ -22,7 +22,7 @@ class ManagerHeader extends Component {
     }
 
 	callAPI() {
-		axios.get('http://localhost:3001/hdr')
+		axios.get('/hdr')
 		.then((res) => {
 			this.setState({
 				titulo: res.data.titulo,
@@ -45,7 +45,7 @@ class ManagerHeader extends Component {
     }
 
     submitHeader(event) {
-        axios.put('http://localhost:3001/hdr', { 'titulo': this.state.titulo, 'subtitulo': this.state.subtitulo })
+        axios.put('/hdr', { 'titulo': this.state.titulo, 'subtitulo': this.state.subtitulo })
             .then((res) => {
                 console.log(res)
             })
