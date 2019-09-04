@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const config = require('../config');
+var uri = process.env.MONGOLAB_URI || `mongodb://localhost/${config.database}`;
 
 const userSchema = new mongoose.Schema({
 	user: {
@@ -12,7 +13,7 @@ const userSchema = new mongoose.Schema({
 	}
 });
 
-mongoose.connect(`mongodb://localhost/${config.database}`, { useNewUrlParser: true });
+mongoose.connect(`${uri}`, { useNewUrlParser: true });
 const user = mongoose.model('user', userSchema);
 
 /**

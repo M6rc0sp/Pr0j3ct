@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const config = require('../config');
+var uri = process.env.MONGOLAB_URI || `mongodb://localhost/${config.database}`;
 
 const introSchema = new mongoose.Schema({
 	titulo: {
@@ -12,7 +13,7 @@ const introSchema = new mongoose.Schema({
 	}
 });
 
-mongoose.connect(`mongodb://localhost/${config.database}`, { useNewUrlParser: true });
+mongoose.connect(`${uri}`, { useNewUrlParser: true });
 const intro = mongoose.model('intro', introSchema);
 
 module.exports = intro;

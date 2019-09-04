@@ -4,19 +4,6 @@ var cors = require('cors');
 var multer = require('multer');
 const bodyParser = require('body-parser');
 
-//permission for access etween react and node
-///var allowCrossDomain = function(req, res, next) {
-//  res.header('Access-Control-Allow-Origin', "*");
- // res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  //res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  //res.header('Access-Control-Allow-Headers', 'Content-Type');
- // next();
-//}
-
-//app.use(function() {
-//  app.use(allowCrossDomain);
-//});
-
 // ... other imports 
 const path = require("path")
 
