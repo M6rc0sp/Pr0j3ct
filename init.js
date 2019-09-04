@@ -60,9 +60,9 @@ app.use('/auth', auth);
 app.post('/auth', auth);
 app.get('/auth', auth);
 
-app.use('/admin', route);
-app.put('/admin', route);
-app.get('/admin', route);
+app.use('/hdr', route);
+app.put('/hdr', route);
+app.get('/hdr', route);
 
 app.use('/post', route);
 app.get('/post', route);
@@ -72,7 +72,7 @@ app.delete('/post', route);
 /*Adds the react production build to serve react requests*/
 app.use(express.static(path.join(__dirname, "/pr0ject/build")));
 /*React root*/
-app.get("all", (req, res) => {
+app.use("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/pr0ject/build/index.html"));
 });
 

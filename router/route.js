@@ -22,7 +22,7 @@ var config = require('../config.js')
 
 });*/
 
-router.get('/admin', async (req, res) => {
+router.get('/hdr', async (req, res) => {
   const introjson = await intro.find({});
   console.log(introjson);
   let titulo = introjson[0].titulo;
@@ -38,7 +38,7 @@ router.get('/admin', async (req, res) => {
   }
 });
 
-router.put('/admin', async (req, res) => {
+router.put('/hdr', async (req, res) => {
   console.log("aqui começa ", req.body)
   const introjson = await intro.find({});
   introjson[0].subtitulo = req.body.subtitulo;
