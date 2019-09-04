@@ -10,7 +10,7 @@ class ManagerMain extends Component {
             .then((res) => {
                 console.log(res)	
             })
-        //window.location.reload();
+        window.location.reload();
     }
 
     
