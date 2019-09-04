@@ -4,13 +4,13 @@ import ManagerMainLoader from './managerMainLoader';
 
 class ManagerMain extends Component {
     
-    addPost(event) {
-        axios.post('http://localhost:3001/post')
+    addPost(e) {
+        e.preventDefault();
+        axios.post('/post')
             .then((res) => {
                 console.log(res)	
             })
-        window.location.reload();
-        event.preventDefault();
+        //window.location.reload();
     }
 
     
