@@ -57,7 +57,7 @@ class App extends Component {
     
     if (this.state.user.length > 0 && this.state.password.length > 0) {
      
-      axios.get(`http://localhost:3001/auth?user=${this.state.user}&password=${this.state.password}`)
+      axios.get(`/auth?user=${this.state.user}&password=${this.state.password}`)
       .then((response) => {
 
         console.log(response.data['token'])
