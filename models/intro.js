@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const config = require('../config');
-var uri = process.env.MONGOLAB_URI || `mongodb://localhost/${config.database}`;
+var uri = process.env.MONGOLAB_URI;
 
 const introSchema = new mongoose.Schema({
 	titulo: {
