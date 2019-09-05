@@ -57,6 +57,10 @@ app.post('/post', route);
 app.put('/post', route);
 app.delete('/post', route);
 
+app.use('/abs', route);
+app.get('/abs', route);
+app.put('/abs', route);
+
 /*Adds the react production build to serve react requests*/
 app.use(express.static(path.join(__dirname, "/pr0ject/build")));
 /*React root*/

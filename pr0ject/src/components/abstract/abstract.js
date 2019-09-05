@@ -1,10 +1,10 @@
 // Importando o React
 import React, {Component} from "react";
 import axios from 'axios';
-import photo from './public/img/1567176103251-blob.png';
-import Abstract from './components/abstract/abstract'
+import photo from '../../public/img/1567176103251-blob.png';
+import './abs.css'
 
-class Main extends Component {
+class abs extends Component {
 
   constructor(props) {
 		super(props);
@@ -15,7 +15,7 @@ class Main extends Component {
 	}
 
 	callAPI() {
-		axios.get('https://profdantas.herokuapp.com/post')
+		axios.get('https://profdantas.herokuapp.com/abs')
       .then((res) => {
             console.log("res",res)
             console.log(res.data)
@@ -42,20 +42,16 @@ class Main extends Component {
   }
   render (){
     return(
-      <section className="bg-primary3" id="about">
+      <section id="intro">
         <div className="container">
-        <Abstract/>
         {
           this.state.list.map(function (list, index) {
             return (
               <div key={index} className="row">
-                <div className="col-lg-8 mx-auto text-justify word-spacing: 10px" >
-                <h1 className="text-center">{list.titulo}</h1>
+                <h1 className="text-center">Apresentação</h1>
+                <div id="abs" className="col-lg-12 mx-auto text-justify" >
                   <img src={photo} alt={"img"+index}></img>
-                  <div className="light my-4">
-                    <br/>
-                    <p>{list.texto}</p>         
-                  </div>
+                    <p>{list.texto}</p>        
                 </div>
               </div>
             );
@@ -67,4 +63,4 @@ class Main extends Component {
     }
 }
 
-export default Main;
+export default abs;

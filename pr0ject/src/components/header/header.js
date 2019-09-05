@@ -6,6 +6,7 @@ import tt from '../../static/images/icons/twitter.svg';
 import rss from '../../static/images/icons/rss.svg';
 import photo from './../../images/header.jpg';
 import './app.css'
+import './header.css'
 
 var background = {
   backgroundImage: "url("+photo+")",
@@ -21,7 +22,7 @@ class Header extends Component {
 	}
 
 	callAPI() {
-		axios.get('/hdr')
+		axios.get('https://profdantas.herokuapp.com/hdr')
       .then((res) => {
 
           console.log("ente aki", res.data)
@@ -41,7 +42,7 @@ class Header extends Component {
       <header className="site-head" style={background}>
         <div className="container">
           <div className="site-mast">
-            <div className="site-mast-left">
+            <div className="site-mast-left ">
               <a aria-current="page" className="site-nav-item" href="/">Home</a>
               <a className="site-nav-item" href="#about">Timeline</a>
               <a className="site-nav-item" href="#contact">Contato</a>

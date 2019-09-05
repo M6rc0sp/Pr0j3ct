@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var post = require('../models/post');
 var intro = require('../models/intro');
+var abs = require('../models/abstract');
+var post = require('../models/post');
 var fs = require('fs');
 var config = require('../config.js')
 
@@ -122,6 +123,40 @@ router.delete('/post', async (req, res) => {
   } catch (err) {
     console.log(err);
 
+    return res.sendStatus(500);
+  }
+});
+
+router.get('/abs', async (req, res) => {
+  const absjson = await abs.find({});
+  console.log(absjson);
+  let site = [];
+  for (var i in absjson) {
+    site.push({ titulo: absjson[i].titulo, texto: absjson[i].texto, img: absjson[i].img, id: absjson[i]._id })
+  }
+  const data = {
+    site: site
+  };
+  try {
+    return res.status(201).json(data);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+});
+
+router.put('/abs', async (req, res) => {
+  console.log("aqui começa ", req.body)
+  let id = req.body.id;
+  const absData = await abs.find({});
+  absData[id].titulo = req.body.titulo;
+  absData[id].texto = req.body.texto;
+  absData[id].img = req.body.img;
+  absData[id].save();
+  console.log(absData);
+  
+  try {
+    return res.sendStatus(204);
+  } catch (err) {
     return res.sendStatus(500);
   }
 });

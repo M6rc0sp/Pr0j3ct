@@ -8,6 +8,10 @@ section#contact {
     background-position: center;
   }
   
+  .col-sm-12, .col-md-12{
+    padding:0px !important;
+  }
+  
   section#contact .section-heading {
     color: #fff;
   }

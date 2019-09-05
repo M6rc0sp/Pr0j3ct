@@ -12,10 +12,11 @@ class Footer extends Component {
                 <div className="row">
                 <div className="col-lg-12 text-center">
                     <h1 className="section-heading text-uppercase">Contato</h1>
+                    <br></br>
                 </div>
                 </div>
                 <div className="row">
-                <div className="col-lg-12">
+                <div className="col-lg-12 col-md-12 col-sm-12">
                     <form id="contactForm" name="sentMessage" noValidate="novalidate">
                     <div className="row">
                         <div className="col-md-6">
