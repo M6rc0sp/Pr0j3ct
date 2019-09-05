@@ -1,7 +1,6 @@
 // Importando o React
 import React, {Component} from "react";
 import axios from 'axios';
-import photo from './public/img/1567176103251-blob.png';
 import Abstract from './components/abstract/abstract'
 
 class Main extends Component {
@@ -53,7 +52,6 @@ class Main extends Component {
                 <div id="main" className="col-lg-8 mx-auto text-justify word-spacing: 10px" >
                 <h1 className="text-center">{list.titulo}</h1>
                 <div id="dimg">
-                  <img src={photo} alt={"img"+index}></img>
                 </div>
                   <div className="light my-4">
                     <br/>
