@@ -44,14 +44,17 @@ class Main extends Component {
     return(
       <section className="bg-primary3" id="about">
         <div className="container">
-        <Abstract/>
+          <br></br>
+          <Abstract/>
         {
           this.state.list.map(function (list, index) {
             return (
               <div key={index} className="row">
-                <div className="col-lg-8 mx-auto text-justify word-spacing: 10px" >
+                <div id="main" className="col-lg-8 mx-auto text-justify word-spacing: 10px" >
                 <h1 className="text-center">{list.titulo}</h1>
+                <div id="dimg">
                   <img src={photo} alt={"img"+index}></img>
+                </div>
                   <div className="light my-4">
                     <br/>
                     <p>{list.texto}</p>         

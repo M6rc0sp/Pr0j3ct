@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './manager.css';
 import ManagerHeader from './managerHeader';
 import ManagerMain from './managerMain';
+import ManagerAbstract from './managerAbstract';
 
 
 class Manager extends Component{
@@ -9,6 +10,7 @@ class Manager extends Component{
     return(
     <div>
       <ManagerHeader/>
+      <ManagerAbstract/>
       <ManagerMain/>
     </div>
     );

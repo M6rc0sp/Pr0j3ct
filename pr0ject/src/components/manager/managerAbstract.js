@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-class ManagerMainLoader extends Component {
+class ManagerAbstract extends Component {
 
     constructor(props) {
         super(props);
@@ -15,7 +15,7 @@ class ManagerMainLoader extends Component {
     }
 
   callAPI() {
-    axios.get('https://profdantas.herokuapp.com/post')
+    axios.get('https://profdantas.herokuapp.com/abs')
         .then((res) => {	
             console.log(res.data)
             let data = [];
@@ -45,7 +45,7 @@ class ManagerMainLoader extends Component {
 
     submitIntro = e => {
         const { id } = e.target;
-        axios.put('https://profdantas.herokuapp.com/post', 
+        axios.put('https://profdantas.herokuapp.com/abs', 
             { 
             'titulo': this.state.list[id].titulo,
             'texto': this.state.list[id].texto,
@@ -89,34 +89,18 @@ class ManagerMainLoader extends Component {
         })
     }
 
-    rmPost =(e)=> {
-        e.preventDefault();
-        const { id, name } = e.target;
-        console.log(e.target)
-        console.log(this.state.list[name])
-        console.log('id é', id, "num é", name)
-        axios.delete('https://profdantas.herokuapp.com/post/', 
-            {
-             data:{'id': id, 'img': this.state.list[name].img} 
-            })
-            .then((res) => {
-                console.log(res)
-            })
-       window.location.reload();
-        
-    }
-
     render(){
         return (
-        <div>
+        <div id="abs" className="col-lg-8">
+            <br></br>
+            <h1>Apresentação da página</h1>
             {
             this.state.list.map((list, index) => (
                 <form key={index+1} onSubmit={this.submitIntro} className="text-center" id={index}>
                     <label key={index+2} className="col-lg-12 mx-auto">
-                        <input key={index+3} id={index} name="titulo" type="text" defaultValue={list.titulo} onChange={this.handleChange}/>
-                        <button id={list.id} name={index} onClick={this.rmPost}>Remover postagem</button>
+                        <input key={index+3} id={index} name="titulo" type="text" defaultValue={list.titulo} onChange={this.handleChange}/>                        
                         <br/>
-                        <input type="file" name="img" key={index+5} onChange={this.onChangeHandler}/><button id={index} onClick={this.onClickHandler}>Adicionar foto</button>                                            
+                        <input type="file" name="img" key={index+5} onChange={this.onChangeHandler}/><button id={index} onClick={this.onClickHandler}>Adicionar foto</button>
                         <textarea key={index+4} id={index} name="texto" className="col-lg-12 mx-auto" defaultValue={list.texto} onChange={this.handleChange}/>
                         <input type="submit" value="Enviar"/>
                         <br/>
@@ -130,4 +114,4 @@ class ManagerMainLoader extends Component {
     }
 }
 
-export default ManagerMainLoader;
+export default ManagerAbstract;

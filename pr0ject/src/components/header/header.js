@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import axios from 'axios';
 import fb from '../../static/images/icons/facebook.svg';
 import tt from '../../static/images/icons/twitter.svg';
-import rss from '../../static/images/icons/rss.svg';
+import yt from '../../static/images/icons/youtube.svg';
 import photo from './../../images/header.jpg';
 import './app.css'
 import './header.css'
@@ -49,14 +49,14 @@ class Header extends Component {
             </div>
             <div className="site-mast-right">
               <a className="site-nav-button" target="_blank" rel="noopener noreferrer" href="http://profdantaspereira.com/">Blog</a>
-              <a href="https://twitter.com/tryghost" className="site-nav-item" target="_blank" rel="noopener noreferrer">
-                <img className="site-nav-icon" src={tt} alt="Twitter"/>
+              <a href="https://twitter.com/ProfJoao_Dantas" className="site-nav-item" target="_blank" rel="noopener noreferrer">
+                <img className="site-nav-icon" srcSet={tt} alt="Twitter"/>
               </a>
-              <a href="https://www.facebook.com/ghost" className="site-nav-item" target="_blank" rel="noopener noreferrer">
-                <img className="site-nav-icon" src={fb} alt="Facebook"/>
+              <a href="https://www.facebook.com/joao.dantaspereira" className="site-nav-item" target="_blank" rel="noopener noreferrer">
+                <img className="site-nav-icon" srcSet={fb} alt="Facebook"/>
               </a>
-              <a className="site-nav-item" href="https://feedly.com/i/subscription/feed/https://gatsby.ghost.org/rss/" target="_blank" rel="noopener noreferrer">
-                <img className="site-nav-icon" src={rss} alt="RSS Feed"/>
+              <a href="https://www.youtube.com/user/jotarnbr" className="site-nav-item" target="_blank" rel="noopener noreferrer">
+                <img className="site-nav-icon2" srcSet={yt}  alt="Youtube"/>
               </a>
             </div>
           </div>
