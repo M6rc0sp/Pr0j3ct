@@ -4,13 +4,12 @@ const config = require('../config');
 const postSchema = new mongoose.Schema({
 	titulo: {
 		type: String,
-    	required: true,
 	},
 	texto: {
 		type: String,
 		required: true,
 	},
-	img: { type: String},
+	img: {type: String},
 });
 
 mongoose.connect(`mongodb://heroku_8g99fd99:ja612kvpqutitn96tup42ic955@ds217438.mlab.com:17438/${config.database}`, { useNewUrlParser: true });

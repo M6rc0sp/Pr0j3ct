@@ -42,7 +42,7 @@ class Footer extends Component {
                         <div className="clearfix"></div>
                         <div className="col-lg-12 text-center">
                         <div id="success"></div>
-                        <Button id="sendMessageButton" variant="warning" className="btn btn-primary  text-uppercase" type="submit">Enviar Mensagem</Button>
+                        <Button id="sendMessageButton" size="lg" variant="warning" className="btn btn-primary  text-uppercase" type="submit">Enviar Mensagem</Button>
                         </div>
                     </div>
                     </form>

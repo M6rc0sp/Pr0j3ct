@@ -23,6 +23,8 @@ section#contact {
   section#contact .form-group input,
   section#contact .form-group textarea {
     padding: 20px;
+    width: -webkit-fill-available !important;
+    text-align: start;
   }
   
   section#contact .form-group input.form-control {

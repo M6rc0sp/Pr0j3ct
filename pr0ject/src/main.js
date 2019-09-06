@@ -1,6 +1,7 @@
 // Importando o React
 import React, {Component} from "react";
 import axios from 'axios';
+import Linkify from 'react-linkify';
 import Abstract from './components/abstract/abstract';
 import photo from './public/img/0.jpg';
 
@@ -27,12 +28,6 @@ class Main extends Component {
 
             this.setState({ list: data });
             console.log("list",this.state.list);
-            if(this.state.list[0]){
-              console.log('entrei')
-              var l = this.state.list[0].img.split("\\");
-              var li = l[1]+'/'+l[2]+'/'+l[3];
-              this.setState({link: li})
-            }
             console.log(this.state)
           });
 	}
@@ -44,11 +39,13 @@ class Main extends Component {
     return(
       <section className="bg-primary3" id="about">
         <div className="container">
-          <br></br>
+          <br/>
+          {this.state.link}
           <Abstract/>
+          <br/>
         {
           this.state.list.map(function (list, index) {
-            if(index===0){
+            if(index===0){                
               return (
                 <div key={index} className="row">
                 <div id="main" className="col-lg-8 mx-auto text-justify word-spacing: 10px" >
@@ -58,7 +55,9 @@ class Main extends Component {
                 </div>
                   <div className="light my-4">
                     <br/>
-                    <p style={{whiteSpace: 'pre-wrap'}}>{list.texto}</p>
+                    <Linkify properties={{target: '_blank'}}>
+                      <p style={{whiteSpace: 'pre-wrap'}}>{list.texto}</p>
+                    </Linkify>
                   </div>
                 </div>
               </div>
@@ -72,9 +71,12 @@ class Main extends Component {
                 </div>
                   <div className="light my-4">
                     <br/>
-                    <p style={{whiteSpace: 'pre-wrap'}}>{list.texto}</p>         
+                    <Linkify properties={{target: "_blank"}}>
+                      <p target="_blank" style={{whiteSpace: 'pre-wrap'}}>{list.texto}</p>
+                    </Linkify>
                   </div>
                 </div>
+                <br/>
               </div>
             );
           })

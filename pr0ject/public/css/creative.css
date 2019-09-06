@@ -60,6 +60,10 @@ div {
   margin: auto;
 }
 
+div #main{
+  margin-top: 50px !important;
+}
+
 .btn {
   justify-content: center;
   display: flex;
