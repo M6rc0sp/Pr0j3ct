@@ -18,18 +18,16 @@ class ManagerMain extends Component {
     render (){
         
         return(
-            <section className="bg-primary3" id="about">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-8 mx-auto text-justify word-spacing: 10px">
-                            <div className="light my-4">                                
-                                <h1 className="text-center">Corpo do Site <button className="buttonPlus" onClick={this.addPost}>+</button></h1>
-                                <ManagerMainLoader/>
-                            </div>
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-8 mx-auto text-justify word-spacing: 10px">
+                        <div className="light my-4">                                
+                            <h1 className="text-center">Corpo do Site <button className="buttonPlus" onClick={this.addPost}>+</button></h1>
+                            <ManagerMainLoader/>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
         );
     }
 }

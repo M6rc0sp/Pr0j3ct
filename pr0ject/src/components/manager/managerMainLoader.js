@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 
 class ManagerMainLoader extends Component {
 
@@ -114,11 +115,14 @@ class ManagerMainLoader extends Component {
                 <form key={index+1} onSubmit={this.submitIntro} className="text-center" id={index}>
                     <label key={index+2} className="col-lg-12 mx-auto">
                         <input key={index+3} id={index} name="titulo" type="text" defaultValue={list.titulo} onChange={this.handleChange}/>
-                        <button id={list.id} name={index} onClick={this.rmPost}>Remover postagem</button>
+                        <Button id={list.id} name={index} variant="danger" onClick={this.rmPost}>Remover postagem</Button>
                         <br/>
-                        <input type="file" name="img" key={index+5} onChange={this.onChangeHandler}/><button id={index} onClick={this.onClickHandler}>Adicionar foto</button>                                            
-                        <textarea key={index+4} id={index} name="texto" className="col-lg-12 mx-auto" defaultValue={list.texto} onChange={this.handleChange}/>
-                        <input type="submit" value="Enviar"/>
+                        <div className="fill">
+                        <input type="file" name="img" key={index+5} onChange={this.onChangeHandler}/>
+                        <Button id={index} name="imgbutton" onClick={this.onClickHandler}>Adicionar foto</Button>
+                        </div>
+                        <textarea key={index+4} id={index} name="texto" style={{whiteSpace: 'pre-wrap'}} className="col-lg-12 mx-auto" defaultValue={list.texto} onChange={this.handleChange}/>
+                        <Button block variant="success" size="lg" type="submit">Salvar</Button>
                         <br/>
                         <br/>
                     </label>

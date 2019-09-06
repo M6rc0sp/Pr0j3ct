@@ -10,8 +10,10 @@ class Manager extends Component{
     return(
     <div>
       <ManagerHeader/>
+      <section className="bg-primary3">
       <ManagerAbstract/>
       <ManagerMain/>
+      </section>
     </div>
     );
   }

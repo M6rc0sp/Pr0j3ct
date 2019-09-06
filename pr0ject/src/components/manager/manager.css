@@ -10,3 +10,15 @@ textarea{
     text-align: center;
     vertical-align: center;
 }
+input[type=text], input[type=submit]{
+    width: inherit;
+    text-align: center
+}
+
+input[name=img]{
+    width:70%;
+}
+
+Button[name=imgbutton]{
+    width:30%;
+}

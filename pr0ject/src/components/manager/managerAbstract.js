@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 
 class ManagerAbstract extends Component {
 
@@ -100,9 +101,10 @@ class ManagerAbstract extends Component {
                     <label key={index+2} className="col-lg-12 mx-auto">
                         <input key={index+3} id={index} name="titulo" type="text" defaultValue={list.titulo} onChange={this.handleChange}/>                        
                         <br/>
-                        <input type="file" name="img" key={index+5} onChange={this.onChangeHandler}/><button id={index} onClick={this.onClickHandler}>Adicionar foto</button>
+                        <input type="file" name="img" key={index+5} onChange={this.onChangeHandler}/>
+                        <Button id={index} onClick={this.onClickHandler}>Adicionar foto</Button>
                         <textarea key={index+4} id={index} name="texto" className="col-lg-12 mx-auto" defaultValue={list.texto} onChange={this.handleChange}/>
-                        <input type="submit" value="Enviar"/>
+                        <Button block variant="success" size="lg" type="submit">Salvar</Button>
                         <br/>
                         <br/>
                     </label>

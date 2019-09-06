@@ -1,7 +1,8 @@
 // Importando o React
 import React, {Component} from "react";
 import axios from 'axios';
-import Abstract from './components/abstract/abstract'
+import Abstract from './components/abstract/abstract';
+import photo from './public/img/0.jpg';
 
 class Main extends Component {
 
@@ -47,6 +48,22 @@ class Main extends Component {
           <Abstract/>
         {
           this.state.list.map(function (list, index) {
+            if(index===0){
+              return (
+                <div key={index} className="row">
+                <div id="main" className="col-lg-8 mx-auto text-justify word-spacing: 10px" >
+                <h1 className="text-center">{list.titulo}</h1>
+                <div id="dimg">
+                <img src={photo} alt={"img"+index} />
+                </div>
+                  <div className="light my-4">
+                    <br/>
+                    <p style={{whiteSpace: 'pre-wrap'}}>{list.texto}</p>
+                  </div>
+                </div>
+              </div>
+              );
+            }
             return (
               <div key={index} className="row">
                 <div id="main" className="col-lg-8 mx-auto text-justify word-spacing: 10px" >
@@ -55,7 +72,7 @@ class Main extends Component {
                 </div>
                   <div className="light my-4">
                     <br/>
-                    <p>{list.texto}</p>         
+                    <p style={{whiteSpace: 'pre-wrap'}}>{list.texto}</p>         
                   </div>
                 </div>
               </div>

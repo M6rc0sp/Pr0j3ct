@@ -59,7 +59,7 @@ class ManagerHeader extends Component {
 				<div className="row">
 					<div className="col-lg-8 mx-auto text-justify word-spacing: 10px">
 						<form onSubmit={this.submitHeader} className="text-center" id='header'>
-                            <h1>Cabeçalho</h1>
+                            <h1 className="white">Cabeçalho</h1>
                             <br/>
 							<label>
 								<input type="text" value={this.state.titulo} onChange={this.headerTitleChange} />
