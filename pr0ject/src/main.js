@@ -54,7 +54,7 @@ class Main extends Component {
                      <img src={photo} alt={"img"+index} />
                     </div>
                     <br/>
-                    <Linkify properties={{target="_blank", rel="noopener noreferrer"}}>
+                    <Linkify properties={{target:"_blank", rel:"noopener noreferrer"}}>
                       <p style={{whiteSpace: 'pre-wrap'}}>{list.texto}</p>
                     </Linkify>
                   </div>
@@ -68,7 +68,7 @@ class Main extends Component {
                     <div id="dimg">
                     </div>
                     <br/>
-                    <Linkify properties={{target="_blank", rel="noopener noreferrer"}}>
+                    <Linkify properties={{target:"_blank", rel:"noopener noreferrer"}}>
                       <p style={{whiteSpace: 'pre-wrap'}}>{list.texto}</p>
                     </Linkify>
                   </div>
