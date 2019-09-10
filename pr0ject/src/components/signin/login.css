@@ -2,3 +2,8 @@
     text-align: center;
     margin: auto;
 }
+
+input[type=password], input[type=text]{
+    width: inherit;
+    text-align: center
+}

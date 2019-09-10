@@ -14,29 +14,18 @@ app.use(bodyParser.json())
 app.use(cors());
 
 //files upload by multer
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './pr0ject/public/img')
-  },
-  filename: function (req, file, cb) {
+const storage = multer.diskStorage({
+  destination: './pr0ject/public/img',
+  filename(req, file, cb) {
    cb(null, Date.now() + '-' +file.originalname+'.png')
   }
 })
 
-var upload = multer({ storage: storage })
+const upload = multer({ storage })
 
 app.post('/upload', upload.any(), (req, res) => {
-  //upload(req, res, (err) => {
     console.log("let me in:", req.files)
-        /* if (err instanceof multer.MulterError) {
-             return res.status(500).json(err)
-         } else if (err) {
-             return res.status(500).json(err)
-         }*/
-    return res.status(200).send(req.files)
-
- // })
-
+    res.status(200).send(req.files)
 });
 
 //my routes

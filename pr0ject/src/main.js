@@ -47,37 +47,32 @@ class Main extends Component {
           this.state.list.map(function (list, index) {
             if(index===0){                
               return (
-                <div key={index} className="row">
-                <div id="main" className="col-lg-8 mx-auto text-justify word-spacing: 10px" >
-                <h1 className="text-center">{list.titulo}</h1>
-                <div id="dimg">
-                <img src={photo} alt={"img"+index} />
-                </div>
-                  <div className="light my-4">
+                <div key={index} id="main" className="row" >
+                  <h1 className="text-center">{list.titulo}</h1>
+                  <div  className="col-lg-12 mx-auto text-justify">
+                    <div id="dimg">
+                     <img src={photo} alt={"img"+index} />
+                    </div>
                     <br/>
-                    <Linkify properties={{target: '_blank'}}>
+                    <Linkify properties={{target="_blank", rel="noopener noreferrer"}}>
                       <p style={{whiteSpace: 'pre-wrap'}}>{list.texto}</p>
                     </Linkify>
                   </div>
                 </div>
-              </div>
               );
             }
             return (
-              <div key={index} className="row">
-                <div id="main" className="col-lg-8 mx-auto text-justify word-spacing: 10px" >
-                <h1 className="text-center">{list.titulo}</h1>
-                <div id="dimg">
-                </div>
-                  <div className="light my-4">
+              <div key={index} id="main" className="row" >
+                  <h1 className="text-center">{list.titulo}</h1>
+                  <div  className="col-lg-12 mx-auto text-justify">
+                    <div id="dimg">
+                    </div>
                     <br/>
-                    <Linkify properties={{target: "_blank"}}>
-                      <p target="_blank" style={{whiteSpace: 'pre-wrap'}}>{list.texto}</p>
+                    <Linkify properties={{target="_blank", rel="noopener noreferrer"}}>
+                      <p style={{whiteSpace: 'pre-wrap'}}>{list.texto}</p>
                     </Linkify>
                   </div>
                 </div>
-                <br/>
-              </div>
             );
           })
         }
