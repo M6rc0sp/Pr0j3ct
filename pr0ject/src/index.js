@@ -4,7 +4,7 @@ import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-d
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import App from './App';
-//import * as serviceWorker from './serviceWorker';
+import blog from './components/blog/blog';
 import manager from './components/manager/manager'
 import login from './components/signin/login'
 import { isAuthenticated } from "./services/auth";
@@ -27,6 +27,7 @@ const routing = (
   <Switch>
    <Route exact path="/" component={App}/>
    <PrivateRoute path="/admin" component={manager} />
+   <Route path="/blog"component={blog}/>
    <Route path="/login" component={login} />
    <Route path="*" component={() => <h1>Page not found</h1>} />
   </Switch>
