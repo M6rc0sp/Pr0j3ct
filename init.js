@@ -54,6 +54,7 @@ app.use('/email', route);
 app.post('/email', route);
 app.get('/email', route);
 app.put('/email', route);
+app.delete('/email', route);
 
 /*Adds the react production build to serve react requests*/
 app.use(express.static(path.join(__dirname, "/pr0ject/build")));

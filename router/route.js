@@ -183,11 +183,26 @@ router.get('/email', async (req, res) => {
   console.log(emailjson);
   let data = [];
   for (var i in emailjson) {
-    data.push({ email: postjson[i].email, permission: postjson[i].permission })
+    data.push({ email: emailjson[i].email, permission: emailjson[i].permission })
   }
   try {
     return res.status(201).json(data);
   } catch (err) {
+    return res.sendStatus(500);
+  }
+});
+
+router.delete('/email', async (req, res) => {
+  console.log('executed');
+  try {
+    console.log(req.body)
+    const deletedService = await post.findByIdAndRemove(req.body.id);
+    if (!deletedService) {
+      return res.sendStatus(404);
+    }
+    return res.sendStatus(204);
+  } catch (err) {
+    console.log(err);
     return res.sendStatus(500);
   }
 });

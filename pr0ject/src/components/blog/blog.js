@@ -25,7 +25,6 @@ class Blog extends Component {
         .then((res) => {
             console.log(res)	
         })
-    //window.location.reload();
   }
 
   getEmail(e) {
@@ -35,7 +34,7 @@ class Blog extends Component {
         let data = [];
 
         for (var i in res.data.site) {
-          data.push({ email: res.data.site[i].email, permission: res.data.site[i].texto })
+          data.push({ email: res.data.site[i].email, permission: res.data.site[i].permission })
         }
 
         this.setState({ list: data })

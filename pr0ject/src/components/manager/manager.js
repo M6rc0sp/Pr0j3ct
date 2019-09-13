@@ -3,6 +3,7 @@ import './manager.css';
 import ManagerHeader from './managerHeader';
 import ManagerMain from './managerMain';
 import ManagerAbstract from './managerAbstract';
+import Emailmanager from './emailmanager';
 
 
 class Manager extends Component{
@@ -13,6 +14,7 @@ class Manager extends Component{
       <section className="bg-primary3">
       <ManagerAbstract/>
       <ManagerMain/>
+      <Emailmanager/>
       </section>
     </div>
     );
