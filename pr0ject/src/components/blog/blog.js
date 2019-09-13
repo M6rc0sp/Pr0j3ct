@@ -21,7 +21,7 @@ class Blog extends Component {
 
   addEmail(e) {
     e.preventDefault();
-    axios.post('http://profdantas.herokuapp.com/email')
+    axios.post('https://profdantas.herokuapp.com/email')
         .then((res) => {
             console.log(res)	
         })
@@ -29,7 +29,7 @@ class Blog extends Component {
   }
 
   getEmail(e) {
-    axios.get('http://profdantas.herokuapp.com/email')
+    axios.get('https://profdantas.herokuapp.com/email')
       .then((res) => {	
         console.log(res.data)
         let data = [];
