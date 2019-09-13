@@ -51,6 +51,7 @@ app.get('/abs', route);
 app.put('/abs', route);
 
 app.use('/email', route);
+app.post('/email', route);
 app.get('/email', route);
 app.put('/email', route);
 
