@@ -12,15 +12,17 @@ class EmailManager extends Component {
     }
 
     getEmail() {
-	    axios.get('http://profdantas.herokuapp.com/email')
+	    axios.get('https://profdantas.herokuapp.com/email')
         .then((res) => {
-          console.log("entre aki")
-          this.setState({
-              titulo: res.data.titulo,
-              subtitulo: res.data.subtitulo
-          });
-        })
-	}
+            let data = [];
+            console.log("entrei", res.data)
+            for (var i in res.data) {
+                data.push({ email: res.data[i].email, permission: res.data[i].permission })
+            }
+        this.setState({ list: data })
+        console.log("list",this.state.list)
+        });
+    }
 
 	componentWillMount() {
 		this.getEmail();
@@ -31,10 +33,11 @@ class EmailManager extends Component {
 
     submitIntro = e => {
         const { id } = e.target;
-        axios.put('http://profdantas.herokuapp.com/email', 
+        axios.put('https://profdantas.herokuapp.com/email', 
             { 
             'email': this.state.list[id].email,
             'permission': this.state.list[id].permission,
+            'id': id
             })
             .then((res) => {
                 console.log(res)	
@@ -47,9 +50,9 @@ class EmailManager extends Component {
         console.log(e.target)
         console.log(this.state.list[name])
         console.log('id é', id, "num é", name)
-        axios.delete('http://profdantas.herokuapp.com/post/', 
+        axios.delete('https://profdantas.herokuapp.com/email/', 
             {
-             data:{'id': id, 'img': this.state.list[name].img} 
+             data:{'id': id} 
             })
             .then((res) => {
                 console.log(res)
@@ -60,21 +63,18 @@ class EmailManager extends Component {
 
     render(){
         return (
-        <div>
-            <h1 style={{textAlign: 'center'}}>Emails</h1>
+        <div className="col-lg-8 text-center" style={{margin: 'auto'}}>
+            <h1>Emails</h1>
             {
             this.state.list.map((list, index) => (
                 <form key={index+1} onSubmit={this.submitIntro} className="text-center" id={index}>
-                    <label key={index+2} className="col-lg-12 mx-auto">
-                        <input key={index+3} id={index} name="titulo" type="text" defaultValue={list.email} onChange={this.handleChange}/>
-                        <Button id={list.id} name={index} variant="danger" onClick={this.rmEmail}>Remover postagem</Button>
-                        <br/>
-                        <input key={index+3} id={index} name="titulo" type="text" defaultValue={list.permission} onChange={this.handleChange}/>
-                        <Button block variant="success" size="lg" type="submit">Salvar</Button>
-                        <br/>
-                        <br/>
-                    </label>
-                </form> 
+                    <input key={index+3} id={index} name="titulo" type="text" defaultValue={list.email}/>
+                    <input key={index+3} id={index} name="titulo" type="text" defaultValue={list.permission}/>
+                    <Button id={list.id} name={index} variant="danger" onClick={this.rmEmail}>Remover</Button>
+                    <Button block variant="success" size="lg" type="submit">Salvar</Button>
+                    <br/>
+                    <br/>
+                </form>
             ))
             }
         </div>

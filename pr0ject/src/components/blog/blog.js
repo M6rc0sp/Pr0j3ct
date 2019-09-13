@@ -16,25 +16,26 @@ class Blog extends Component {
     super(props);
     this.state = {
         list: [],
+        already: false,
+        email: ''
     };
   }
 
-  addEmail(e) {
-    e.preventDefault();
-    axios.post('https://profdantas.herokuapp.com/email')
+  addEmail() {
+    axios.post('https://profdantas.herokuapp.com/email', {'email': this.state.email})
         .then((res) => {
             console.log(res)	
         })
   }
 
-  getEmail(e) {
+  getEmail() {
     axios.get('https://profdantas.herokuapp.com/email')
       .then((res) => {	
         console.log(res.data)
         let data = [];
 
-        for (var i in res.data.site) {
-          data.push({ email: res.data.site[i].email, permission: res.data.site[i].permission })
+        for (var i in res.data) {
+          data.push({ email: res.data[i].email, permission: res.data[i].permission })
         }
 
         this.setState({ list: data })
@@ -42,19 +43,48 @@ class Blog extends Component {
       })
   }
 
+  componentWillMount() {
+		this.getEmail();
+  }
+  
   clicked =e=> {
+    var p=false;
+    var exist=false;
     let email = window.prompt('Digite seu e-mail:')
     if(!email){
-      alert('E-mail inválido')
+      alert('E-mail vazio')
       this.props.history.push("/blog");
       e.preventDefault();
     } else
     if (email.includes('@') && email.includes('.com')){
-      this.addEmail()
-      this.props.history.push("/blog");
-      e.preventDefault();
+      for (var i in this.state.list){
+        console.log('email', email)
+        console.log('emails', this.state.list[i].email)
+        if (email===this.state.list[i].email) {
+          exist = true;
+          if(this.state.list[i].permission===true){
+            p=true;
+            console.log('permission?', p)
+          }else{
+            p=false
+            console.log('permission?', p)
+          }
+          break;
+        }
+      }
+      if(p){
+        alert('Olá, não se esqueça de mandar um feedback sobre o assunto depois...')
+      }else if(!exist){
+        alert('Bem vindo')
+        this.setState({email: email})
+        this.addEmail();
+      } else {
+        alert('Esse email está proibido de acessar esse arquivo.')
+        this.props.history.push("/blog");
+        e.preventDefault();
+      }
     } else {
-      alert('E-mail inválido')
+      alert('Invalido, digite seu e-mail corretamente.')
       this.props.history.push("/blog");
       e.preventDefault();
     }
@@ -74,7 +104,6 @@ class Blog extends Component {
                   <ul className="navbar-nav text-uppercase ml-auto">
                     <li className="nav-item">
                       <a className="nav-link js-scroll-trigger" href="#services">Apresentação</a>
-                      <Button variant="outline-primary" onClick={this.addEmail}>testa aí po</Button>
                     </li>
                     <li className="nav-item">
               
@@ -104,7 +133,7 @@ class Blog extends Component {
                 <div className="intro-text">
                   <div className="intro-lead-in">Bem Vindo ao blog</div>
                   <div className="intro-heading text-uppercase"><strong>João Dantas Pereira</strong></div>
-                  <a className="btn btn-primary  text-uppercase js-scroll-trigger" href="#services">  Apresentação</a>
+                  <Button size="lg" className="btn btn-primary  text-uppercase js-scroll-trigger" href="#services"> Apresentação</Button>
                 </div>
               </div>
             </header>

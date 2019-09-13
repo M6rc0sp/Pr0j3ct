@@ -166,7 +166,7 @@ router.post('/email', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
     const data = new email({
-      email: "123@abc.com",
+      email: req.body.email,
       permission: true,
     });
 
@@ -183,10 +183,26 @@ router.get('/email', async (req, res) => {
   console.log(emailjson);
   let data = [];
   for (var i in emailjson) {
-    data.push({ email: emailjson[i].email, permission: emailjson[i].permission })
+    data.push({ email: emailjson[i].email, permission: emailjson[i].permission, id: emailjson[i]._id })
   }
   try {
     return res.status(201).json(data);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+});
+
+router.put('/email', async (req, res) => {
+  console.log("aqui começa ", req.body)
+  let id = req.body.id;
+  const eData = await email.find({});
+  eData[id].email = req.body.email;
+  eData[id].permission = req.body.permission;
+  eData[id].save();
+  console.log(eData);
+  
+  try {
+    return res.sendStatus(204);
   } catch (err) {
     return res.sendStatus(500);
   }

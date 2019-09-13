@@ -6,7 +6,7 @@ class ManagerMain extends Component {
     
     addPost(e) {
         e.preventDefault();
-        axios.post('http://profdantas.herokuapp.com/post')
+        axios.post('https://profdantas.herokuapp.com/post')
             .then((res) => {
                 console.log(res)	
             })
