@@ -1,5 +1,6 @@
 import jQuery from 'jquery';
 import 'bootstrap';
+import './mail/contact_me.php'
 
 (function($) {
 

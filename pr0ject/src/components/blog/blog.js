@@ -6,9 +6,42 @@ import './scss/_contact.scss'
 import "./vendor/fontawesome-free/css/all.min.css"
 import './js/agency.js'
 import photo2 from "./img/team/2.jpg";
+import axios from 'axios';
+import Button from "react-bootstrap/Button";
 
 
 class Blog extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+        list: [],
+    };
+  }
+
+  addEmail(e) {
+    e.preventDefault();
+    axios.post('http://profdantas.herokuapp.com/email')
+        .then((res) => {
+            console.log(res)	
+        })
+    //window.location.reload();
+  }
+
+  getEmail(e) {
+    axios.get('http://profdantas.herokuapp.com/email')
+      .then((res) => {	
+        console.log(res.data)
+        let data = [];
+
+        for (var i in res.data.site) {
+          data.push({ email: res.data.site[i].email, permission: res.data.site[i].texto })
+        }
+
+        this.setState({ list: data })
+        console.log("list",this.state.list)
+      })
+  }
 
   clicked =e=> {
     let email = window.prompt('Digite seu e-mail:')
@@ -18,29 +51,31 @@ class Blog extends Component {
       e.preventDefault();
     } else
     if (email.includes('@') && email.includes('.com')){
-      //keep going
+      this.addEmail()
+      this.props.history.push("/blog");
+      e.preventDefault();
     } else {
       alert('E-mail inválido')
       this.props.history.push("/blog");
       e.preventDefault();
     }
-    
   }
 
   render(){
     return(
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-              <div className="container" id="page-top">
+              <div className="container" id="page-top" style={{padding: '0px 6px'}}>
                 <a className="navbar-brand js-scroll-trigger" href="#page-top">Home</a>
                 <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                   Menu
-                  <i className="fas fa-bars"></i>
+                  <i style={{padding: '0px 6px'}} className="fas fa-bars"></i>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarResponsive">
                   <ul className="navbar-nav text-uppercase ml-auto">
                     <li className="nav-item">
                       <a className="nav-link js-scroll-trigger" href="#services">Apresentação</a>
+                      <Button variant="outline-primary" onClick={this.addEmail}>testa aí po</Button>
                     </li>
                     <li className="nav-item">
               
@@ -195,7 +230,7 @@ class Blog extends Component {
                           </li>
                         <li>
                             <div className="timeline-image">
-                               <img className="rounded-circle img-fluid" src="http://noticias.universia.pt/pt/images/docentes/i/in/ins/instituto-universitario-de-lisboa-logo.png" alt="" style={{maxwidth: 100,   height: 100}}/>
+                               <img className="rounded-circle img-fluid" src="http://parentnets.com/site/assets/files/1032/iscte.jpg" alt="" style={{maxwidth: 100,   height: 100}}/>
                             </div>
                             <div className="timeline-panel">
                               <div className="timeline-heading">
@@ -633,15 +668,15 @@ class Blog extends Component {
                           <div className="row">
                             <div className="col-md-6">
                               <div className="form-group">
-                                <input className="form-control" id="name" type="text" placeholder="Your Name *" required="required" data-validation-required-message="Please enter your name."/>
+                                <input className="form-control" id="name" type="text" placeholder="Seu nome" required="required" data-validation-required-message="Por favor digite seu nome."/>
                                 <p className="help-block text-danger"></p>
                               </div>
                               <div className="form-group">
-                                <input className="form-control" id="email" type="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address."/>
+                                <input className="form-control" id="email" type="email" placeholder="Seu e-mail" required="required" data-validation-required-message="Por favor digite seu email."/>
                                 <p className="help-block text-danger"></p>
                               </div>
                               <div className="form-group">
-                                <input className="form-control" id="phone" type="tel" placeholder="Your Phone *" required="required" data-validation-required-message="Please enter your phone number."/>
+                                <input className="form-control" id="phone" type="tel" placeholder="Seu telefone" required="required" data-validation-required-message="Por favor preencha o campo do telefone."/>
                                 <p className="help-block text-danger"></p>
                               </div>
                             </div>

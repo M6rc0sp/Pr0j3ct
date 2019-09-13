@@ -3,8 +3,9 @@ var router = express.Router();
 var intro = require('../models/intro');
 var abs = require('../models/abstract');
 var post = require('../models/post');
+var email = require('../models/email');
 var fs = require('fs');
-var config = require('../config.js')
+var config = require('../config.js');
 
 /*router.post('/session', async (req, res) => {
   console.log("Aqui vem o req.body:");
@@ -156,6 +157,36 @@ router.put('/abs', async (req, res) => {
   
   try {
     return res.sendStatus(204);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+});
+
+router.post('/email', async (req, res) => {
+  console.log("Aqui vem o req.body:");
+  console.log(req.body);
+    const data = new email({
+      email: "123@abc.com",
+      permission: true,
+    });
+
+    try {
+      const newModel = await data.save();
+      return res.status(201).json(newModel);
+    } catch (err) {
+      return res.sendStatus(500);
+    }
+});
+
+router.get('/email', async (req, res) => {
+  const emailjson = await email.find({});
+  console.log(emailjson);
+  let data = [];
+  for (var i in emailjson) {
+    data.push({ email: postjson[i].email, permission: postjson[i].permission })
+  }
+  try {
+    return res.status(201).json(data);
   } catch (err) {
     return res.sendStatus(500);
   }

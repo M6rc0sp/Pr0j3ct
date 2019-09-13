@@ -1,6 +1,6 @@
 // Styling for the navbar
 #mainNav {
-  background-color: gray;
+  background-color: #212529;
   .navbar-toggler {
     font-size: 12px;
     right: 0;
@@ -56,10 +56,10 @@
     &.navbar-shrink {
       padding-top: 0;
       padding-bottom: 0;
-      background-color: gray;
+      background-color: #212529;
       .navbar-brand {
         font-size: 1.25em;
-        padding: 12px 0;
+        padding: 12px;
       }
     }
   }
