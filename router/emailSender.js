@@ -31,7 +31,7 @@ router.post('/emailsender', async (req, res) => {
           });
             console.log('Message sent: %s', info.messageId); 
           } catch (error) {
-            console.log('Error'); 
+            console.log(error); 
           }
     
   });
