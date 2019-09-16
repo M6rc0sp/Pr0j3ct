@@ -176,7 +176,8 @@ class Blog extends Component {
               <div className="container">
                 <div className="intro-text">
                   <div className="intro-lead-in">Bem Vindo ao blog</div>
-                  <div className="intro-heading text-uppercase"><strong>Professor João Dantas Pereira</strong></div>
+                  <div className='col-lg-12 intro-heading text-uppercase'><strong>Professor</strong></div>
+                  <div className="intro-heading text-uppercase"><strong>João Dantas Pereira</strong></div>
                   <Button size="lg" className="btn btn-primary  text-uppercase js-scroll-trigger" href="#services"> Apresentação</Button>
                 </div>
               </div>
