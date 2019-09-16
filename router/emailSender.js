@@ -20,7 +20,7 @@ router.post('/emailsender', async (req, res) => {
     
         let info = await transporter.sendMail({
             from: '"Marcos Paulo 👻" <paulo.marcos0108@live.com>', // sender address
-            to: req.body.email2, // list of receivers
+            to: req.body.email, // list of receivers
             subject: 'Hello ✔', // Subject line
             text: req.body.message, // plain text body
             html: '<b>Hello world?</b>' // html body
