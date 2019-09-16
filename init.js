@@ -31,6 +31,7 @@ app.post('/upload', upload.any(), (req, res) => {
 //my routes
 const route = require('./router/route')
 const auth = require('./router/auth')
+const emailsender = require('./router/emailSender')
 
 app.use('/auth', auth);
 app.post('/auth', auth);
@@ -49,6 +50,9 @@ app.delete('/post', route);
 app.use('/abs', route);
 app.get('/abs', route);
 app.put('/abs', route);
+
+app.use('/emailsender', emailsender);
+app.post('/emailsender', emailsender);
 
 app.use('/email', route);
 app.post('/email', route);

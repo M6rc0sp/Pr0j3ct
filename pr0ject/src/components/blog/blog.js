@@ -52,6 +52,7 @@ class Blog extends Component {
   }
 
   submitEmail = e => {
+    e.preventDefault();
     axios.post('https://profdantas.herokuapp.com/emailsender', 
     { 
     'email': this.state.email2,
