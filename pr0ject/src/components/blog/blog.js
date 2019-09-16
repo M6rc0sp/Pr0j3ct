@@ -17,8 +17,51 @@ class Blog extends Component {
     this.state = {
         list: [],
         already: false,
-        email: ''
+        email: '',
+        email2: '',
+        name: '',
+        message: '',
+        tel: '',
+
     };
+  }
+
+  handleChange = e => {
+    const { id, value } = e.target
+    switch (id) {
+      case 'email':
+        console.log('email')
+          this.setState({ email2: value });
+        break;
+      case 'phone':
+          this.setState({ tel: value });
+        break;
+      case 'name':
+          this.setState({ name: value });
+        break;
+      case 'message':
+          this.setState({ message: value });
+        break;
+      default:
+          console.log('this was not expected.')
+        break;
+    } 
+    
+    console.log("pingos nos is", id, value)
+    console.log(this.state)
+  }
+
+  submitEmail = e => {
+    axios.post('https://profdantas.herokuapp.com/emailsender', 
+    { 
+    'email': this.state.email2,
+    'name': this.state.name,
+    'tel': this.state.tel,
+    'message': this.state.message,
+    })
+    .then((res) => {
+        console.log(res)	
+    })
   }
 
   addEmail() {
@@ -692,25 +735,25 @@ class Blog extends Component {
                     </div>
                     <div className="row">
                       <div className="col-lg-12">
-                        <form id="contactForm" name="sentMessage" noValidate="noValidate">
+                        <form id="contactForm" name="sentMessage" onSubmit={this.submitEmail} noValidate="noValidate">
                           <div className="row">
                             <div className="col-md-6">
                               <div className="form-group">
-                                <input className="form-control" id="name" type="text" placeholder="Seu nome" required="required" data-validation-required-message="Por favor digite seu nome."/>
+                                <input className="form-control" onChange={this.handleChange} id="name" type="text" placeholder="Seu nome" required="required" data-validation-required-message="Por favor digite seu nome."/>
                                 <p className="help-block text-danger"></p>
                               </div>
                               <div className="form-group">
-                                <input className="form-control" id="email" type="email" placeholder="Seu e-mail" required="required" data-validation-required-message="Por favor digite seu email."/>
+                                <input className="form-control" onChange={this.handleChange} id="email" type="email" placeholder="Seu e-mail" required="required" data-validation-required-message="Por favor digite seu email."/>
                                 <p className="help-block text-danger"></p>
                               </div>
                               <div className="form-group">
-                                <input className="form-control" id="phone" type="tel" placeholder="Seu telefone" required="required" data-validation-required-message="Por favor preencha o campo do telefone."/>
+                                <input className="form-control" onChange={this.handleChange} id="phone" type="tel" placeholder="Seu telefone" required="required" data-validation-required-message="Por favor preencha o campo do telefone."/>
                                 <p className="help-block text-danger"></p>
                               </div>
                             </div>
                             <div className="col-md-6">
                               <div className="form-group">
-                                <textarea className="form-control" id="message" placeholder="Your Message *" required="required" data-validation-required-message="Please enter a message."></textarea>
+                                <textarea className="form-control" onChange={this.handleChange} id="message" placeholder="Sua mensagem" required="required" data-validation-required-message="Please enter a message."></textarea>
                                 <p className="help-block text-danger"></p>
                               </div>
                             </div>
