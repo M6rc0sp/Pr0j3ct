@@ -18,18 +18,14 @@ router.post('/emailsender', async (req, res) => {
             }
           });
     
-          try {
-            let info = await transporter.sendMail({
-                from: '"Marcos Paulo 👻" <paulo.marcos0108@live.com>', // sender address
-                to: 'paulo.marcos0108@live.com', // list of receivers
-                subject: 'Hello ✔', // Subject line
-                text: 'Hello world?', // plain text body
-                html: '<b>Hello world?</b>' // html body
-            });
-            console.log('Message sent: %s', info.messageId);
-          } catch (err) {
-            return res.sendStatus(500);
-          }
+        let info = await transporter.sendMail({
+            from: '"Marcos Paulo 👻" <paulo.marcos0108@live.com>', // sender address
+            to: req.body.email2, // list of receivers
+            subject: 'Hello ✔', // Subject line
+            text: req.body.message, // plain text body
+            html: '<b>Hello world?</b>' // html body
+        });
+        console.log('Message sent: %s', info.messageId);
     
   });
 
