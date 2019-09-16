@@ -14,7 +14,11 @@ async function email() {
             auth: {
               user: "paulo.marcos0108@live.com",
               pass: "70248084461.MP"
-            }
+            },
+            tls: {
+                ignoreTLS: true,
+                rejectUnauthorized: false
+              }
           });
     
         let info = await transporter.sendMail({

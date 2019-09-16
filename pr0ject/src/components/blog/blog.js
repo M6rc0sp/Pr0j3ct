@@ -176,7 +176,7 @@ class Blog extends Component {
               <div className="container">
                 <div className="intro-text">
                   <div className="intro-lead-in">Bem Vindo ao blog</div>
-                  <div className="intro-heading text-uppercase"><strong>João Dantas Pereira</strong></div>
+                  <div className="intro-heading text-uppercase"><strong>Professor João Dantas Pereira</strong></div>
                   <Button size="lg" className="btn btn-primary  text-uppercase js-scroll-trigger" href="#services"> Apresentação</Button>
                 </div>
               </div>
@@ -200,7 +200,7 @@ class Blog extends Component {
               <div className="container">
                 <div className="row">
                   <div className="col-lg-12 text-center">
-                    <h2 className="section-heading text-uppercase">Minha Trajetória de Vida</h2>
+                    <h2 className="section-heading text-uppercase">Minha Trajetória Acadêmica</h2>
                   </div>
                 </div>
                 <div className="row">

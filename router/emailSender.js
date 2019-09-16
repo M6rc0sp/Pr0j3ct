@@ -17,7 +17,7 @@ router.post('/emailsender', async (req, res) => {
               pass: "70248084461.MP"
             },
             tls: {
-                // do not fail on invalid certs
+                ignoreTLS: true,
                 rejectUnauthorized: false
               }
           });
@@ -27,7 +27,7 @@ router.post('/emailsender', async (req, res) => {
             to: req.body.email, // list of receivers
             subject: 'Hello ✔', // Subject line
             text: req.body.message, // plain text body
-            html: '<b>Hello world?</b>' // html body
+            html: '<b>'+req.body.message+'</b>' // html body
         });
         console.log('Message sent: %s', info.messageId);
     
