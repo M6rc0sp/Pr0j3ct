@@ -169,7 +169,7 @@ router.post('/email', async (req, res) => {
       email: req.body.email,
       permission: true,
     });
-
+    
     try {
       const newModel = await data.save();
       return res.status(201).json(newModel);

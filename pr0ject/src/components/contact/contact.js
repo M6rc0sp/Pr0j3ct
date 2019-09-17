@@ -44,7 +44,7 @@ class Footer extends Component {
         e.preventDefault();
         axios.post('https://profdantas.herokuapp.com/siteemailsender', 
         { 
-        'email': this.state.email2,
+        'email': this.state.email,
         'name': this.state.name,
         'tel': this.state.tel,
         'message': this.state.message,

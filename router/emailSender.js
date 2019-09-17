@@ -28,10 +28,12 @@ router.post('/emailsender', async (req, res) => {
               subject: 'Contato do Blog', // Subject line
               text: req.body.message, // plain text body
               html: '<p>'+req.body.message+'</p><br/><p>Informações para contato:</p><p>'+req.body.tel+'</p><p>'+req.body.email+'</p>'
-          });
+            });
             console.log('Message sent: %s', info.messageId); 
+            return res.sendStatus(204);
           } catch (error) {
             console.log(error); 
+            return res.sendStatus(500);
           }
     
   });
@@ -61,10 +63,12 @@ router.post('/emailsender', async (req, res) => {
               subject: 'Contato do Site', // Subject line
               text: req.body.message, // plain text body
               html: '<p>'+req.body.message+'</p><br/><p>Informações para contato:</p><p>'+req.body.tel+'</p><p>'+req.body.email+'</p>' 
-          });
+            });
             console.log('Message sent: %s', info.messageId); 
+            return res.sendStatus(204);
           } catch (error) {
             console.log(error); 
+            return res.sendStatus(500);
           }
     
   });
@@ -94,10 +98,12 @@ router.post('/emailsender', async (req, res) => {
               subject: 'Uma aula foi acessada.', // Subject line
               text: 'O email '+req.body.email+' acessou o link: '+req.body.url+'.', // plain text body
               html: '<p>O email '+req.body.email+' acessou o link: '+req.body.url+'.</p>'
-          });
-            console.log('Message sent: %s', info.messageId); 
+            });
+            console.log('Message sent: %s', info.messageId);
+            return res.sendStatus(204);
           } catch (error) {
             console.log(error); 
+            return res.sendStatus(500);
           }
     
   });
