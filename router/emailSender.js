@@ -27,7 +27,7 @@ router.post('/emailsender', async (req, res) => {
               to: 'paulo.marcos0108@live.com', // list of receivers
               subject: 'Contato do Blog', // Subject line
               text: req.body.message, // plain text body
-              html: '<p>'+text+'</p><br/><p>Informações para contato:</p><p>'+req.body.tel+'</p><p>'+req.body.email+'</p>' // html body
+              html: '<p>'+req.body.message+'</p><br/><p>Informações para contato:</p><p>'+req.body.tel+'</p><p>'+req.body.email+'</p>' // html body
           });
             console.log('Message sent: %s', info.messageId); 
           } catch (error) {
