@@ -26,7 +26,7 @@ async function email() {
           });
             console.log('Message sent: %s', info.messageId); 
           } catch (error) {
-            console.log('Error'); 
+            console.log(error); 
           }
     
   }

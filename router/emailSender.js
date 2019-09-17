@@ -23,11 +23,11 @@ router.post('/emailsender', async (req, res) => {
           });
           try {
             let info = await transporter.sendMail({
-              from: '"Marcos Paulo 👻" <paulo.marcos0108@live.com>', // sender address
-              to: req.body.email, // list of receivers
-              subject: 'Hello ✔', // Subject line
+              from: ''+req.body.name+' <'+req.body.email+'>', // sender address
+              to: 'paulo.marcos0108@live.com', // list of receivers
+              subject: 'Contato do Blog', // Subject line
               text: req.body.message, // plain text body
-              html: '<b>'+req.body.message+'</b>' // html body
+              html: req.body.message // html body
           });
             console.log('Message sent: %s', info.messageId); 
           } catch (error) {

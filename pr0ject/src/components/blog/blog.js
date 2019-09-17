@@ -53,7 +53,7 @@ class Blog extends Component {
 
   submitEmail = e => {
     e.preventDefault();
-    axios.post('http://profdantas.herokuapp.com/emailsender', 
+    axios.post('https://profdantas.herokuapp.com/emailsender', 
     { 
     'email': this.state.email2,
     'name': this.state.name,
