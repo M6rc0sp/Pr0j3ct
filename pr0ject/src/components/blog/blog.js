@@ -9,7 +9,6 @@ import photo2 from "./img/team/2.jpg";
 import axios from 'axios';
 import Button from "react-bootstrap/Button";
 
-
 class Blog extends Component {
 
   constructor(props) {
@@ -45,8 +44,7 @@ class Blog extends Component {
       default:
           console.log('this was not expected.')
         break;
-    } 
-    
+    }
     console.log("pingos nos is", id, value)
     console.log(this.state)
   }
@@ -87,6 +85,13 @@ class Blog extends Component {
       })
   }
 
+  notifyEmail =(e, email)=> {
+    console.log(e.target.href, email)
+    axios.post('https://profdantas.herokuapp.com/emailadvisor',{ 'email': email, 'url': e.target.href }).then((res) => {
+      console.log(res)	
+    });
+  }
+
   componentWillMount() {
 		this.getEmail();
   }
@@ -118,10 +123,12 @@ class Blog extends Component {
       }
       if(p){
         alert('Olá, não se esqueça de mandar um feedback sobre o assunto depois...')
+        this.notifyEmail(e, email);
       }else if(!exist){
         alert('Bem vindo')
         this.setState({email: email})
         this.addEmail();
+        this.notifyEmail(e, email);
       } else {
         alert('Esse email está proibido de acessar esse arquivo.')
         this.props.history.push("/blog");
@@ -437,28 +444,28 @@ class Blog extends Component {
                       <div className="team-member">
                         <p>I Unidade</p>
                         <p>Anexo 1</p>
-                        <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://prezi.com/kkdblbkjqlcr/filosofia-do-direito/?utm_campaign=share&utm_medium=copy" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                        <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://prezi.com/kkdblbkjqlcr/filosofia-do-direito/?utm_campaign=share&utm_medium=copy" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                           <p>Anexo 2</p>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://prezi.com/z2czwk9gsdde/presentation/?utm_campaign=share&utm_medium=copy" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://prezi.com/z2czwk9gsdde/presentation/?utm_campaign=share&utm_medium=copy" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                           <p>Anexo 3</p>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://prezi.com/td02y4yoaiw8/copy-of-filosofia-do-direito/?utm_campaign=share&utm_medium=copy" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://prezi.com/td02y4yoaiw8/copy-of-filosofia-do-direito/?utm_campaign=share&utm_medium=copy" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                           <p>Anexo 4</p>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://prezi.com/9k15gt7gbxev/?utm_campaign=share&utm_medium=copy" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://prezi.com/9k15gt7gbxev/?utm_campaign=share&utm_medium=copy" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                           
                           <h6>Vídeos para complementar o conteúdo</h6>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=yTLLcg4JDbk&list=PLUwkoDInsefMBM3Vjx2Gs02kaH3RtVAlQ" style={{color: 'white'}}>Vídeo Aula 1 </a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=yTLLcg4JDbk&list=PLUwkoDInsefMBM3Vjx2Gs02kaH3RtVAlQ" style={{color: 'white'}}>Vídeo Aula 1 </a>
                           <br/>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=8GIaZKyOUSk&list=PLUwkoDInsefMBM3Vjx2Gs02kaH3RtVAlQ&index=2" style={{color: 'white'}}>Vídeo Aula 2</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=8GIaZKyOUSk&list=PLUwkoDInsefMBM3Vjx2Gs02kaH3RtVAlQ&index=2" style={{color: 'white'}}>Vídeo Aula 2</a>
                           <br/>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=zxfMIgSQTg4&list=PLUwkoDInsefMBM3Vjx2Gs02kaH3RtVAlQ&index=3" style={{color: 'white'}}>Vídeo Aula 3</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=zxfMIgSQTg4&list=PLUwkoDInsefMBM3Vjx2Gs02kaH3RtVAlQ&index=3" style={{color: 'white'}}>Vídeo Aula 3</a>
                           <br/>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=xrEOy9AN8Y4&list=PLUwkoDInsefMBM3Vjx2Gs02kaH3RtVAlQ&index=4" style={{color: 'white'}}>Vídeo Aula 4</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=xrEOy9AN8Y4&list=PLUwkoDInsefMBM3Vjx2Gs02kaH3RtVAlQ&index=4" style={{color: 'white'}}>Vídeo Aula 4</a>
                           <br/>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=R4vx3oH0HmU&list=PLUwkoDInsefMBM3Vjx2Gs02kaH3RtVAlQ&index=5" style={{color: 'white'}}>Vídeo Aula 5</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=R4vx3oH0HmU&list=PLUwkoDInsefMBM3Vjx2Gs02kaH3RtVAlQ&index=5" style={{color: 'white'}}>Vídeo Aula 5</a>
                           <br/>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=hxUmw6WwE4M&list=PLUwkoDInsefMBM3Vjx2Gs02kaH3RtVAlQ&index=6" style={{color: 'white'}}>Vídeo Aula 6</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=hxUmw6WwE4M&list=PLUwkoDInsefMBM3Vjx2Gs02kaH3RtVAlQ&index=6" style={{color: 'white'}}>Vídeo Aula 6</a>
                           <br/>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=67jkxhPRNYc&list=PLUwkoDInsefMBM3Vjx2Gs02kaH3RtVAlQ&index=7" style={{color: 'white'}}>Vídeo Aula 7</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=67jkxhPRNYc&list=PLUwkoDInsefMBM3Vjx2Gs02kaH3RtVAlQ&index=7" style={{color: 'white'}}>Vídeo Aula 7</a>
                           <br/>
                         
                       </div>
@@ -467,25 +474,25 @@ class Blog extends Component {
                       <div className="team-member">
                         <p>II Unidade</p>
                         <p>Anexo 1</p>
-                        <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                        <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                           <p>Anexo 2</p>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                           <p>Anexo 3</p>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                           <p>Anexo 4</p>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
         
         
                           <h6>Vídeos para complementar o conteúdo</h6>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=qeLho8VERlQ&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-" style={{color: 'white'}}>Vídeo Aula 1</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=qeLho8VERlQ&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-" style={{color: 'white'}}>Vídeo Aula 1</a>
                           <br/>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=Dzf7xZNUSEY&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-&index=2" style={{color: 'white'}}>Vídeo Aula 2</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=Dzf7xZNUSEY&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-&index=2" style={{color: 'white'}}>Vídeo Aula 2</a>
                           <br/>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=ChvF_kme1-E&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-&index=3" style={{color: 'white'}}>Vídeo Aula 3</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=ChvF_kme1-E&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-&index=3" style={{color: 'white'}}>Vídeo Aula 3</a>
                           <br/>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=TjHVsOnhi_I&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-&index=4" style={{color: 'white'}}>Vídeo Aula 4</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=TjHVsOnhi_I&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-&index=4" style={{color: 'white'}}>Vídeo Aula 4</a>
                           <br/>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=Yli6mT8aieo&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-&index=5" style={{color: 'white'}}>Vídeo Aula 5</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=Yli6mT8aieo&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-&index=5" style={{color: 'white'}}>Vídeo Aula 5</a>
                           <br/>
         
         
@@ -496,25 +503,25 @@ class Blog extends Component {
                         <ul className="list-inline social-buttons">
                           <p>III Unidade</p>
                             <p>Anexo 1</p>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                             <p>Anexo 2</p>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                             <p>Anexo 3</p>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                             <p>Anexo 4</p>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                            <p></p>
         
                             <h6>Vídeos para complementar o conteúdo</h6>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=qeLho8VERlQ&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-" style={{color: 'white'}}>Vídeo Aula 1</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=qeLho8VERlQ&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-" style={{color: 'white'}}>Vídeo Aula 1</a>
                             <br/>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=Dzf7xZNUSEY&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-&index=2" style={{color: 'white'}}>Vídeo Aula 2</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=Dzf7xZNUSEY&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-&index=2" style={{color: 'white'}}>Vídeo Aula 2</a>
                             <br/>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=ChvF_kme1-E&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-&index=3" style={{color: 'white'}}>Vídeo Aula 3</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=ChvF_kme1-E&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-&index=3" style={{color: 'white'}}>Vídeo Aula 3</a>
                             <br/>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=TjHVsOnhi_I&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-&index=4" style={{color: 'white'}}>Vídeo Aula 4</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=TjHVsOnhi_I&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-&index=4" style={{color: 'white'}}>Vídeo Aula 4</a>
                             <br/>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=Yli6mT8aieo&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-&index=5" style={{color: 'white'}}>Vídeo Aula 5</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=Yli6mT8aieo&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-&index=5" style={{color: 'white'}}>Vídeo Aula 5</a>
                             <br/>
         
                       </ul>
@@ -531,29 +538,29 @@ class Blog extends Component {
                           
                           <p>I Unidade</p>
                           <p>Anexo 1</p>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                             <p>Anexo 2</p>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                             <p>Anexo 3</p>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                             <p>Anexo 4</p>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                             <p>Anexo 5</p>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                             <p>Anexo 6</p>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}} >Baixar Arquivo da Aula</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}} >Baixar Arquivo da Aula</a>
                             <p>Anexo 7</p>
         
                             <h6>Vídeos para complementar o conteúdo</h6>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=Yi5RppQ0km0&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD" style={{color: 'white'}}>Vídeo Aula 1</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=Yi5RppQ0km0&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD" style={{color: 'white'}}>Vídeo Aula 1</a>
                             <br/>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=-gJpkHI4WE0&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD&index=2" style={{color: 'white'}}>Vídeo Aula 2</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=-gJpkHI4WE0&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD&index=2" style={{color: 'white'}}>Vídeo Aula 2</a>
                             <br/>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=Yi5RppQ0km0&index=3&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD" style={{color: 'white'}}>Vídeo Aula 3</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=Yi5RppQ0km0&index=3&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD" style={{color: 'white'}}>Vídeo Aula 3</a>
                             <br/>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Vídeo Aula 4</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Vídeo Aula 4</a>
                             <br/>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=yaMo-LzcarA&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD&index=4" style={{color: 'white'}}>Vídeo Aula 5</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=yaMo-LzcarA&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD&index=4" style={{color: 'white'}}>Vídeo Aula 5</a>
                             <br/>
         
                         </div>
@@ -562,29 +569,29 @@ class Blog extends Component {
                         <div className="team-member">
                           <p>II Unidade</p>
                           <p>Anexo 1</p>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                           <p>Anexo 2</p>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                           <p>Anexo 3</p>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                           <p>Anexo 4</p>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                           <p>Anexo 5</p>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                           <p>Anexo 6</p>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}} >Baixar Arquivo da Aula</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}} >Baixar Arquivo da Aula</a>
                           <p>Anexo 7</p>
         
                           <h6>Vídeos para complementar o conteúdo</h6>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=Yi5RppQ0km0&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD" style={{color: 'white'}}>Vídeo Aula 1</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=Yi5RppQ0km0&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD" style={{color: 'white'}}>Vídeo Aula 1</a>
                           <br/>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=-gJpkHI4WE0&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD&index=2" style={{color: 'white'}}>Vídeo Aula 2</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=-gJpkHI4WE0&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD&index=2" style={{color: 'white'}}>Vídeo Aula 2</a>
                           <br/>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=Yi5RppQ0km0&index=3&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD" style={{color: 'white'}}>Vídeo Aula 3</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=Yi5RppQ0km0&index=3&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD" style={{color: 'white'}}>Vídeo Aula 3</a>
                           <br/>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Vídeo Aula 4</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Vídeo Aula 4</a>
                           <br/>
-                          <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=yaMo-LzcarA&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD&index=4" style={{color: 'white'}}>Vídeo Aula 5</a>
+                          <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=yaMo-LzcarA&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD&index=4" style={{color: 'white'}}>Vídeo Aula 5</a>
                           <br/>
         
         
@@ -595,29 +602,29 @@ class Blog extends Component {
                           <ul className="list-inline social-buttons">
                             <p>III Unidade</p>
                               <p>Anexo 1</p>
-                              <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                              <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                                 <p>Anexo 2</p>
-                                <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                                <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                                 <p>Anexo 3</p>
-                                <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                                <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                                 <p>Anexo 4</p>
-                                <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                                <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                                 <p>Anexo 5</p>
-                                <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                                <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                                 <p>Anexo 6</p>
-                                <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}} >Baixar Arquivo da Aula</a>
+                                <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}} >Baixar Arquivo da Aula</a>
                                 <p>Anexo 7</p>
         
                                  <h6>Vídeos para complementar o conteúdo</h6>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=Yi5RppQ0km0&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD" style={{color: 'white'}}>Vídeo Aula 1</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=Yi5RppQ0km0&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD" style={{color: 'white'}}>Vídeo Aula 1</a>
                             <br/>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=-gJpkHI4WE0&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD&index=2" style={{color: 'white'}}>Vídeo Aula 2</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=-gJpkHI4WE0&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD&index=2" style={{color: 'white'}}>Vídeo Aula 2</a>
                             <br/>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=Yi5RppQ0km0&index=3&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD" style={{color: 'white'}}>Vídeo Aula 3</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=Yi5RppQ0km0&index=3&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD" style={{color: 'white'}}>Vídeo Aula 3</a>
                             <br/>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Vídeo Aula 4</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Vídeo Aula 4</a>
                             <br/>
-                            <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} href="https://www.youtube.com/watch?v=yaMo-LzcarA&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD&index=4" style={{color: 'white'}}>Vídeo Aula 5</a>
+                            <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=yaMo-LzcarA&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD&index=4" style={{color: 'white'}}>Vídeo Aula 5</a>
                             <br/>
         
                                 
@@ -643,27 +650,27 @@ class Blog extends Component {
                     <br/>
                       <h4>Segurança Pública</h4>
                     <br/>
-                    <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=0aBnfdxtgfs">A Crise Penitenciária-APAC MACAU </a>
+                    <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=0aBnfdxtgfs">A Crise Penitenciária-APAC MACAU </a>
                     <br />
-                    <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=sIoJYEc8aOA">As Origens da Agressão</a>
+                    <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=sIoJYEc8aOA">As Origens da Agressão</a>
                     <br />
-                    <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=fjBdP4_3QWM">As Origens da Agressão-Bônus</a>
+                    <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=fjBdP4_3QWM">As Origens da Agressão-Bônus</a>
                     <br />
-                    <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=HZIKSyoq2Zs">CPI do Sistema Carcerário: <br/>"O grito das prisões"</a>
+                    <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=HZIKSyoq2Zs">CPI do Sistema Carcerário: <br/>"O grito das prisões"</a>
                     <br />
-                    <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=Pqz8SiXto6s">Segurança Pública Nota 10 - 1</a>
+                    <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=Pqz8SiXto6s">Segurança Pública Nota 10 - 1</a>
                     <br />
-                    <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=kZFEiE2I8Sw">Segurança Pública Nota 10 - 2</a>
+                    <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=kZFEiE2I8Sw">Segurança Pública Nota 10 - 2</a>
                     <br/>
-                    <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=S1wXiMM0M-k">Segurança nota 10 Bônus - 1</a>
+                    <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=S1wXiMM0M-k">Segurança nota 10 Bônus - 1</a>
                     <br />
-                    <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=YRkAEfuEVsM">Segurança nota 10 Bônus - 2</a>
+                    <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=YRkAEfuEVsM">Segurança nota 10 Bônus - 2</a>
                     <br />
-                    <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=g0yYfUedTLw">Segurança nota 10 Bônus - 3</a>
+                    <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=g0yYfUedTLw">Segurança nota 10 Bônus - 3</a>
                     <br />
-                    <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=W7pyMIgH6fU">Travessias, Trajetos e Territórios</a>
+                    <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=W7pyMIgH6fU">Travessias, Trajetos e Territórios</a>
                     <br />
-                    <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=KObpu1Pzddo">Travessias, Trajetos e Territórios - 2</a>
+                    <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=KObpu1Pzddo">Travessias, Trajetos e Territórios - 2</a>
                     <br />
                   </div>
                 </div>
@@ -672,28 +679,28 @@ class Blog extends Component {
                    <br/>
                   
                       <h4>Prevenção ao Uso de Álcool </h4><br/>
-                      <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=I-ZYQAqFZnA">Estados Alterados</a>
+                      <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=I-ZYQAqFZnA">Estados Alterados</a>
                       <br />
-                      <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=6ZfJy3MZpIg">Prevenção ao Uso do Álcool<br/>e outras Drogas no
+                      <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=6ZfJy3MZpIg">Prevenção ao Uso do Álcool<br/>e outras Drogas no
                         ambiente<br/>de trabalho - Parte 1</a>
                       <br />
-                      <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=HYDoIOcMlqg">Prevenção ao Uso do Álcool<br/>e outras Drogas no
+                      <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=HYDoIOcMlqg">Prevenção ao Uso do Álcool<br/>e outras Drogas no
                         ambiente<br/>de trabalho - Parte 2</a>
                       <br />
-                      <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=WBXuowCCdX8">Prevenção ao Uso do Álcool<br/>e outras Drogas no
+                      <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=WBXuowCCdX8">Prevenção ao Uso do Álcool<br/>e outras Drogas no
                         ambiente<br/>de trabalho - Parte 3</a>
                       <br />
-                      <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=3_50As2ibwo">Prevenção ao uso indevido<br/>de drogas -Parte-1</a>
+                      <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=3_50As2ibwo">Prevenção ao uso indevido<br/>de drogas -Parte-1</a>
                       <br />
-                      <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=VnedACdmtqw">Prevenção ao uso indevido<br/>de drogas -Parte-2</a>
+                      <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=VnedACdmtqw">Prevenção ao uso indevido<br/>de drogas -Parte-2</a>
                       <br />
-                      <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=XVPSsqer2jo">Prevenção ao uso indevido<br/>de drogas -Parte-3</a>
+                      <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=XVPSsqer2jo">Prevenção ao uso indevido<br/>de drogas -Parte-3</a>
                       <br />
           
-                      <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=uj1DAZ8s5W4">Prevenção ao uso de álcool<br/>e outras drogas parte 1 -
+                      <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=uj1DAZ8s5W4">Prevenção ao uso de álcool<br/>e outras drogas parte 1 -
                         Curitiba</a>
                       <br />
-                      <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=iFko5k12dDU">Prevenção ao uso de álcool<br/>e outras drogas parte 2 -
+                      <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=iFko5k12dDU">Prevenção ao uso de álcool<br/>e outras drogas parte 2 -
                         Curitiba</a>
                       <br />
                       
@@ -705,23 +712,23 @@ class Blog extends Component {
                       <br/>
                      
                         <h4>Outros</h4><br/>
-                        <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=noZXWFxdtNI">A Casa Dos Mortos</a>
+                        <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=noZXWFxdtNI">A Casa Dos Mortos</a>
                         <br />
-                        <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=YEpku5n0vEc">Identidade, gênero e<br/>diversidade sexual Bônus 1</a>
+                        <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=YEpku5n0vEc">Identidade, gênero e<br/>diversidade sexual Bônus 1</a>
                         <br />
-                        <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=Rcy84UMnG7s">Identidade, gênero e<br/>diversidade sexual Bônus 2</a>
+                        <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=Rcy84UMnG7s">Identidade, gênero e<br/>diversidade sexual Bônus 2</a>
                         <br />
-                        <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=bW38ER-I18k">Identidade, gênero e<br/>diversidade sexual Bônus 3</a>
+                        <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=bW38ER-I18k">Identidade, gênero e<br/>diversidade sexual Bônus 3</a>
                         <br />
-                        <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=iAHmiPAr1bc">Identidade, gênero e<br/>diversidade sexual Bônus 4</a>
+                        <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=iAHmiPAr1bc">Identidade, gênero e<br/>diversidade sexual Bônus 4</a>
                         <br />
-                        <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=8CHyhKnQQXk">Identidade, gênero e<br/>diversidade sexual Bônus 5</a>
+                        <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=8CHyhKnQQXk">Identidade, gênero e<br/>diversidade sexual Bônus 5</a>
                          <br />
-                        <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=etUEsguoUx4">Raízes do Brasil Parte-1 </a>
+                        <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=etUEsguoUx4">Raízes do Brasil Parte-1 </a>
                          <br />
-                        <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=rPv65Xk_R8M">Raízes do Brasil Parte-2 </a>
+                        <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=rPv65Xk_R8M">Raízes do Brasil Parte-2 </a>
                         <br />
-                        <a className="btn btn-dark js-scroll-trigger text-center" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=F0fHGLAXzeo">Vidas Secas </a>
+                        <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=F0fHGLAXzeo">Vidas Secas </a>
                   </ul>
                 </div>
               </div>
@@ -755,14 +762,14 @@ class Blog extends Component {
                             </div>
                             <div className="col-md-6">
                               <div className="form-group">
-                                <textarea className="form-control" onChange={this.handleChange} id="message" placeholder="Sua mensagem" required="required" data-validation-required-message="Please enter a message."></textarea>
+                                <textarea className="form-control" onChange={this.handleChange} id="message" placeholder="Sua mensagem" required="required" data-validation-required-message="Por favor digite sua mensagem."></textarea>
                                 <p className="help-block text-danger"></p>
                               </div>
                             </div>
                             <div className="clearfix"></div>
                             <div className="col-lg-12 text-center">
                               <div id="success"></div>
-                              <button id="sendMessageButton" className="btn btn-primary  text-uppercase" type="submit">Enviar Mensagem</button>
+                              <Button size="lg" style={{marginBottom: '20px'}} id="sendMessageButton" className="btn btn-primary  text-uppercase" type="submit">Enviar Mensagem</Button>
                             </div>
                           </div>
                         </form>

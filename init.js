@@ -54,6 +54,12 @@ app.put('/abs', route);
 app.use('/emailsender', emailsender);
 app.post('/emailsender', emailsender);
 
+app.use('/siteemailsender', emailsender);
+app.post('/siteemailsender', emailsender);
+
+app.use('/emailadvisor', emailsender);
+app.post('/emailadvisor', emailsender);
+
 app.use('/email', route);
 app.post('/email', route);
 app.get('/email', route);

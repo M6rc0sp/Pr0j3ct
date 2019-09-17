@@ -29,9 +29,17 @@ class EmailManager extends Component {
 	}
   
     handleChange = e => {
-      }
+        const { name, value, id } = e.target
+        const newList = this.state.list.slice();
+        newList[id][name] = value; 
+        console.log("this is me", newList, "index", id)
+        this.setState({ list: newList });
+        console.log("pingos nos is", [name], value)
+        console.log(this.state)
+    }
 
     submitIntro = e => {
+        e.preventDefault();
         const { id } = e.target;
         axios.put('https://profdantas.herokuapp.com/email', 
             { 
@@ -50,7 +58,7 @@ class EmailManager extends Component {
         console.log(e.target)
         console.log(this.state.list[name])
         console.log('id é', id, "num é", name)
-        axios.delete('https://profdantas.herokuapp.com/email/', 
+        axios.delete('https://profdantas.herokuapp.com/email', 
             {
              data:{'id': id} 
             })
@@ -68,8 +76,8 @@ class EmailManager extends Component {
             {
             this.state.list.map((list, index) => (
                 <form key={index+1} onSubmit={this.submitIntro} className="text-center" id={index}>
-                    <input key={index+3} id={index} name="titulo" type="text" defaultValue={list.email}/>
-                    <input key={index+3} id={index} name="titulo" type="text" defaultValue={list.permission}/>
+                    <input key={index+2} id={index} name="email" onChange={this.handleChange} type="text" defaultValue={list.email}/>
+                    <input key={index+3} id={index} name="permission" onChange={this.handleChange} type="text" defaultValue={list.permission}/>
                     <Button id={list.id} name={index} variant="danger" onClick={this.rmEmail}>Remover</Button>
                     <Button block variant="success" size="lg" type="submit">Salvar</Button>
                     <br/>
