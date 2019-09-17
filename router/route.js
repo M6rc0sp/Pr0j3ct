@@ -169,7 +169,7 @@ router.post('/email', async (req, res) => {
       email: req.body.email,
       permission: true,
     });
-    
+
     try {
       const newModel = await data.save();
       return res.status(201).json(newModel);
@@ -212,7 +212,7 @@ router.delete('/email', async (req, res) => {
   console.log('executed');
   try {
     console.log(req.body)
-    const deletedService = await post.findByIdAndRemove(req.body.id);
+    const deletedService = await email.findByIdAndRemove(req.body.id);
     if (!deletedService) {
       return res.sendStatus(404);
     }

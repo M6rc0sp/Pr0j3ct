@@ -63,8 +63,8 @@ class Blog extends Component {
     })
   }
 
-  addEmail() {
-    axios.post('https://profdantas.herokuapp.com/email', {'email': this.state.email})
+  addEmail(email) {
+    axios.post('https://profdantas.herokuapp.com/email', {'email': email})
         .then((res) => {
             console.log(res)	
         })
@@ -127,7 +127,7 @@ class Blog extends Component {
       }else if(!exist){
         alert('Bem vindo')
         this.setState({email: email})
-        this.addEmail();
+        this.addEmail(email);
         this.notifyEmail(e, email);
       } else {
         alert('Esse email está proibido de acessar esse arquivo.')

@@ -17,7 +17,7 @@ class EmailManager extends Component {
             let data = [];
             console.log("entrei", res.data)
             for (var i in res.data) {
-                data.push({ email: res.data[i].email, permission: res.data[i].permission })
+                data.push({ email: res.data[i].email, permission: res.data[i].permission, id: res.data[i].id })
             }
         this.setState({ list: data })
         console.log("list",this.state.list)
@@ -52,7 +52,7 @@ class EmailManager extends Component {
             })
     }
 
-    rmEmail =(e)=> {
+    rmEmail=(e)=> {
         e.preventDefault();
         const { id, name } = e.target;
         console.log(e.target)
@@ -65,7 +65,7 @@ class EmailManager extends Component {
             .then((res) => {
                 console.log(res)
             })
-       window.location.reload();
+       //window.location.reload();
         
     }
 
