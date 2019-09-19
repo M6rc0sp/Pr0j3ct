@@ -59,7 +59,12 @@ class Blog extends Component {
     'message': this.state.message,
     })
     .then((res) => {
-        console.log(res)	
+        console.log(res)
+        if(res.status===204){
+          alert('Mensagem enviada.')
+        } else {
+          alert('Algo deu errado, tente novamente mais tarde.')
+        }
     })
   }
 
@@ -182,8 +187,8 @@ class Blog extends Component {
             <header className="masthead">
               <div className="container">
                 <div className="intro-text">
-                  <div className="intro-lead-in">Bem Vindo ao blog</div>
-                  <div className='col-lg-12 intro-heading text-uppercase'><strong>Professor</strong></div>
+                  <div className="intro-lead-in">Bem Vindo ao blog do</div>
+                  <div className='col-lg-12 col-md-12 col-sm-12 intro-heading text-uppercase'><strong>Professor</strong></div>
                   <div className="intro-heading text-uppercase"><strong>João Dantas Pereira</strong></div>
                   <Button size="lg" className="btn btn-primary  text-uppercase js-scroll-trigger" href="#services"> Apresentação</Button>
                 </div>
@@ -193,7 +198,7 @@ class Blog extends Component {
             <section id="services">
               <div className="container">
                 <div className="row">
-                  <div className="col-lg-12 text-center">
+                  <div className="col-lg-12 col-md-12 col-sm-12 text-center">
                     <h2 className="section-heading text-uppercase">Apresentação</h2>
                   </div>
                 </div>
@@ -475,7 +480,7 @@ class Blog extends Component {
                       <div className="team-member">
                         <p>II Unidade</p>
                         <p>Anexo 1</p>
-                        <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                        <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://drive.google.com/file/d/18w-c9_DCA4V1pFCjRJB_BGDl1lDSx2Z0/view?usp=sharing" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                           <p>Anexo 2</p>
                           <a className="btn btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                           <p>Anexo 3</p>

@@ -48,7 +48,7 @@ class Header extends Component {
               <a className="site-nav-item" href="#contact">Contato</a>
             </div>
             <div className="site-mast-right">
-              <a className="site-nav-button" target="_blank" rel="noopener noreferrer" href="http://profdantas.com/blog">Blog</a>
+              <a className="site-nav-button" target="_blank" rel="noopener noreferrer" href="/blog">Blog</a>
               <a href="https://twitter.com/ProfJoao_Dantas" className="site-nav-item" target="_blank" rel="noopener noreferrer">
                 <img className="site-nav-icon" srcSet={tt} alt="Twitter"/>
               </a>
