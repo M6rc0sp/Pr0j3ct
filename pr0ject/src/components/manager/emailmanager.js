@@ -9,6 +9,8 @@ class EmailManager extends Component {
         this.state = {
             list: [],
         };
+
+        this.handleChange = this.handleChange.bind(this)
     }
 
     getEmail() {
@@ -29,8 +31,11 @@ class EmailManager extends Component {
 	}
   
     handleChange = e => {
-        const { name, value, id } = e.target
+        let { name, value, id } = e.target
         const newList = this.state.list.slice();
+        if(name==='permission'){
+            value = document.getElementsByName("permission")[id].checked
+        }
         newList[id][name] = value; 
         console.log("this is me", newList, "index", id)
         this.setState({ list: newList });
@@ -65,19 +70,19 @@ class EmailManager extends Component {
             .then((res) => {
                 console.log(res)
             })
-       window.location.reload();
-        
+        window.location.reload();
     }
 
     render(){
         return (
         <div className="col-lg-8 text-center" style={{margin: 'auto'}}>
-            <h1>Emails</h1>
+            <h1>E-mails</h1>
             {
             this.state.list.map((list, index) => (
                 <form key={index+1} onSubmit={this.submitIntro} className="text-center" id={index}>
                     <input key={index+2} id={index} name="email" onChange={this.handleChange} type="text" defaultValue={list.email}/>
-                    <input key={index+3} id={index} name="permission" onChange={this.handleChange} type="text" defaultValue={list.permission}/>
+                    <label style={{padding: '0px 10px'}}>Permissão:</label>
+                    <input style={{marginRight: '10px'}} key={index+3} id={index} name="permission" onChange={this.handleChange} type="checkbox" defaultChecked={list.permission}/>
                     <Button id={list.id} name={index} variant="danger" onClick={this.rmEmail}>Remover</Button>
                     <Button block variant="success" size="lg" type="submit">Salvar</Button>
                     <br/>

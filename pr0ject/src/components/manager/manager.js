@@ -9,14 +9,18 @@ import Emailmanager from './emailmanager';
 class Manager extends Component{
   render() {
     return(
-    <div>
-      <ManagerHeader/>
-      <section className="bg-primary3">
-      <ManagerAbstract/>
-      <ManagerMain/>
-      <Emailmanager/>
-      </section>
-    </div>
+      <div>
+        <ManagerHeader/>
+        <section className="bg-primary3">
+          <div className="container">
+           <div className="row">
+              <ManagerAbstract/>
+              <ManagerMain/>
+              <Emailmanager/> 
+            </div>
+          </div>
+        </section>
+      </div>
     );
   }
 }
