@@ -126,7 +126,7 @@ mark,
 audio,
 video {
     margin: 0;
-    padding: 0;
+    padding-top: 0;
     border: 0;
     font: inherit;
     font-size: 100%;
@@ -134,6 +134,9 @@ video {
 }
 body {
     line-height: 1;
+}
+section#about, section#intro{
+    padding: 0 !important;
 }
 ol,
 ul {

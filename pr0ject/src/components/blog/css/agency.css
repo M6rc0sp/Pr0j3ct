@@ -34,7 +34,6 @@ h6 {
 
 section h2.section-heading {
   font-size: 40px;
-  padding-top: 50px;
   margin-top: 0;
   margin-bottom: 15px;
 }
@@ -50,6 +49,9 @@ section h3.section-subheading {
 @media (min-width: 768px) {
   section {
     padding: 0px !important;
+  }
+  section#services{
+    padding-top: 100px !important;
   }
 }
 
