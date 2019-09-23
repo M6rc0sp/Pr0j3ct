@@ -76,7 +76,7 @@ class ManagerMainLoader extends Component {
 
         const formData = new FormData();
         formData.append('test', file);
-        axios.post("https://localhost:3001/upload", formData, { 
+        axios.post("http://localhost:3001/upload", formData, { 
             //receive two parameter endpoint url ,form data
         })
         .then(res => {

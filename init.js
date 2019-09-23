@@ -15,7 +15,7 @@ app.use(cors());
 
 //files upload by multer
 const storage = multer.diskStorage({
-  destination: './pr0ject/public/img',
+  destination: './pr0ject/src/public/img',
   filename(req, file, cb) {
    cb(null, Date.now() + '-' +file.originalname+'.png')
   }

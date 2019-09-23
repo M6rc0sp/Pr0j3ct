@@ -13,8 +13,8 @@ router.post('/emailsender', async (req, res) => {
             port: 587,
             secure: false, // upgrade later with STARTTLS
             auth: {
-              user: "paulo.marcos0108@gmail.com",
-              pass: "70248084461MP"
+              user: "dinamicasacademicas@gmail.com",
+              pass: "Jdpgb1952"
             },
             tls: {
                 ignoreTLS: true,
@@ -24,7 +24,7 @@ router.post('/emailsender', async (req, res) => {
           try {
             let info = await transporter.sendMail({
               from: ''+req.body.name+'', // sender address
-              to: 'jotarn08@gmail.com', // list of receivers
+              to: 'paulo.marcos0108@live.com', // list of receivers
               subject: 'Contato do Blog', // Subject line
               text: req.body.message, // plain text body
               html: '<p>'+req.body.message+'</p><br/><p>Informações para contato:</p><p>Nome: '+req.body.name+'</p><p>'+req.body.tel+'</p><p>'+req.body.email+'</p>'
@@ -44,18 +44,18 @@ router.post('/emailsender', async (req, res) => {
 
         // create reusable transporter object using the default SMTP transport
         let transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 587,
-            secure: false, // upgrade later with STARTTLS
-            auth: {
-              user: "paulo.marcos0108@gmail.com",
-              pass: "70248084461MP"
-            },
-            tls: {
-                ignoreTLS: true,
-                rejectUnauthorized: false
-              }
-          });
+          host: "smtp.gmail.com",
+          port: 587,
+          secure: false, // upgrade later with STARTTLS
+          auth: {
+            user: "dinamicasacademicas@gmail.com",
+            pass: "Jdpgb1952"
+          },
+          tls: {
+              ignoreTLS: true,
+              rejectUnauthorized: false
+            }
+        });
           try {
             let info = await transporter.sendMail({
               from: ''+req.body.name+'', // sender address
@@ -79,18 +79,18 @@ router.post('/emailsender', async (req, res) => {
 
         // create reusable transporter object using the default SMTP transport
         let transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 587,
-            secure: false, // upgrade later with STARTTLS
-            auth: {
-              user: "paulo.marcos0108@gmail.com",
-              pass: "70248084461MP"
-            },
-            tls: {
-                ignoreTLS: true,
-                rejectUnauthorized: false
-              }
-          });
+          host: "smtp.gmail.com",
+          port: 587,
+          secure: false, // upgrade later with STARTTLS
+          auth: {
+            user: "dinamicasacademicas@gmail.com",
+            pass: "Jdpgb1952"
+          },
+          tls: {
+              ignoreTLS: true,
+              rejectUnauthorized: false
+            }
+        });
           try {
             let info = await transporter.sendMail({
               from: '', // sender address

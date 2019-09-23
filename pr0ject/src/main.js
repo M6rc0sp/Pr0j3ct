@@ -3,7 +3,6 @@ import React, {Component} from "react";
 import axios from 'axios';
 import Linkify from 'react-linkify';
 import Abstract from './components/abstract/abstract';
-import photo from './public/img/0.jpg';
 
 class Main extends Component {
 
@@ -11,15 +10,13 @@ class Main extends Component {
 		super(props);
 		this.state = {
     list: [],
-    link: "",
+    link: ''
 		};
 	}
 
 	callAPI() {
 		axios.get('https://profdantas.herokuapp.com/post')
       .then((res) => {
-            console.log("res",res)
-            console.log(res.data)
             let data = [];
 
             for (var i in res.data.site) {
@@ -27,7 +24,12 @@ class Main extends Component {
             }
 
             this.setState({ list: data });
-            console.log("list",this.state.list);
+            console.log("main",this.state.list);
+            if(this.state.list[2]){
+              var l = this.state.list[2].img.split("\\");
+              var li = './'+l[1]+'/'+l[2]+'/'+l[3]+'/'+l[4]+'';
+              this.setState({link: li})
+            }
             console.log(this.state)
           });
 	}
@@ -40,9 +42,10 @@ class Main extends Component {
       <section className="bg-primary3" id="about">
         <div className="container">
           <br/>
-          {this.state.link}
           <Abstract/>
           <br/>
+          {//<img src={require(this.state.link)} alt={"img"}/><br/>
+          }
         {
           this.state.list.map(function (list, index) {
             if(index===0){                
@@ -51,7 +54,7 @@ class Main extends Component {
                   <h1 className="text-center">{list.titulo}</h1>
                   <div  className="col-lg-12 mx-auto text-justify">
                     <div id="dimg">
-                     <img src={photo} alt={"img"+index} />
+                      <img src={require('./public/img/0.jpg')} alt={"img"+index} /><br/>
                     </div>
                     <br/>
                     <Linkify properties={{target:"_blank", rel:"noopener noreferrer"}}>
@@ -66,6 +69,9 @@ class Main extends Component {
                   <h1 className="text-center">{list.titulo}</h1>
                   <div  className="col-lg-12 mx-auto text-justify">
                     <div id="dimg">
+                      {list.img==='abc'
+                        ? <div></div>
+                        : <img src={list.img} alt={'img'+index}/>}
                     </div>
                     <br/>
                     <Linkify properties={{target:"_blank", rel:"noopener noreferrer"}}>
@@ -77,7 +83,7 @@ class Main extends Component {
           })
         }
         </div>
-      </section> 
+      </section>
       );
     }
 }
