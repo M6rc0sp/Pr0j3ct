@@ -46,15 +46,6 @@ section h3.section-subheading {
   text-transform: none;
 }
 
-@media (min-width: 768px) {
-  section {
-    padding: 0px !important;
-  }
-  section#services{
-    padding-top: 100px !important;
-  }
-}
-
 .btn {
   font-weight: 700;
   min-width: 150px;

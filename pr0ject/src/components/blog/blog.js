@@ -214,11 +214,7 @@ class Blog extends Component {
               <div className="container">
                 <div className="row">
                   <div className="col-lg-12 text-center">
-                    <h2 className="section-heading text-uppercase">Minha Trajetória Acadêmica</h2>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-lg-12">
+                  <h2 className="section-heading text-uppercase">Minha Trajetória Acadêmica</h2>
                     <ul className="timeline">
                       <li>
                         <div className="timeline-image">
@@ -316,7 +312,7 @@ class Blog extends Component {
                           </li>
                         <li>
                             <div className="timeline-image">
-                               <img className="rounded-circle img-fluid" src="http://parentnets.com/site/assets/files/1032/iscte.jpg" alt="" style={{maxwidth: 100,   height: 100}}/>
+                               <img className="rounded-circle img-fluid" src="http://parentnets.com/site/assets/files/1032/iscte.jpg" alt="" style={{maxwidth: '100%',   height: '100%'}}/>
                             </div>
                             <div className="timeline-panel">
                               <div className="timeline-heading">
@@ -349,7 +345,7 @@ class Blog extends Component {
                           
                       <li>
                           <div className="timeline-image">
-                          <img className="rounded-circle img-fluid" src="https://i.ytimg.com/vi/IZHx3ycps5E/hqdefault.jpg" alt="" style= {{maxwidth: 100,height: 100}}/>
+                          <img className="rounded-circle img-fluid" src="https://i.ytimg.com/vi/IZHx3ycps5E/hqdefault.jpg" alt="" style= {{maxwidth: '100%', height: '100%'}}/>
                           </div>
                           <div className="timeline-panel">
                             <div className="timeline-heading">
@@ -506,7 +502,6 @@ class Blog extends Component {
                     </div>
                     <div className="col-sm-4">
                       <div className="team-member">
-                        <ul className="list-inline social-buttons">
                           <p>III Unidade</p>
                             <p>Anexo 1</p>
                             <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
@@ -529,8 +524,6 @@ class Blog extends Component {
                             <br/>
                             <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=Yli6mT8aieo&list=PLkvP1njR6JeORr8eMfkAZR10CidOXPWn-&index=5" style={{color: 'white'}}>Vídeo Aula 5</a>
                             <br/>
-        
-                      </ul>
                     </div>
                   </div>
                 </div>
@@ -605,7 +598,6 @@ class Blog extends Component {
                       </div>
                       <div className="col-sm-4">
                         <div className="team-member">
-                          <ul className="list-inline social-buttons">
                             <p>III Unidade</p>
                               <p>Anexo 1</p>
                               <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1DJfpR_eSLF1uISxQ2vuy6EnvhAG640KleRQiKJ7K8Vg/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
@@ -632,9 +624,6 @@ class Blog extends Component {
                             <br/>
                             <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://www.youtube.com/watch?v=yaMo-LzcarA&list=PL4rchtirURLMJYMO5NP0RkM3ihGWdk8fD&index=4" style={{color: 'white'}}>Vídeo Aula 5</a>
                             <br/>
-        
-                                
-                        </ul>
                       </div>
                     </div>
                     <div className="row">
@@ -651,7 +640,7 @@ class Blog extends Component {
                   <div className="col-lg-12 mx-auto text-center">
                     <h2 className="section-heading text-uppercase">Vídeos</h2>
                     <div className="row">
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-sm-4">
                   <div className="team-member">
                     <br/>
                       <h4>Segurança Pública</h4>
@@ -680,7 +669,7 @@ class Blog extends Component {
                     <br />
                   </div>
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-4 col-sm-4">
                   <div className="team-member">
                    <br/>
                   
@@ -712,11 +701,9 @@ class Blog extends Component {
                       
                   </div>
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-4 col-sm-4">
                   <div className="team-member">  
-                    <ul className="list-inline social-buttons">
                       <br/>
-                     
                         <h4>Outros</h4><br/>
                         <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=noZXWFxdtNI">A Casa Dos Mortos</a>
                         <br />
@@ -735,7 +722,6 @@ class Blog extends Component {
                         <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=rPv65Xk_R8M">Raízes do Brasil Parte-2 </a>
                         <br />
                         <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=F0fHGLAXzeo">Vidas Secas </a>
-                  </ul>
                 </div>
               </div>
                   </div>

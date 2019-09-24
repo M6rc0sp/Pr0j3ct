@@ -1,5 +1,4 @@
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -14,5 +13,9 @@ code {
 }
 
 #dimg img{
-  max-width: 400px;
+  max-width: 96%;
+}
+
+.col-sm-4{
+  margin: 0;
 }
