@@ -81,7 +81,7 @@ class Footer extends Component {
                             <input className="form-control" onChange={this.handleChange} id="phone" type="tel" placeholder="Seu telefone" required="required" data-validation-required-message="Por favor preencha o campo do telefone."/>
                             <p className="help-block text-danger"></p>
                             </div>
-                        </div>
+                          </div>
                         <div className="col-md-6 col-sm-6">
                             <div className="form-group">
                             <textarea className="form-control" onChange={this.handleChange} id="message" placeholder="Sua mensagem" required="required" data-validation-required-message="Por favor digite sua mensagem."></textarea>
@@ -91,7 +91,7 @@ class Footer extends Component {
                         <div className="clearfix"></div>
                         <div className="col-lg-12 col-sm-12 col-md-12 text-center">
                             <div id="success"></div>
-                            <Button size="lg" style={{marginBottom: '20px'}} id="sendMessageButton" className="btn btn-primary  text-uppercase" type="submit">Enviar Mensagem</Button>
+                            <Button size="lg" style={{marginBottom: '20px'}} id="sendMessageButton" className="btn btn-warning  text-uppercase" type="submit">Enviar Mensagem</Button>
                         </div>
                         </div>
                     </form>

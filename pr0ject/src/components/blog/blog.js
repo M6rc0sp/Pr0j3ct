@@ -190,7 +190,7 @@ class Blog extends Component {
                   <div className="intro-lead-in">Bem Vindo ao blog do</div>
                   <div className='col-lg-12 col-md-12 col-sm-12 intro-heading text-uppercase'><strong>Professor</strong></div>
                   <div className="intro-heading text-uppercase"><strong>João Dantas Pereira</strong></div>
-                  <Button size="lg" className="btn btn-primary  text-uppercase js-scroll-trigger" href="#services"> Apresentação</Button>
+                  <Button size="lg" className="btn btn-warning  text-uppercase js-scroll-trigger" href="#services"> Apresentação</Button>
                 </div>
               </div>
             </header>
@@ -203,7 +203,7 @@ class Blog extends Component {
                   </div>
                 </div>
                 <div className="row text-align: justify">
-                    <p className="text-muted">
+                    <p className="text-muted present">
                       Este Blog foi criado em 2019 pelo Professor João Dantas Pereira, docente na Universidade Federal do Rio Grande do Norte – Natal/RN. Trata-se de um espaço que tem como objetivo principal: colaborar na consolidação, divulgação e implementação de resultados de estudos acadêmicos e científicos com as Instituições de Ensino Superior – IES locais, regionais, nacionais e estrangeiras, públicas e privadas. Essa colaboração poderá ser feita através da socialização de projetos de pesquisa e de estudos comparativos entre os seus integrantes e colaboradores, as suas congêneres locais, regionais, nacionais e estrangeiras. Este Blog vai articular um conjunto de discussões que permita a produção de conhecimentos, orientando-se preferencialmente pelo trabalho profissional dos cientistas sociais em geral e do operador de direito em particular, num contexto multi e interdisciplinar. Pretende, ainda, contribuir para a análise e capacidade dos profissionais envolvidos em dar respostas, em um contexto dinâmico e compartilhado. Será, portanto, um espaço para docentes, alunos de iniciação científica, de pós-graduação lato e stricto sensu, profissionais, pesquisadores e todos os interessados que assim o queiram fazer.
                     </p>
                   </div>
@@ -761,7 +761,7 @@ class Blog extends Component {
                             <div className="clearfix"></div>
                             <div className="col-lg-12 text-center">
                               <div id="success"></div>
-                              <Button size="lg" style={{marginBottom: '20px'}} id="sendMessageButton" className="btn btn-primary  text-uppercase" type="submit">Enviar Mensagem</Button>
+                              <Button size="lg" style={{marginBottom: '20px'}} id="sendMessageButton" className="btn btn-warning  text-uppercase" type="submit">Enviar Mensagem</Button>
                             </div>
                           </div>
                         </form>

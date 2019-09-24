@@ -55,7 +55,6 @@ i {
 
 div {
   justify-content: center;
-  margin: auto;
 }
 
 div #main{
@@ -163,6 +162,9 @@ header.masthead p {
   header.masthead p {
     font-size: 1.15rem;
   }
+  section{
+    padding: 0px !important;
+  }
 }
 
 @media (min-width: 992px) {
@@ -264,19 +266,4 @@ header.masthead p {
 
 .btn-xl {
   padding: 1rem 2rem;
-}
-
-.btn-primary {
-  background-color: #F05F40;
-  border-color: #F05F40;
-}
-
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-  color: #fff;
-  background-color: #ee4b28 !important;
-}
-
-.btn-primary:active, .btn-primary:focus {
-  -webkit-box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
-  box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
 }

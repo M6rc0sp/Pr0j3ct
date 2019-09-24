@@ -132,8 +132,7 @@ video {
 }
 
 section{
-    padding-bottom: 10% !important;
-    padding-top: 5% !important;
+    padding: 3% 0% !important;
 }
 section #about{
     margin-top: 5rem !important;
@@ -365,12 +364,15 @@ textarea {
     resize: vertical;
 }
 
-p,
 ul,
 ol,
 dl,
 blockquote {
-    margin: 0 1.5em;
+    margin: 0;
+}
+
+.present{
+    margin: 0 2.1rem;
 }
 
 ol,
@@ -533,7 +535,40 @@ h6 {
 .container {
     max-width: 1120px;
     margin: 0 auto;
-    padding: 0 4vw;
+}
+
+section#contact .form-group>textarea {
+    margin-bottom: 2rem;
+}
+
+section#contact .form-group {
+    margin-bottom: 12% !important;
+    vertical-align: center;
+    margin: auto;
+}
+
+@media (max-width: 768px){
+    section#contact .form-group {
+        margin-bottom: 18% !important;
+        vertical-align: center;
+        margin: auto;
+    }
+}
+
+@media (max-width: 600px){
+    section#contact .form-group {
+        margin-bottom: 27% !important;
+        vertical-align: center;
+        margin: auto;
+    }
+}
+
+@media (max-width: 575px){
+    section#contact .form-group {
+        margin-bottom: 12% !important;
+        vertical-align: center;
+        margin: auto;
+    }
 }
 
 .content {

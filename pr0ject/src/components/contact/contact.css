@@ -35,9 +35,27 @@ section#contact {
   section#contact .form-group textarea.form-control {
     height: 248px;
   }
+
+  section#contact .col-md-6, .col-sm-6{
+    margin: 0 !important;
+  }
+
+  @media (min-width: 1000px){
+    section#contact .form-control {
+      margin-bottom: -9% !important;
+    }
+    .col-md-6, .col-sm-6 {
+      flex: 0 0 50%;
+      width: 50%;
+      height: auto;
+    }
+  }
+
+  section#team{
+    padding-bottom: 0 !important;
+  }
   
   section#contact .form-control:focus {
-    border-color: #fed136;
     -webkit-box-shadow: none;
     box-shadow: none;
   }
