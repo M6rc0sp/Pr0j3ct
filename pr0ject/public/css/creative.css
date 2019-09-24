@@ -167,6 +167,12 @@ header.masthead p {
   }
 }
 
+@media (max-width: 992px){
+  section {
+    border-width: 10px !important;
+  }
+}
+
 @media (min-width: 992px) {
   header.masthead {
     height: 100vh;
