@@ -16,22 +16,22 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       isAuthenticated() ? (
         <Component {...props} />
       ) : (
-        <Redirect to={{ pathname: "/login", state: { from: props.location } }} />
-      )
+          <Redirect to={{ pathname: "/login", state: { from: props.location } }} />
+        )
     }
   />
 );
 
 const routing = (
-<Router>
-  <Switch>
-   <Route exact path="/" component={App}/>
-   <PrivateRoute path="/admin" component={manager} />
-   <Route path="/blog"component={blog}/>
-   <Route path="/login" component={login} />
-   <Route path="*" component={() => <h1>Page not found</h1>} />
-  </Switch>
-</Router>
+  <Router>
+    <Switch>
+      <Route exact path="/" component={App} />
+      <PrivateRoute path="/admin" component={manager} />
+      <Route path="/blog" component={blog} />
+      <Route path="/login" component={login} />
+      <Route path="*" component={() => <h1>Page not found</h1>} />
+    </Switch>
+  </Router>
 )
 
 ReactDOM.render(routing, document.getElementById('root'));

@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import {getToken} from './auth';
+import { getToken } from './auth';
 
 const api = Axios.create({
   baseURL: "https://profdantas.herokuapp.com/"

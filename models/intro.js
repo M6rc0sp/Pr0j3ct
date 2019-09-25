@@ -4,7 +4,7 @@ const config = require('../config');
 const introSchema = new mongoose.Schema({
 	titulo: {
 		type: String,
-    	required: true,
+		required: true,
 	},
 	subtitulo: {
 		type: String,

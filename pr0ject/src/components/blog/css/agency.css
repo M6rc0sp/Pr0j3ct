@@ -150,6 +150,7 @@ img::-moz-selection {
     padding-top: 0;
     padding-bottom: 0;
     background-color: #212529 !important;
+    height: 42px;
   }
   #mainNav.navbar-shrink .navbar-brand {
     font-size: 1.25em;

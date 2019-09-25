@@ -56,18 +56,18 @@ router.put('/hdr', async (req, res) => {
 router.post('/post', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
-    const data = new post({
-      titulo: "Título",
-      texto: "Texto",
-      img: "abc",
-    });
+  const data = new post({
+    titulo: "Título",
+    texto: "Texto",
+    img: "abc",
+  });
 
-    try {
-      const newModel = await data.save();
-      return res.status(201).json(newModel);
-    } catch (err) {
-      return res.sendStatus(500);
-    }
+  try {
+    const newModel = await data.save();
+    return res.status(201).json(newModel);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
 });
 
 router.get('/post', async (req, res) => {
@@ -96,7 +96,7 @@ router.put('/post', async (req, res) => {
   postData[id].img = req.body.img;
   postData[id].save();
   console.log(postData);
-  
+
   try {
     return res.sendStatus(204);
   } catch (err) {
@@ -111,11 +111,11 @@ router.delete('/post', async (req, res) => {
     let link = req.body.img
     console.log(link)
     const deletedService = await post.findByIdAndRemove(req.body.id);
-    fs.unlinkSync(config.dir+'\\'+link, function (err) {
+    fs.unlinkSync(config.dir + '\\' + link, function (err) {
       if (err) throw err;
       // if no error, file has been deleted successfully
       console.log('File deleted!');
-    }); 
+    });
     if (!deletedService) {
       return res.sendStatus(404);
     }
@@ -154,7 +154,7 @@ router.put('/abs', async (req, res) => {
   absData[id].img = req.body.img;
   absData[id].save();
   console.log(absData);
-  
+
   try {
     return res.sendStatus(204);
   } catch (err) {
@@ -165,17 +165,17 @@ router.put('/abs', async (req, res) => {
 router.post('/email', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
-    const data = new email({
-      email: req.body.email,
-      permission: true,
-    });
+  const data = new email({
+    email: req.body.email,
+    permission: true,
+  });
 
-    try {
-      const newModel = await data.save();
-      return res.status(201).json(newModel);
-    } catch (err) {
-      return res.sendStatus(500);
-    }
+  try {
+    const newModel = await data.save();
+    return res.status(201).json(newModel);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
 });
 
 router.get('/email', async (req, res) => {
@@ -200,7 +200,7 @@ router.put('/email', async (req, res) => {
   eData[id].permission = req.body.permission;
   eData[id].save();
   console.log(eData);
-  
+
   try {
     return res.sendStatus(204);
   } catch (err) {

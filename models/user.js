@@ -4,9 +4,9 @@ const config = require('../config');
 const userSchema = new mongoose.Schema({
 	user: {
 		type: String,
-    	required: true,
+		required: true,
 	},
-	password:{
+	password: {
 		type: String,
 		required: true,
 	}

@@ -8,14 +8,14 @@ router.post('/', (req, res) => {
   console.log(req.body)
   if (req.body.user && req.body.password) {
     let dados;
-    if(req.body.user ==="admin"){
+    if (req.body.user === "admin") {
       console.log("entrei")
-      
-       dados = {
+
+      dados = {
         user: req.body.user,
         password: req.body.password,
       };
-    }else{
+    } else {
       dados = {
         user: req.body.user,
         password: req.body.password,
@@ -51,7 +51,7 @@ router.get('/', (req, res) => {
         // 2) Uma chave para usar na criação do token
         // 3) Um objeto com parâmetros opcionais (Nesse caso, eu adiciono o tempo de expiração)
         const token = jwt.sign(user.toJSON(), "@m6rc0sp", {
-          expiresIn: 10000*60 * 60 * 24, // o token irá expirar em 24 horas
+          expiresIn: 10000 * 60 * 60 * 24, // o token irá expirar em 24 horas
         });
 
         // Se tudo der certo, enviamos o token

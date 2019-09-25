@@ -4,9 +4,9 @@ const config = require('../config');
 const emailSchema = new mongoose.Schema({
 	email: {
 		type: String,
-    	required: true,
+		required: true,
 	},
-	permission:{
+	permission: {
 		type: Boolean,
 		required: true,
 	}

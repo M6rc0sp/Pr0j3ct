@@ -17,15 +17,15 @@ app.use(cors());
 const storage = multer.diskStorage({
   destination: './pr0ject/src/public/img',
   filename(req, file, cb) {
-   cb(null, Date.now() + '-' +file.originalname+'.png')
+    cb(null, Date.now() + '-' + file.originalname + '.png')
   }
 })
 
 const upload = multer({ storage })
 
 app.post('/upload', upload.any(), (req, res) => {
-    console.log("let me in:", req.files)
-    res.status(200).send(req.files)
+  console.log("let me in:", req.files)
+  res.status(200).send(req.files)
 });
 
 //my routes
@@ -75,6 +75,6 @@ app.get("*", (req, res) => {
 
 var porta = process.env.PORT || 3001;
 app.listen(porta);
-console.log('App de Exemplo escutando na porta'+porta+'!');
+console.log('App de Exemplo escutando na porta' + porta + '!');
 
 module.exports = app;

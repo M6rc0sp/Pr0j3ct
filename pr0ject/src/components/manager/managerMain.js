@@ -1,31 +1,31 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import ManagerMainLoader from './managerMainLoader';
 
 class ManagerMain extends Component {
-    
-    addPost(e) {
-        e.preventDefault();
-        axios.post('https://profdantas.herokuapp.com/post')
-            .then((res) => {
-                console.log(res)	
-            })
-        window.location.reload();
-    }
 
-    
+  addPost(e) {
+    e.preventDefault();
+    axios.post('https://profdantas.herokuapp.com/post')
+      .then((res) => {
+        console.log(res)
+      })
+    window.location.reload();
+  }
 
-    render (){
-        
-        return(
-            <div className="col-lg-8 mx-auto text-justify word-spacing: 10px">
-                <div className="light my-4">                                
-                    <h1 className="text-center">Corpo do Site <button className="buttonPlus" onClick={this.addPost}>+</button></h1>
-                    <ManagerMainLoader/>
-                </div>
-            </div>
-        );
-    }
+
+
+  render() {
+
+    return (
+      <div className="col-lg-8 mx-auto text-justify word-spacing: 10px">
+        <div className="light my-4">
+          <h1 className="text-center">Corpo do Site <button className="buttonPlus" onClick={this.addPost}>+</button></h1>
+          <ManagerMainLoader />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default ManagerMain;
