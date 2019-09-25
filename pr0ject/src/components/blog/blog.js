@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import './css/agency.css'
 import './scss/agency.scss'
-import './scss/_navbar.scss'
-import './scss/_contact.scss'
 import "./vendor/fontawesome-free/css/all.min.css"
 import './js/agency.js'
 import photo2 from "./img/team/2.jpg";

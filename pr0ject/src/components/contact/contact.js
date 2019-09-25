@@ -60,8 +60,7 @@ class Footer extends Component {
         <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center">
-              <h2 style={{ marginTop: '20px' }} className="section-heading text-uppercase">Contato</h2>
-              <br />
+              <h2 className="section-heading text-uppercase">Contato</h2>
             </div>
           </div>
           <div className="row">

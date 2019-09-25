@@ -65,22 +65,22 @@ class Main extends Component {
               this.state.list.map((list, index) => {
                 if (index === 0) {
                   return (
-                    <div className="col-lg-6 float-left text-justify">
+                    <div key={index} className="col-lg-6 float-left text-justify">
                       <h3 className="text-center">{list.titulo}</h3>
                       <br />
                       {list.expanded
-                        ? <div>
+                        ? <div key={index + 1}>
                           <div id="dimg">
                             <img src={require('./public/img/0.jpg')} alt={"img" + index} /><br />
                           </div>
                           <Linkify properties={{ target: "_blank", rel: "noopener noreferrer" }}>
                             <p style={{ whiteSpace: 'pre-wrap' }}>{list.texto}</p>
                           </Linkify>
-                          <Button variant='outline-dark' id={index} onClick={this.onclick}>recolher</Button>
+                          <Button variant='outline-dark' key={index + 2} id={index} onClick={this.onclick}>Recolher</Button>
                         </div>
-                        : <div>
-                          <ReadMore text={list.texto} readMoreText={'...'} />
-                          <Button variant='outline-dark' id={index} onClick={this.onclick}>leia mais</Button>
+                        : <div key={index + 1}>
+                          <ReadMore text={list.texto} readMoreText={'...'} max={1000} />
+                          <Button variant='outline-dark' key={index + 3} id={index} onClick={this.onclick}>Leia mais</Button>
                         </div>}
                     </div>
                   );
@@ -95,15 +95,15 @@ class Main extends Component {
                     </div>
                     <br />
                     {list.expanded
-                      ? <div>
+                      ? <div key={index + 1}>
                         <Linkify properties={{ target: "_blank", rel: "noopener noreferrer" }}>
-                          <p key={index + 1} style={{ whiteSpace: 'pre-wrap' }}>{list.texto}</p>
+                          <p style={{ whiteSpace: 'pre-wrap' }}>{list.texto}</p>
                         </Linkify>
-                        <Button variant='outline-dark' key={index + 2} id={index} onClick={this.onclick}>recolher</Button>
+                        <Button variant='outline-dark' key={index + 2} id={index} onClick={this.onclick}>Recolher</Button>
                       </div>
-                      : <div>
-                        <ReadMore text={list.texto} key={index + 3} readMoreText={'...'} max={1000} />
-                        <Button variant='outline-dark' key={index + 4} id={index} onClick={this.onclick}>leia mais</Button>
+                      : <div key={index + 1}>
+                        <ReadMore text={list.texto} readMoreText={'...'} max={1000} />
+                        <Button variant='outline-dark' key={index + 3} id={index} onClick={this.onclick}>Leia mais</Button>
                       </div>}
                   </div>
                 );

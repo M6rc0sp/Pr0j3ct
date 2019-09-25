@@ -37,7 +37,7 @@ class abs extends Component {
           {
             this.state.list.map(function (list, index) {
               return (
-                <div key={index} className="row">
+                <div key={index+'abs'} className="row">
                   <h1 className="text-center">{list.titulo}</h1>
                   <div id="abs" className="col-lg-12 mx-auto text-justify" >
                     <img src={require('../../public/img/00.png')} alt={"img" + index}></img>
