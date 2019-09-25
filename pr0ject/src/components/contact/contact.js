@@ -59,13 +59,13 @@ class Footer extends Component {
         <section id="contact">
             <div className="container">
                 <div className="row">
-                <div className="col-lg-12 text-center">
-                    <h1 style={{marginTop: '20px'}} className="section-heading text-uppercase">Contato</h1>
+                  <div className="col-lg-12 text-center">
+                    <h2 style={{marginTop: '20px'}} className="section-heading text-uppercase">Contato</h2>
                     <br/>
-                </div>
+                  </div>
                 </div>
                 <div className="row">
-                <div className="col-lg-12 col-md-12 col-sm-12">
+                <div className="col-lg-12">
                     <form id="contactForm" name="sentMessage" onSubmit={this.submitEmail} noValidate="noValidate">
                         <div className="row">
                         <div className="col-md-6 col-sm-6">

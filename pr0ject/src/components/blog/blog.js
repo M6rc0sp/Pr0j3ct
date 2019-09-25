@@ -476,7 +476,7 @@ class Blog extends Component {
                       <div className="team-member">
                         <p>II Unidade</p>
                         <p>Anexo 1</p>
-                        <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://drive.google.com/file/d/18w-c9_DCA4V1pFCjRJB_BGDl1lDSx2Z0/view?usp=sharing" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
+                        <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                           <p>Anexo 2</p>
                           <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} href="https://docs.google.com/document/d/1-tccEOvW30s8C4aoBUjE3Hai1S6epT7qSztXCtIS2dY/edit" style={{color: 'white'}}>Baixar Arquivo da Aula</a>
                           <p>Anexo 3</p>
@@ -676,27 +676,21 @@ class Blog extends Component {
                       <h4>Prevenção ao Uso de Álcool </h4><br/>
                       <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=I-ZYQAqFZnA">Estados Alterados</a>
                       <br />
-                      <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=6ZfJy3MZpIg">Prevenção ao Uso do Álcool<br/>e outras Drogas no
-                        ambiente<br/>de trabalho - Parte 1</a>
+                      <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=6ZfJy3MZpIg">Prevenção ao Uso do Álcool e outras Drogas no ambiente de trabalho - Parte 1</a>
                       <br />
-                      <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=HYDoIOcMlqg">Prevenção ao Uso do Álcool<br/>e outras Drogas no
-                        ambiente<br/>de trabalho - Parte 2</a>
+                      <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=HYDoIOcMlqg">Prevenção ao Uso do Álcool e outras Drogas no ambiente de trabalho - Parte 2</a>
                       <br />
-                      <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=WBXuowCCdX8">Prevenção ao Uso do Álcool<br/>e outras Drogas no
-                        ambiente<br/>de trabalho - Parte 3</a>
+                      <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=WBXuowCCdX8">Prevenção ao Uso do Álcool e outras Drogas no ambiente de trabalho - Parte 3</a>
                       <br />
-                      <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=3_50As2ibwo">Prevenção ao uso indevido<br/>de drogas -Parte-1</a>
+                      <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=3_50As2ibwo">Prevenção ao uso indevido de drogas -Parte-1</a>
                       <br />
-                      <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=VnedACdmtqw">Prevenção ao uso indevido<br/>de drogas -Parte-2</a>
+                      <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=VnedACdmtqw">Prevenção ao uso indevido de drogas -Parte-2</a>
                       <br />
-                      <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=XVPSsqer2jo">Prevenção ao uso indevido<br/>de drogas -Parte-3</a>
+                      <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=XVPSsqer2jo">Prevenção ao uso indevido de drogas -Parte-3</a>
                       <br />
-          
-                      <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=uj1DAZ8s5W4">Prevenção ao uso de álcool<br/>e outras drogas parte 1 -
-                        Curitiba</a>
+                      <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=uj1DAZ8s5W4">Prevenção ao uso de álcool e outras drogas parte 1 - Curitiba</a>
                       <br />
-                      <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=iFko5k12dDU">Prevenção ao uso de álcool<br/>e outras drogas parte 2 -
-                        Curitiba</a>
+                      <a className="btn bn-300 btn-dark js-scroll-trigger text-center" target="_blank" rel="noopener noreferrer" onClick={this.clicked} style={{color: 'white'}} href="https://www.youtube.com/watch?v=iFko5k12dDU">Prevenção ao uso de álcool<br/>e outras drogas parte 2 - Curitiba</a>
                       <br />
                       
                   </div>
@@ -731,42 +725,44 @@ class Blog extends Component {
            
             <section id="contact">
                 <div className="container">
+                  <div className="row">
                     <div className="col-lg-12 text-center">
                         <h2 className="section-heading text-uppercase">Contato</h2>
                     </div>
-                    <div className="row">
-                      <div className="col-lg-12">
-                        <form id="contactForm" name="sentMessage" onSubmit={this.submitEmail} noValidate="noValidate">
-                          <div className="row">
-                            <div className="col-md-6">
-                              <div className="form-group">
-                                <input className="form-control" onChange={this.handleChange} id="name" type="text" placeholder="Seu nome" required="required" data-validation-required-message="Por favor digite seu nome."/>
-                                <p className="help-block text-danger"></p>
-                              </div>
-                              <div className="form-group">
-                                <input className="form-control" onChange={this.handleChange} id="email" type="email" placeholder="Seu e-mail" required="required" data-validation-required-message="Por favor digite seu email."/>
-                                <p className="help-block text-danger"></p>
-                              </div>
-                              <div className="form-group">
-                                <input className="form-control" onChange={this.handleChange} id="phone" type="tel" placeholder="Seu telefone" required="required" data-validation-required-message="Por favor preencha o campo do telefone."/>
-                                <p className="help-block text-danger"></p>
-                              </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-lg-12">
+                      <form id="contactForm" name="sentMessage" onSubmit={this.submitEmail} noValidate="noValidate">
+                        <div className="row">
+                          <div className="col-md-6">
+                            <div className="form-group">
+                              <input className="form-control" onChange={this.handleChange} id="name" type="text" placeholder="Seu nome" required="required" data-validation-required-message="Por favor digite seu nome."/>
+                              <p className="help-block text-danger"></p>
                             </div>
-                            <div className="col-md-6">
-                              <div className="form-group">
-                                <textarea className="form-control" onChange={this.handleChange} id="message" placeholder="Sua mensagem" required="required" data-validation-required-message="Por favor digite sua mensagem."></textarea>
-                                <p className="help-block text-danger"></p>
-                              </div>
+                            <div className="form-group">
+                              <input className="form-control" onChange={this.handleChange} id="email" type="email" placeholder="Seu e-mail" required="required" data-validation-required-message="Por favor digite seu email."/>
+                              <p className="help-block text-danger"></p>
                             </div>
-                            <div className="clearfix"></div>
-                            <div className="col-lg-12 text-center">
-                              <div id="success"></div>
-                              <Button size="lg" style={{marginBottom: '20px'}} id="sendMessageButton" className="btn btn-warning  text-uppercase" type="submit">Enviar Mensagem</Button>
+                            <div className="form-group">
+                              <input className="form-control" onChange={this.handleChange} id="phone" type="tel" placeholder="Seu telefone" required="required" data-validation-required-message="Por favor preencha o campo do telefone."/>
+                              <p className="help-block text-danger"></p>
                             </div>
                           </div>
-                        </form>
-                      </div>
+                          <div className="col-md-6">
+                            <div className="form-group">
+                              <textarea className="form-control" onChange={this.handleChange} id="message" placeholder="Sua mensagem" required="required" data-validation-required-message="Por favor digite sua mensagem."></textarea>
+                              <p className="help-block text-danger"></p>
+                            </div>
+                          </div>
+                          <div className="clearfix"></div>
+                          <div className="col-lg-12 text-center">
+                            <div id="success"></div>
+                            <Button size="lg" style={{marginBottom: '20px'}} id="sendMessageButton" className="btn btn-warning  text-uppercase" type="submit">Enviar Mensagem</Button>
+                          </div>
+                        </div>
+                      </form>
                     </div>
+                  </div>
                 </div>
             </section>
             <footer>
