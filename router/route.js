@@ -4,6 +4,7 @@ var intro = require('../models/intro');
 var abs = require('../models/abstract');
 var post = require('../models/post');
 var email = require('../models/email');
+var cloudinary = require('cloudinary').v2;
 
 router.get('/hdr', async (req, res) => {
   const introjson = await intro.find({});
@@ -85,18 +86,29 @@ router.put('/post', async (req, res) => {
   }
 });
 
+//cloudinary
+cloudinary.config({
+  cloud_name: 'hcrwup82g',
+  api_key: '617566545441475',
+  api_secret: 'mq3Srsu1bLe-pCi_gEewBVz1PqU'
+});
+
 router.delete('/post', async (req, res) => {
   console.log('executed');
   try {
     console.log(req.body)
-    let link = req.body.img
-    console.log(link)
     const deletedService = await post.findByIdAndRemove(req.body.id);
     if (!deletedService) {
       return res.sendStatus(404);
+    } else{
+    let link = req.body.img
+    console.log(link)
+    var l = link.split("/");
+    var li = l[7].split('.')[0];
+    console.log(li)
+    cloudinary.uploader.destroy(li, function(result) { console.log(result) });
+      return res.sendStatus(204);
     }
-
-    return res.sendStatus(204);
   } catch (err) {
     console.log(err);
 

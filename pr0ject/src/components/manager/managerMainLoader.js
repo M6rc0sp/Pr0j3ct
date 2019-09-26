@@ -77,7 +77,7 @@ class ManagerMainLoader extends Component {
 
     const formData = new FormData();
     formData.append('test', file);
-    axios.post("http://localhost:3001/upload", formData, {
+    axios.post("https://profdantas.herokuapp.com/upload", formData, {
       //receive two parameter endpoint url ,form data
     })
       .then(res => {
@@ -87,7 +87,9 @@ class ManagerMainLoader extends Component {
         this.setState({ list: newList });
         console.log(res)
         console.log(this.state)
-        console.log(res.statusText)
+        if(res.statusText==='OK'){
+          alert("Foto salva, não esqueça de salvar o post para que as alterações tenham efeito...")
+        }
       })
   }
 
@@ -97,14 +99,14 @@ class ManagerMainLoader extends Component {
     console.log(e.target)
     console.log(this.state.list[name])
     console.log('id é', id, "num é", name)
-    axios.delete('https://profdantas.herokuapp.com/post/',
+    axios.delete('https://profdantas.herokuapp.com/post',
       {
         data: { 'id': id, 'img': this.state.list[name].img }
       })
       .then((res) => {
         console.log(res)
       })
-    //window.location.reload();
+    window.location.reload();
 
   }
 

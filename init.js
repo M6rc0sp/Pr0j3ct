@@ -48,7 +48,6 @@ app.post('/upload', upload.any(), (req, res) => {
     console.log("* " + image.url);
     res.status(200).send(image.url)
     fs.unlinkSync(req.files[0].path, function (err) {
-      console.log('Concluído')
       if (err) throw err;
       // if no error, file has been deleted successfully
       console.log('File deleted!');
