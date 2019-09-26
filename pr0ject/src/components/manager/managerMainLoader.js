@@ -77,13 +77,13 @@ class ManagerMainLoader extends Component {
 
     const formData = new FormData();
     formData.append('test', file);
-    axios.post("https://profdantas.herokuapp.com/upload", formData, {
+    axios.post("http://localhost:3001/upload", formData, {
       //receive two parameter endpoint url ,form data
     })
       .then(res => {
         const newList = this.state.list.slice();
-        newList[id].img = res.data[0].path;
-        console.log(res.data[0].path)
+        newList[id].img = res.data;
+        console.log(newList[id].img)
         this.setState({ list: newList });
         console.log(res)
         console.log(this.state)

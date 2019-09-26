@@ -4,8 +4,6 @@ var intro = require('../models/intro');
 var abs = require('../models/abstract');
 var post = require('../models/post');
 var email = require('../models/email');
-var fs = require('fs');
-var config = require('../config.js');
 
 router.get('/hdr', async (req, res) => {
   const introjson = await intro.find({});
@@ -94,12 +92,6 @@ router.delete('/post', async (req, res) => {
     let link = req.body.img
     console.log(link)
     const deletedService = await post.findByIdAndRemove(req.body.id);
-    fs.unlinkSync(config.dir + '\\' + link, function (err) {
-      console.log(config.dir)
-      if (err) throw err;
-      // if no error, file has been deleted successfully
-      console.log('File deleted!');
-    });
     if (!deletedService) {
       return res.sendStatus(404);
     }
