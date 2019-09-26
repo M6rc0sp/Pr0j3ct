@@ -77,7 +77,7 @@ class ManagerMainLoader extends Component {
 
     const formData = new FormData();
     formData.append('test', file);
-    axios.post("http://localhost:3001/upload", formData, {
+    axios.post("https://profdantas.herokuapp.com/upload", formData, {
       //receive two parameter endpoint url ,form data
     })
       .then(res => {
