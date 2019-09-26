@@ -29,11 +29,11 @@ class Main extends Component {
 
         this.setState({ list: data });
         console.log("main", this.state.list);
-        //if(this.state.list[0]){
-        //  var l = this.state.list[0].img.split("\\");
-        //  var li = l[4];
-        //  this.setState({link: li})
-        // }
+        if(this.state.list[2]){
+          var li = this.state.list[2].img//.split("\\");
+          //var li = './'+ l[2] +'/'+ l[3] +'/'+ l[4];
+          this.setState({link: li})
+         }
         console.log(this.state)
       });
   }

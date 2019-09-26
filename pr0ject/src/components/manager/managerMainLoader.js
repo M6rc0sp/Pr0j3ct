@@ -46,6 +46,7 @@ class ManagerMainLoader extends Component {
 
   submitIntro = e => {
     const { id } = e.target;
+    e.preventDefault();
     axios.put('https://profdantas.herokuapp.com/post',
       {
         'titulo': this.state.list[id].titulo,
@@ -72,7 +73,7 @@ class ManagerMainLoader extends Component {
     e.preventDefault();
     const data = new FormData()
     data.append('file', this.state.img)
-    const file = new Blob([this.state.img], { type: 'image/png' });// WORKS much better (if you know what MIME type you want.)
+    const file = new Blob(this.state.img, { type: 'image/png' });// WORKS much better (if you know what MIME type you want.)
 
     const formData = new FormData();
     formData.append('test', file);
@@ -103,7 +104,7 @@ class ManagerMainLoader extends Component {
       .then((res) => {
         console.log(res)
       })
-    window.location.reload();
+    //window.location.reload();
 
   }
 

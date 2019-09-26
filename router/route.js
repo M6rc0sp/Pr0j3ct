@@ -7,23 +7,6 @@ var email = require('../models/email');
 var fs = require('fs');
 var config = require('../config.js');
 
-/*router.post('/session', async (req, res) => {
-  console.log("Aqui vem o req.body:");
-  console.log(req.body);
-    const data = new user({
-      user: "123",
-      password: "123",
-    });
-
-    try {
-      const newModel = await data.save();
-      return res.status(201).json(newModel);
-    } catch (err) {
-      return res.sendStatus(500);
-    }
-
-});*/
-
 router.get('/hdr', async (req, res) => {
   const introjson = await intro.find({});
   console.log(introjson);
@@ -112,6 +95,7 @@ router.delete('/post', async (req, res) => {
     console.log(link)
     const deletedService = await post.findByIdAndRemove(req.body.id);
     fs.unlinkSync(config.dir + '\\' + link, function (err) {
+      console.log(config.dir)
       if (err) throw err;
       // if no error, file has been deleted successfully
       console.log('File deleted!');
