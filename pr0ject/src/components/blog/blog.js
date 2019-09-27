@@ -219,10 +219,10 @@ class Blog extends Component {
           </Modal.Header >
           <Modal.Body className="text-center">
             <form id="modalForm" name="sentMessage" onSubmit={this.confirmed} noValidate="noValidate">
-              <br />
+              <label><b>Seus dados</b></label>
+              <br/>
               <input placeholder='Nome' onChange={this.setNome3}></input>
-              <br />
-              <br />
+              <p/>
               <input placeholder='E-mail' onChange={this.setEmail3}></input>
               <br />
               <br />
@@ -232,8 +232,6 @@ class Blog extends Component {
               </Modal.Footer>
             </form>
           </Modal.Body>
-          <Modal.Footer>
-          </Modal.Footer>
         </Modal>
 
         <section id="services">
