@@ -96,8 +96,8 @@ router.post('/emailadvisor', async (req, res) => {
       from: '', // sender address
       to: 'jotarn08@gmail.com', // list of receivers
       subject: 'Uma aula foi acessada.', // Subject line
-      text: 'O email ' + req.body.email + ' acessou o link: ' + req.body.url + '.', // plain text body
-      html: '<p>O email ' + req.body.email + ' acessou o link: <a href="' + req.body.url + '"> ' + req.body.url + '.</a></p>'
+      text: req.body.nome + ' com o e-mail, ' + req.body.email + ', acessou o link: ' + req.body.url + '.', // plain text body
+      html: '<p>' + req.body.nome + ' com o e-mail, ' + req.body.email + ', acessou o link: ' + req.body.url + '.</a></p>'
     });
     console.log('Message sent: %s', info.messageId);
     return res.sendStatus(204);

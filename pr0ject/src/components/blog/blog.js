@@ -5,7 +5,7 @@ import "./vendor/fontawesome-free/css/all.min.css"
 import './js/agency.js'
 import photo2 from "./img/team/2.jpg";
 import axios from 'axios';
-import Button from "react-bootstrap/Button";
+import { Button, Modal } from "react-bootstrap";
 
 class Blog extends Component {
 
@@ -16,10 +16,13 @@ class Blog extends Component {
       already: false,
       email: '',
       email2: '',
+      email3: '',
       name: '',
       message: '',
       tel: '',
-
+      show: false,
+      e: '',
+      nomeModal: '',
     };
   }
 
@@ -89,8 +92,9 @@ class Blog extends Component {
   }
 
   notifyEmail = (e, email) => {
-    console.log(e.target.href, email)
-    axios.post('https://profdantas.herokuapp.com/emailadvisor', { 'email': email, 'url': e.target.href }).then((res) => {
+    console.log(this.state.nomeModal, e.href, email)
+    console.log(e)
+    axios.post('https://profdantas.herokuapp.com/emailadvisor', { 'nome': this.state.nomeModal, 'email': email, 'url': e.href }).then((res) => {
       console.log(res)
     });
   }
@@ -98,15 +102,21 @@ class Blog extends Component {
   componentWillMount() {
     this.getEmail();
   }
+  //modal init
+  handleClose = () => this.setState({ show: false });
+  handleShow = () => this.setState({ show: true });
 
-  clicked = e => {
+  setEmail3 = e => this.setState({ email3: e.target.value });
+  setNome3 = e => this.setState({ nomeModal: e.target.value });
+
+  verifyEmail3 = e => {
     var p = false;
     var exist = false;
-    let email = window.prompt('Digite seu e-mail:')
+    let email = this.state.email3;
     if (!email) {
       alert('E-mail vazio')
       this.props.history.push("/blog");
-      e.preventDefault();
+
     } else
       if (email.includes('@') && email.includes('.com')) {
         for (var i in this.state.list) {
@@ -127,21 +137,31 @@ class Blog extends Component {
         if (p) {
           alert('Olá, não se esqueça de mandar um feedback sobre o assunto depois...')
           this.notifyEmail(e, email);
+          window.open(e.href, '_blank');
         } else if (!exist) {
           alert('Bem vindo')
           this.setState({ email: email })
           this.addEmail(email);
           this.notifyEmail(e, email);
+          window.open(e.href, '_blank');
         } else {
           alert('Esse email está proibido de acessar esse arquivo.')
-          this.props.history.push("/blog");
-          e.preventDefault();
         }
       } else {
         alert('Invalido, digite seu e-mail corretamente.')
-        this.props.history.push("/blog");
-        e.preventDefault();
       }
+  }
+
+  clicked = e => {
+    this.setState({ show: true });
+    e.preventDefault();
+    console.log(e.target)
+    this.setState({ e: e.target });
+  }
+
+  confirmed = e => {
+    e.preventDefault();
+    this.verifyEmail3(this.state.e)
   }
 
   render() {
@@ -192,6 +212,29 @@ class Blog extends Component {
             </div>
           </div>
         </header>
+
+        <Modal show={this.state.show} size="md" onHide={this.handleClose} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>Para continuar o acesso ao arquivo, por favor preencha abaixo.</Modal.Title>
+          </Modal.Header >
+          <Modal.Body className="text-center">
+            <form id="modalForm" name="sentMessage" onSubmit={this.confirmed} noValidate="noValidate">
+              <br />
+              <input placeholder='Nome' onChange={this.setNome3}></input>
+              <br />
+              <br />
+              <input placeholder='E-mail' onChange={this.setEmail3}></input>
+              <br />
+              <br />
+              <Modal.Footer className="text-center">
+                <Button variant="secondary" onClick={this.handleClose}>Fechar</Button>
+                <Button variant="primary" type="submit">Continuar</Button>
+              </Modal.Footer>
+            </form>
+          </Modal.Body>
+          <Modal.Footer>
+          </Modal.Footer>
+        </Modal>
 
         <section id="services">
           <div className="container">
