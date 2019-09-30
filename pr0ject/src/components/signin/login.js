@@ -13,6 +13,8 @@ class App extends Component {
     this.state = {
       user: '',
       password: '',
+      oldpass: '',
+      showOldP: false,
       erro: '',
       loading: false,
     };
@@ -43,6 +45,7 @@ class App extends Component {
 
       })
   }*/
+
   textoUsuario(event) {
     this.setState({ user: event.target.value })
   }
@@ -50,9 +53,11 @@ class App extends Component {
   textoPassword(event) {
     this.setState({ password: event.target.value })
   }
+
   sair = () => {
     this.props.history.push("/admin"); //lembrar q é assim q se redireciona com react
   }
+
   loginSubmit(event) {
 
     if (this.state.user.length > 0 && this.state.password.length > 0) {
@@ -75,7 +80,7 @@ class App extends Component {
           //LOG DE ERRO
           // console.log("Status do erro: " + error.response.status) //HTTP STATUS CODE
           // console.log("Dados do erro: " + error.response.data) //HTTP STATUS TEXT
-          this.setState({ erro: "* Senho ou login Inválido!" })
+          this.setState({ erro: "* Senha ou login Inválido!" })
         })
     }
     else {
@@ -83,6 +88,29 @@ class App extends Component {
     }
   }
 
+  showOldP = () => this.setState({ showOldP: true });
+  hideOldP = () => this.setState({ showOldP: false });
+  textoOld = event => {
+    this.setState({ oldpass: event.target.value })
+  }
+
+  loginEdit = e => {
+    e.preventDefault();
+    axios.put('https://profdantas.herokuapp.com/post',
+      {
+        'user': this.state.user,
+        'password': this.state.password,
+        'oldpass': this.state.oldpass
+      })
+      .then((res) => {
+        console.log(res)
+        if(res.statusText==='OK'){
+          alert("Senha alterada com sucesso.")
+        } else {
+          alert("Ocorreu um erro, verifique se sua antiga senha está correta.")
+        }
+      })
+  }
 
   render() {
     return (
@@ -97,9 +125,24 @@ class App extends Component {
               <ListGroupItem>
                 <input placeholder="Senha" type="password" value={this.state.password} onChange={this.textoPassword} />
               </ListGroupItem>
+              {this.state.showOldP &&
+              <ListGroupItem>
+                <input placeholder="Nova senha" type="password" value={this.state.oldpass} onChange={this.textoOld} />
+              </ListGroupItem>
+              }
             </form>
           </ListGroup>
-          <Button type="button" onClick={this.loginSubmit} >Login</Button>
+          {this.state.showOldP 
+          ?
+          <div>
+          <Button type="button" variant="warning" onClick={this.loginEdit}>Salvar nova senha</Button><br/>
+          <Button type="button" variant="danger" onClick={this.hideOldP}>Cancelar alteração</Button>
+          </div>
+          :<div>
+          <Button type="button" onClick={this.loginSubmit}>Login</Button><br/>
+          <Button type="button" variant="warning" onClick={this.showOldP}>Alterar login</Button>
+          </div>
+          }
           <span id="menErro"> {this.state.erro} </span>
         </Card.Body>
       </Card>

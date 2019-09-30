@@ -80,7 +80,9 @@ class EmailManager extends Component {
         {
           this.state.list.map((list, index) => (
             <form key={index + 1} onSubmit={this.submitIntro} className="text-center" id={index}>
+              <div className="col-lg-6 col-md-6 float-left fill">
               <input key={index + 2} id={index} name="email" onChange={this.handleChange} type="text" defaultValue={list.email} />
+              </div>
               <label style={{ padding: '0px 10px' }}>Permissão:</label>
               <input style={{ marginRight: '10px' }} key={index + 3} id={index} name="permission" onChange={this.handleChange} type="checkbox" defaultChecked={list.permission} />
               <Button id={list.id} name={index} variant="danger" onClick={this.rmEmail}>Remover</Button>

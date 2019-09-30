@@ -329,11 +329,6 @@ body {
     -moz-font-feature-settings: "liga" on;
 }
 
-::selection {
-    text-shadow: none;
-    background: #cbeafb;
-}
-
 hr {
     position: relative;
     display: block;

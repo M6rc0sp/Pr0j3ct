@@ -4,6 +4,7 @@ var intro = require('../models/intro');
 var abs = require('../models/abstract');
 var post = require('../models/post');
 var email = require('../models/email');
+var auth = require('../models/user')
 var cloudinary = require('cloudinary').v2;
 
 router.get('/hdr', async (req, res) => {
@@ -100,13 +101,13 @@ router.delete('/post', async (req, res) => {
     const deletedService = await post.findByIdAndRemove(req.body.id);
     if (!deletedService) {
       return res.sendStatus(404);
-    } else{
-    let link = req.body.img
-    console.log(link)
-    var l = link.split("/");
-    var li = l[7].split('.')[0];
-    console.log(li)
-    cloudinary.uploader.destroy(li, function(result) { console.log(result) });
+    } else {
+      let link = req.body.img
+      console.log(link)
+      var l = link.split("/");
+      var li = l[7].split('.')[0];
+      console.log(li)
+      cloudinary.uploader.destroy(li, function (result) { console.log(result) });
       return res.sendStatus(204);
     }
   } catch (err) {
@@ -207,6 +208,20 @@ router.delete('/email', async (req, res) => {
     return res.sendStatus(204);
   } catch (err) {
     console.log(err);
+    return res.sendStatus(500);
+  }
+});
+
+router.put('/auth', async (req, res) => {
+  console.log("aqui começa ", req.body)
+  const usData = await auth.find({});
+  if (req.body.oldpass === usData[0].password) {
+    usData[0].user = req.body.user;
+    usData[0].password = req.body.password;
+    usData[0].save();
+    console.log(usData);
+    return res.sendStatus(204);
+  } else {
     return res.sendStatus(500);
   }
 });

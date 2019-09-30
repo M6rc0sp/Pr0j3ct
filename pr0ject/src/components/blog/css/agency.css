@@ -62,16 +62,6 @@ section h3.section-subheading {
   padding: 20px 40px;
 }
 
-::-moz-selection {
-  background: #fed136;
-  text-shadow: none;
-}
-
-::selection {
-  background: #fed136;
-  text-shadow: none;
-}
-
 img::-moz-selection {
   background: transparent;
 }

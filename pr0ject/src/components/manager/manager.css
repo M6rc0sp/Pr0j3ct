@@ -5,6 +5,12 @@ textarea{
     text-align: center;
     margin:auto;
 }
+.fill {
+    width: 100%;
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: stretch;
+}
 .buttonPlus{
     border-radius: 100%;
     text-align: center;

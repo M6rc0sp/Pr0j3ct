@@ -102,6 +102,7 @@ class Blog extends Component {
   componentWillMount() {
     this.getEmail();
   }
+
   //modal init
   handleClose = () => this.setState({ show: false });
   handleShow = () => this.setState({ show: true });
@@ -123,7 +124,6 @@ class Blog extends Component {
       if (!email) {
         alert('E-mail vazio')
         this.props.history.push("/blog");
-
       } else
         if (email.includes('@') && email.includes('.com')) {
           for (var i in this.state.list) {
@@ -144,14 +144,14 @@ class Blog extends Component {
           if (p) {
             alert('Olá, não se esqueça de mandar um feedback sobre o assunto depois...')
             this.setState({ show: false });
-            //this.notifyEmail(e, email);
+            this.notifyEmail(e, email);
             window.open(e.href, '_blank');
           } else if (!exist) {
             alert('Bem vindo')
             this.setState({ show: false });
             this.setState({ email: email })
             this.addEmail(email);
-            // this.notifyEmail(e, email);
+            this.notifyEmail(e, email);
             window.open(e.href, '_blank');
           } else {
             alert('Esse email está proibido de acessar esse arquivo.')
@@ -822,39 +822,6 @@ class Blog extends Component {
             </div>
           </div>
         </footer>
-
-
-        <div className="portfolio-modal modal fade" id="portfolioModal1" tabIndex="-1" role="dialog" aria-hidden="true">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="close-modal" data-dismiss="modal">
-                <div className="lr">
-                  <div className="rl"></div>
-                </div>
-              </div>
-              <div className="container">
-                <div className="row">
-                  <div className="col-lg-8 mx-auto">
-                    <div className="modal-body">
-                      <h2 className="text-uppercase">Project Name</h2>
-                      <p className="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                      <img className="img-fluid d-block mx-auto" src="img/portfolio/01-full.jpg" alt="" />
-                      <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                      <ul className="list-inline">
-                        <li>Date: January 2017</li>
-                        <li>Client: Threads</li>
-                        <li>Category: Illustration</li>
-                      </ul>
-                      <button className="btn btn-primary" data-dismiss="modal" type="button">
-                        <i className="fas fa-times"></i>
-                        Close Project</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

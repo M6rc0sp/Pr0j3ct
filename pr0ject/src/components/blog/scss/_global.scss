@@ -62,17 +62,6 @@ section {
   padding: 20px 40px;
 }
 
-// Highlight color customization
-::-moz-selection {
-  background: $primary;
-  text-shadow: none;
-}
-
-::selection {
-  background: $primary;
-  text-shadow: none;
-}
-
 img::selection {
   background: transparent;
 }

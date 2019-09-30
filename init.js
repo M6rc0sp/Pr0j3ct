@@ -63,6 +63,7 @@ const emailsender = require('./router/emailSender')
 app.use('/auth', auth);
 app.post('/auth', auth);
 app.get('/auth', auth);
+app.put('/auth', route)
 
 app.use('/hdr', route);
 app.put('/hdr', route);
