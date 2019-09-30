@@ -57,39 +57,18 @@ class Main extends Component {
           <div id="main" className="row" >
             {
               this.state.list.map((list, index) => {
-                if (index === 0) {
-                  return (
-                    <div key={index} className="col-lg-6 float-left text-justify">
-                      <h3 className="text-center">{list.titulo}</h3>
-                      <br />
-                      {list.expanded
-                        ? <div key={index + 1}>
-                          <div id="dimg">
-                            <img src={require('./public/img/0.jpg')} alt={"img" + index} /><br />
-                          </div>
-                          <Linkify properties={{ target: "_blank", rel: "noopener noreferrer" }}>
-                            <p style={{ whiteSpace: 'pre-wrap' }}>{list.texto}</p>
-                          </Linkify>
-                          <Button variant='outline-dark' key={index + 2} id={index} onClick={this.onclick}>Recolher</Button>
-                        </div>
-                        : <div key={index + 1}>
-                          <ReadMore text={list.texto} readMoreText={'...'} max={1000} />
-                          <Button variant='outline-dark' key={index + 3} id={index} onClick={this.onclick}>Leia mais</Button>
-                        </div>}
-                    </div>
-                  );
-                }
                 return (
-                  <div className="col-lg-6 float-left text-justify">
+                  <div key={index} className="col-lg-6 float-left text-justify">
                     <h3 className="text-center">{list.titulo}</h3>
-                    <div id="dimg">
-                      {list.img === 'abc'
-                        ? <div></div>
-                        : <img src={list.img} alt={'img' + index} />}
-                    </div>
                     <br />
                     {list.expanded
                       ? <div key={index + 1}>
+                        <div id="dimg">
+                          {list.img === 'abc'
+                            ? <div></div>
+                            : <img src={list.img} alt={'img' + index} />}
+                          <br />
+                        </div>
                         <Linkify properties={{ target: "_blank", rel: "noopener noreferrer" }}>
                           <p style={{ whiteSpace: 'pre-wrap' }}>{list.texto}</p>
                         </Linkify>
@@ -109,5 +88,4 @@ class Main extends Component {
     );
   }
 }
-
 export default Main;

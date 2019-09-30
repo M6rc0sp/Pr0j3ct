@@ -9,6 +9,9 @@ textarea{
     border-radius: 100%;
     text-align: center;
     vertical-align: center;
+    margin: auto;
+    min-width: 67px;
+    font-size: 30px;
 }
 input[type=text], input[type=submit]{
     width: inherit;

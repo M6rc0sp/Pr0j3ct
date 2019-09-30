@@ -40,7 +40,7 @@ class abs extends Component {
                 <div key={index+'abs'} className="row">
                   <h1 className="text-center">{list.titulo}</h1>
                   <div id="abs" className="col-lg-12 mx-auto text-justify" >
-                    <img src={require('../../public/img/00.png')} alt={"img" + index}></img>
+                    <img src={list.img} alt={"img" + index}></img>
                     <p>{list.texto}</p>
                   </div>
                 </div>

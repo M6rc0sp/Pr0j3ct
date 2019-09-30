@@ -72,21 +72,23 @@ class ManagerAbstract extends Component {
 		e.preventDefault();
 		const data = new FormData()
 		data.append('file', this.state.img)
-		const file = new Blob([this.state.img], { type: 'image/png' });// WORKS much better (if you know what MIME type you want.)
+		const file = new Blob(this.state.img, { type: 'image/png' });// WORKS much better (if you know what MIME type you want.)
 
 		const formData = new FormData();
 		formData.append('test', file);
-		axios.post("/upload", formData, {
+		axios.post("https://profdantas.herokuapp.com/upload", formData, {
 			//receive two parameter endpoint url ,form data
 		})
 			.then(res => {
 				const newList = this.state.list.slice();
-				newList[id].img = res.data[0].path;
-				console.log(res.data[0].path)
+				newList[id].img = res.data;
+				console.log(newList[id].img)
 				this.setState({ list: newList });
 				console.log(res)
 				console.log(this.state)
-				console.log(res.statusText)
+				if (res.statusText === 'OK') {
+					alert("Foto salva, não esqueça de salvar o post para que as alterações tenham efeito...")
+				}
 			})
 	}
 

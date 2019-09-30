@@ -106,60 +106,78 @@ class Blog extends Component {
   handleClose = () => this.setState({ show: false });
   handleShow = () => this.setState({ show: true });
 
-  setEmail3 = e => this.setState({ email3: e.target.value });
+  setEmail3 = e => this.setState({ email3: e.target.value.toLowerCase() });
   setNome3 = e => this.setState({ nomeModal: e.target.value });
 
   verifyEmail3 = e => {
-    var p = false;
-    var exist = false;
-    let email = this.state.email3;
-    if (!email) {
-      alert('E-mail vazio')
-      this.props.history.push("/blog");
+    var usuario = this.state.email3;
+    console.log(usuario)
+    if (usuario === "jotarn08@gmail.com" | usuario === "jotarn@hotmail.com" | usuario === "jotarn03@yahoo.com") {
+      this.setState({ show: false });
+      console.log(e.href)
+      window.open(e.href, '_blank');
+    } else {
+      var p = false;
+      var exist = false;
+      let email = this.state.email3;
+      if (!email) {
+        alert('E-mail vazio')
+        this.props.history.push("/blog");
 
-    } else
-      if (email.includes('@') && email.includes('.com')) {
-        for (var i in this.state.list) {
-          console.log('email', email)
-          console.log('emails', this.state.list[i].email)
-          if (email === this.state.list[i].email) {
-            exist = true;
-            if (this.state.list[i].permission === true) {
-              p = true;
-              console.log('permission?', p)
-            } else {
-              p = false
-              console.log('permission?', p)
+      } else
+        if (email.includes('@') && email.includes('.com')) {
+          for (var i in this.state.list) {
+            console.log('email', email)
+            console.log('emails', this.state.list[i].email)
+            if (email === this.state.list[i].email) {
+              exist = true;
+              if (this.state.list[i].permission === true) {
+                p = true;
+                console.log('permission?', p)
+              } else {
+                p = false
+                console.log('permission?', p)
+              }
+              break;
             }
-            break;
           }
-        }
-        if (p) {
-          alert('Olá, não se esqueça de mandar um feedback sobre o assunto depois...')
-          this.notifyEmail(e, email);
-          window.open(e.href, '_blank');
-        } else if (!exist) {
-          alert('Bem vindo')
-          this.setState({ email: email })
-          this.addEmail(email);
-          this.notifyEmail(e, email);
-          window.open(e.href, '_blank');
+          if (p) {
+            alert('Olá, não se esqueça de mandar um feedback sobre o assunto depois...')
+            this.setState({ show: false });
+            //this.notifyEmail(e, email);
+            window.open(e.href, '_blank');
+          } else if (!exist) {
+            alert('Bem vindo')
+            this.setState({ show: false });
+            this.setState({ email: email })
+            this.addEmail(email);
+            // this.notifyEmail(e, email);
+            window.open(e.href, '_blank');
+          } else {
+            alert('Esse email está proibido de acessar esse arquivo.')
+          }
         } else {
-          alert('Esse email está proibido de acessar esse arquivo.')
+          alert('Invalido, digite seu e-mail corretamente.')
         }
-      } else {
-        alert('Invalido, digite seu e-mail corretamente.')
-      }
+    }
   }
 
   clicked = e => {
-    this.setState({ show: true });
-    e.preventDefault();
-    console.log(e.target)
-    this.setState({ e: e.target });
+    var usuario = window.sessionStorage.getItem('e-mail');
+    console.log(usuario)
+    if (usuario === "jotarn08@gmail.com" | usuario === "jotarn@hotmail.com" | usuario === "jotarn03@yahoo.com") {
+      //window.open(e.target.href, '_blank');
+    } else {
+      this.setState({ show: true });
+      e.preventDefault();
+      console.log(e.target)
+      this.setState({ e: e.target });
+    }
   }
 
   confirmed = e => {
+    window.sessionStorage.setItem('e-mail', this.state.email3);
+    console.log(this.state.email3)
     e.preventDefault();
     this.verifyEmail3(this.state.e)
   }
@@ -220,9 +238,9 @@ class Blog extends Component {
           <Modal.Body className="text-center">
             <form id="modalForm" name="sentMessage" onSubmit={this.confirmed} noValidate="noValidate">
               <label><b>Seus dados</b></label>
-              <br/>
+              <br />
               <input placeholder='Nome' onChange={this.setNome3}></input>
-              <p/>
+              <p />
               <input placeholder='E-mail' onChange={this.setEmail3}></input>
               <br />
               <br />

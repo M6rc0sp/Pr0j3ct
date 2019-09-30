@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ManagerMainLoader from './managerMainLoader';
+import Button from 'react-bootstrap/Button';
 
 class ManagerMain extends Component {
 
@@ -20,7 +21,7 @@ class ManagerMain extends Component {
     return (
       <div className="col-lg-8 mx-auto text-justify word-spacing: 10px">
         <div className="light my-4">
-          <h1 className="text-center">Corpo do Site <button className="buttonPlus" onClick={this.addPost}>+</button></h1>
+          <h1 className="text-center">Corpo do Site <Button size="lg" variant="dark" className="buttonPlus" onClick={this.addPost}><b>+</b></Button></h1>
           <ManagerMainLoader />
         </div>
       </div>
