@@ -96,7 +96,7 @@ class App extends Component {
 
   loginEdit = e => {
     e.preventDefault();
-    axios.put('https://profdantas.herokuapp.com/post',
+    axios.put('https://profdantas.herokuapp.com/auth',
       {
         'user': this.state.user,
         'password': this.state.password,
