@@ -223,7 +223,7 @@ router.put('/auth', async (req, res) => {
       console.log(usData);
       return res.sendStatus(204);
     } else {
-      return res.sendStatus(404);
+      return res.sendStatus(401);
     }
   } catch (err) {
     return res.sendStatus(500);
