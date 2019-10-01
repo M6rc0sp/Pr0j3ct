@@ -258,9 +258,9 @@ router.post('/button', async (req, res) => {
 
 router.get('/button', async (req, res) => {
   const bjson = await button.find({});
-  console.log(emailjson);
+  console.log(bjson);
   let data = [];
-  for (var i in emailjson) {
+  for (var i in bjson) {
     data.push({ materia: bjson[i].materia, unidade: bjson[i].unidade, titulo: bjson[i].titulo, url: bjson[i].url, id: bjson[i]._id })
   }
   try {

@@ -15,7 +15,7 @@ class ButtonManager extends Component {
     axios.get('https://profdantas.herokuapp.com/button')
       .then((res) => {
         let data = [];
-        console.log("entrei", res.data)
+        console.log("b", res.data)
 
         for (var i in res.data) {
           data.push({ materia: res.data[i].materia, unidade: res.data[i].unidade, titulo: res.data[i].titulo, url: res.data[i].url, id: res.data[i]._id })
