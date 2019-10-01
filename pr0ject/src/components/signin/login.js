@@ -13,8 +13,8 @@ class App extends Component {
     this.state = {
       user: '',
       password: '',
-      oldpass: '',
-      showOldP: false,
+      newpass: '',
+      showNewP: false,
       erro: '',
       loading: false,
     };
@@ -88,10 +88,10 @@ class App extends Component {
     }
   }
 
-  showOldP = () => this.setState({ showOldP: true });
-  hideOldP = () => this.setState({ showOldP: false });
+  showNewP = () => this.setState({ showNewP: true });
+  hideNewP = () => this.setState({ showNewP: false });
   textoOld = event => {
-    this.setState({ oldpass: event.target.value })
+    this.setState({ newpass: event.target.value })
   }
 
   loginEdit = e => {
@@ -100,11 +100,11 @@ class App extends Component {
       {
         'user': this.state.user,
         'password': this.state.password,
-        'oldpass': this.state.oldpass
+        'newpass': this.state.newpass
       })
       .then((res) => {
         console.log(res)
-        if(res.statusText==='OK'){
+        if(res.status===204){
           alert("Senha alterada com sucesso.")
         } else {
           alert("Ocorreu um erro, verifique se sua antiga senha está correta.")
@@ -125,22 +125,22 @@ class App extends Component {
               <ListGroupItem>
                 <input placeholder="Senha" type="password" value={this.state.password} onChange={this.textoPassword} />
               </ListGroupItem>
-              {this.state.showOldP &&
+              {this.state.showNewP &&
               <ListGroupItem>
-                <input placeholder="Nova senha" type="password" value={this.state.oldpass} onChange={this.textoOld} />
+                <input placeholder="Nova senha" type="password" value={this.state.newpass} onChange={this.textoOld} />
               </ListGroupItem>
               }
             </form>
           </ListGroup>
-          {this.state.showOldP 
+          {this.state.showNewP 
           ?
           <div>
           <Button type="button" variant="warning" onClick={this.loginEdit}>Salvar nova senha</Button><br/>
-          <Button type="button" variant="danger" onClick={this.hideOldP}>Cancelar alteração</Button>
+          <Button type="button" variant="danger" onClick={this.hideNewP}>Cancelar alteração</Button>
           </div>
           :<div>
           <Button type="button" onClick={this.loginSubmit}>Login</Button><br/>
-          <Button type="button" variant="warning" onClick={this.showOldP}>Alterar login</Button>
+          <Button type="button" variant="warning" onClick={this.showNewP}>Alterar login</Button>
           </div>
           }
           <span id="menErro"> {this.state.erro} </span>

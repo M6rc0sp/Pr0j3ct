@@ -215,9 +215,9 @@ router.delete('/email', async (req, res) => {
 router.put('/auth', async (req, res) => {
   console.log("aqui começa ", req.body)
   const usData = await auth.find({});
-  if (req.body.oldpass === usData[0].password) {
+  if (req.body.password === usData[0].password) {
     usData[0].user = req.body.user;
-    usData[0].password = req.body.password;
+    usData[0].password = req.body.newpass;
     usData[0].save();
     console.log(usData);
     return res.sendStatus(204);
