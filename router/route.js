@@ -4,9 +4,12 @@ var intro = require('../models/intro');
 var abs = require('../models/abstract');
 var post = require('../models/post');
 var email = require('../models/email');
-var auth = require('../models/user')
+var auth = require('../models/user');
+var button = require('../models/buttons')
 var cloudinary = require('cloudinary').v2;
 
+
+//header routes
 router.get('/hdr', async (req, res) => {
   const introjson = await intro.find({});
   console.log(introjson);
@@ -36,6 +39,7 @@ router.put('/hdr', async (req, res) => {
   }
 });
 
+//post routes
 router.post('/post', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
@@ -117,6 +121,7 @@ router.delete('/post', async (req, res) => {
   }
 });
 
+//abstract routes
 router.get('/abs', async (req, res) => {
   const absjson = await abs.find({});
   console.log(absjson);
@@ -151,6 +156,7 @@ router.put('/abs', async (req, res) => {
   }
 });
 
+//email routes
 router.post('/email', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
@@ -212,6 +218,7 @@ router.delete('/email', async (req, res) => {
   }
 });
 
+//auth routes
 router.put('/auth', async (req, res) => {
   console.log("aqui começa ", req.body)
   try {
@@ -223,9 +230,72 @@ router.put('/auth', async (req, res) => {
       console.log(usData);
       return res.sendStatus(204);
     } else {
-      return res.sendStatus(401);
+      return res.sendStatus(304);
     }
   } catch (err) {
+    return res.sendStatus(500);
+  }
+});
+
+//buttons routes
+router.post('/button', async (req, res) => {
+  console.log("Aqui vem o req.body:");
+  console.log(req.body);
+  const data = new email({
+    materia:'Matéria',
+    unidade: 1,
+    titulo:'Título',
+    url:'http://google.com.br',
+  });
+
+  try {
+    const newModel = await data.save();
+    return res.status(201).json(newModel);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+});
+
+router.get('/button', async (req, res) => {
+  const bjson = await button.find({});
+  console.log(emailjson);
+  let data = [];
+  for (var i in emailjson) {
+    data.push({ materia: bjson[i].materia, unidade: bjson[i].unidade, titulo: bjson[i].titulo, url: bjson[i].url, id: bjson[i]._id })
+  }
+  try {
+    return res.status(201).json(data);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+});
+
+router.put('/button', async (req, res) => {
+  console.log("aqui começa ", req.body)
+  let id = req.body.id;
+  const eData = await email.find({});
+  eData[id].email = req.body.email;
+  eData[id].permission = req.body.permission;
+  eData[id].save();
+  console.log(eData);
+  try {
+    return res.sendStatus(204);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+});
+
+router.delete('/button', async (req, res) => {
+  console.log('executed');
+  try {
+    console.log(req.body)
+    const deletedService = await email.findByIdAndRemove(req.body.id);
+    if (!deletedService) {
+      return res.sendStatus(404);
+    }
+    return res.sendStatus(204);
+  } catch (err) {
+    console.log(err);
     return res.sendStatus(500);
   }
 });

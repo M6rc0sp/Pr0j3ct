@@ -75,6 +75,12 @@ app.post('/post', route);
 app.put('/post', route);
 app.delete('/post', route);
 
+app.use('/button', route);
+app.get('/button', route);
+app.post('/button', route);
+app.put('/button', route);
+app.delete('/button', route);
+
 app.use('/abs', route);
 app.get('/abs', route);
 app.put('/abs', route);

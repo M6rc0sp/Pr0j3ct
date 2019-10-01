@@ -5,6 +5,7 @@ import ManagerHeader from './managerHeader';
 import ManagerMain from './managerMain';
 import ManagerAbstract from './managerAbstract';
 import EmailManager from './emailmanager';
+import ButtonManager from './buttonmanager';
 
 class Manager extends Component {
 
@@ -41,6 +42,7 @@ class Manager extends Component {
             <div className="container">
               <div className="row">
                 <EmailManager />
+                <ButtonManager/>
               </div>
             </div>
           }
