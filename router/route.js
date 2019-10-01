@@ -241,7 +241,7 @@ router.put('/auth', async (req, res) => {
 router.post('/button', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
-  const data = new email({
+  const data = new button({
     materia:'Matéria',
     unidade: 1,
     titulo:'Título',
