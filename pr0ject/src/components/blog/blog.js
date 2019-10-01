@@ -93,7 +93,7 @@ class Blog extends Component {
   }
 
   getButtons() {
-    axios.get('https://profdantas.herokuapp.com/buttons')
+    axios.get('https://profdantas.herokuapp.com/button')
       .then((res) => {
         console.log(res.data)
         let buttons = [];
@@ -118,6 +118,7 @@ class Blog extends Component {
 
   componentWillMount() {
     this.getEmail();
+    this.getButtons();
   }
 
   //modal init
@@ -486,6 +487,30 @@ class Blog extends Component {
             <h1>Em construção, os botões podem não conter os links corretos no momento. Mas estamos trabalhando nisso...</h1>
             <div className="row">
               <div className="col-lg-12 text-center">
+                <h1>Buttons</h1>
+                {
+                  this.state.buttons.map((list, index) => (
+                    <div className="row">
+                      <div className="col-md-12 text-center">
+                        <h4>{list.materia}</h4>
+                        <p className="text-muted">Materiais De Aula</p>
+                      </div>
+                      <div className="col-lg-12 col-md-12">
+                        <div className="team-member">
+                          <div className="col-md-4 float-left">
+                            <p>Unidade {list.unidade}</p>
+                            <Button href={list.url} target="_blank" onClick={this.clicked}>{list.titulo}</Button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-lg-12 text-center">
                 <h2 className="section-heading text-uppercase">Matérias Ministradas</h2>
               </div>
             </div>
@@ -495,8 +520,6 @@ class Blog extends Component {
                 <p className="text-muted">Materiais De Aula</p>
               </div>
               <div className="col-lg-12 col-md-12">
-
-
                 <div className="team-member">
                   <div className="col-md-4 float-left">
                     <p>I Unidade</p>

@@ -289,7 +289,7 @@ router.delete('/button', async (req, res) => {
   console.log('executed');
   try {
     console.log(req.body)
-    const deletedService = await email.findByIdAndRemove(req.body.id);
+    const deletedService = await button.findByIdAndRemove(req.body.id);
     if (!deletedService) {
       return res.sendStatus(404);
     }
