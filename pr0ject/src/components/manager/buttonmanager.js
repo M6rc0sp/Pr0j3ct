@@ -8,6 +8,8 @@ class ButtonManager extends Component {
     super(props);
     this.state = {
       buttons: [],
+      materias: [],
+      unidades: [],
     };
   }
 
@@ -15,24 +17,37 @@ class ButtonManager extends Component {
     axios.get('https://profdantas.herokuapp.com/button')
       .then((res) => {
         let data = [];
+        let mat = [];
         console.log("b", res.data)
 
-        for (var i in res.data) {
-          axios.get('https://profdantas.herokuapp.com/mat', {params: res.data[i].materia})
-          .then((res)=>{
-            console.log("mat", res.data)
-          })
+        for (var j in res.data) {
+          mat.push(res.data[j].materia)
         }
+
+        mat = mat.filter((este, ind) => mat.indexOf(este) === ind);
+        console.log("mat[]", mat)
+
+        for (var i in mat) {
+          axios.get('https://profdantas.herokuapp.com/mat', { params: res.data[i].materia })
+            .then((res) => {
+              console.log("mat", res.data)
+            })
+            axios.get('https://profdantas.herokuapp.com/uni', { params: [res.data[i].materia, res.data[i].unidade] })
+            .then((res) => {
+              console.log("uni", res.data)
+            })
+        }
+
         this.setState({ buttons: data })
         console.log("buttons", this.state.buttons)
       });
   }
 
-  addButton(){
+  addButton() {
     axios.post('https://profdantas.herokuapp.com/button')
-    .then((res)=>{
-      console.log(res);
-    })
+      .then((res) => {
+        console.log(res);
+      })
   }
 
   rmButton = (e) => {
