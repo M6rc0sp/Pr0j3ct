@@ -116,7 +116,7 @@ class ManagerMainLoader extends Component {
         {
           this.state.list.map((list, index) => (
             <form key={index + 1} onSubmit={this.submitIntro} className="text-center" id={index}>
-              <label key={index + 2} className="col-lg-12 mx-auto">
+              <label key={index + 2} className="col-lg-6 mx-auto float-left">
                 <input key={index + 3} id={index} name="titulo" type="text" defaultValue={list.titulo} onChange={this.handleChange} />
                 <Button id={list.id} name={index} variant="danger" onClick={this.rmPost}>Remover postagem</Button>
                 <br />

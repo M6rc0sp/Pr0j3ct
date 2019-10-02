@@ -18,12 +18,12 @@ class Manager extends Component {
 
   blog = () => {
     console.log(window.sessionStorage.getItem('expanded'))
-    window.sessionStorage.setItem('expanded', false);
+    window.sessionStorage.setItem('expanded', true);
     this.setState({ expanded: window.sessionStorage.getItem('expanded') });
   }
 
   site = () => {
-    window.sessionStorage.setItem('expanded', true);
+    window.sessionStorage.setItem('expanded', false);
     this.setState({ expanded: window.sessionStorage.getItem('expanded') });
   }
 
@@ -37,14 +37,12 @@ class Manager extends Component {
             <Button onClick={this.blog}>Blog</Button>
             <br /><br />
           </div>
-          {(this.state.expanded==='true')
+          {(this.state.expanded!=='true')
             ?
-            <div className="container">
               <div className="row">
                 <ManagerAbstract />
                 <ManagerMain />
               </div>
-            </div>
             :
             <div className="container">
               <div className="row">

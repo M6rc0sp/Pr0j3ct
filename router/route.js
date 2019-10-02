@@ -278,10 +278,7 @@ router.get('/button', async (req, res) => {
   let data = [];
   let lst = [];
   for (var i in bjson) {
-    if(bjson[i].materia!==lst){
       data.push({ materia: bjson[i].materia, unidade: bjson[i].unidade, titulo: bjson[i].titulo, url: bjson[i].url, id: bjson[i]._id })
-      lst.append(bjson[i].materia)
-    }
   }
   try {
     return res.status(201).json(data);
