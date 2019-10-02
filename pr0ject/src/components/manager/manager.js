@@ -41,8 +41,8 @@ class Manager extends Component {
             :
             <div className="container">
               <div className="row">
-                <EmailManager />
                 <ButtonManager/>
+                <EmailManager />
               </div>
             </div>
           }
