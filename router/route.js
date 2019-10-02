@@ -260,18 +260,9 @@ router.get('/button', async (req, res) => {
   const bjson = await button.find({});
   console.log(bjson);
   let data = [];
-
   for (var i in bjson) {
-    for (var j in bjson) {
-      for (var k in bjson) {
-        data.push({ materia: bjson[i].materia, unidade: bjson[j].unidade, titulo: bjson[k].titulo, url: bjson[k].url, id: bjson[k]._id })
-      }
-    }
+    data.push({ materia: bjson[i].materia, unidade: bjson[i].unidade, titulo: bjson[i].titulo, url: bjson[i].url, id: bjson[i]._id })
   }
-
-  //for (var i in bjson) {
-  //  data.push({ materia: bjson[i].materia, unidade: bjson[i].unidade, titulo: bjson[i].titulo, url: bjson[i].url, id: bjson[i]._id })
-  //}
   try {
     return res.status(201).json(data);
   } catch (err) {
