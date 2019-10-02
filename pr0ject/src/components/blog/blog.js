@@ -99,7 +99,7 @@ class Blog extends Component {
         let buttons = [];
 
         for (var i in res.data) {
-          buttons.push({ materia: res.data[i].materia, unidade: res.data[i].unidade, titulo: res.data[i].titulo, url: res.data[i].url, id: res.data[i]._id })
+          buttons.push({ materia: res.data[i].materia, unidade: res.data[i].unidade, titulo: res.data[i].titulo, url: res.data[i].url, id: res.data[i].id })
         }
 
         this.setState({ buttons: buttons })
