@@ -257,7 +257,7 @@ router.post('/button', async (req, res) => {
 });
 
 router.get('/mat', async (req, res) => {
-  console.log('req:', req)
+  console.log('req.query:', req.query)
   console.log('body: ', req.body)
   console.log('params: ', req.params)
   const bjson = await button.find({ materia: req.body.materia });

@@ -12,13 +12,20 @@ class Manager extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: true
+      expanded: window.sessionStorage.getItem('expanded')
     };
   }
 
-  blog = () => this.setState({ expanded: false });
+  blog = () => {
+    console.log(window.sessionStorage.getItem('expanded'))
+    window.sessionStorage.setItem('expanded', false);
+    this.setState({ expanded: window.sessionStorage.getItem('expanded') });
+  }
 
-  site = () => this.setState({ expanded: true });
+  site = () => {
+    window.sessionStorage.setItem('expanded', true);
+    this.setState({ expanded: window.sessionStorage.getItem('expanded') });
+  }
 
   render() {
     return (
@@ -28,9 +35,9 @@ class Manager extends Component {
           <div className="col-lg-12 text-center">
             <Button onClick={this.site}>Site</Button>
             <Button onClick={this.blog}>Blog</Button>
-            <br/><br/>
+            <br /><br />
           </div>
-          {this.state.expanded
+          {(this.state.expanded==='true')
             ?
             <div className="container">
               <div className="row">
@@ -41,7 +48,7 @@ class Manager extends Component {
             :
             <div className="container">
               <div className="row">
-                <ButtonManager/>
+                <ButtonManager />
                 <EmailManager />
               </div>
             </div>
