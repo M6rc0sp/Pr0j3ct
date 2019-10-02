@@ -257,10 +257,8 @@ router.post('/button', async (req, res) => {
 });
 
 router.get('/mat', async (req, res) => {
-  console.log('req.query:', req.query)
-  console.log('body: ', req.body)
-  console.log('params: ', req.params)
-  const bjson = await button.find({ materia: req.body.materia });
+  console.log('req.query:', req.query[0])
+  const bjson = await button.find({ materia: req.query[0] });
   console.log(bjson);
   let data = [];
   for (var i in bjson) {
@@ -278,8 +276,12 @@ router.get('/button', async (req, res) => {
   const bjson = await button.find({});
   console.log(bjson);
   let data = [];
+  let lst = [];
   for (var i in bjson) {
-    data.push({ materia: bjson[i].materia, unidade: bjson[i].unidade, titulo: bjson[i].titulo, url: bjson[i].url, id: bjson[i]._id })
+    if(bjson[i].materia===lst){
+      data.push({ materia: bjson[i].materia, unidade: bjson[i].unidade, titulo: bjson[i].titulo, url: bjson[i].url, id: bjson[i]._id })
+      lst.append(bjson[i].materia)
+    }
   }
   try {
     return res.status(201).json(data);
