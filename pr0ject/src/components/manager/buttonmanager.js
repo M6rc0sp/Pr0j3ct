@@ -18,9 +18,11 @@ class ButtonManager extends Component {
         console.log("b", res.data)
 
         for (var i in res.data) {
-          data.push({ materia: res.data[i].materia, unidade: res.data[i].unidade, titulo: res.data[i].titulo, url: res.data[i].url, id: res.data[i].id })
+          axios.get('https://profdantas.herokuapp.com/mat', res.data[i].materia)
+          .then((res)=>{
+            console.log("mat", res.data)
+          })
         }
-
         this.setState({ buttons: data })
         console.log("buttons", this.state.buttons)
       });

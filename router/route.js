@@ -256,6 +256,22 @@ router.post('/button', async (req, res) => {
   }
 });
 
+router.get('/mat', async (req, res) => {
+  console.log('body: ', req.body)
+  const bjson = await button.find({ materia: req.body.materia });
+  console.log(bjson);
+  let data = [];
+  for (var i in bjson) {
+    data.push({ unidade: bjson[i].unidade, titulo: bjson[i].titulo, url: bjson[i].url, id: bjson[i]._id })
+  }
+  try {
+    return res.status(201).json(data);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+});
+
+
 router.get('/button', async (req, res) => {
   const bjson = await button.find({});
   console.log(bjson);

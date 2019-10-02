@@ -77,6 +77,7 @@ app.delete('/post', route);
 
 app.use('/button', route);
 app.get('/button', route);
+app.get('/mat', route);
 app.post('/button', route);
 app.put('/button', route);
 app.delete('/button', route);
