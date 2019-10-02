@@ -10,6 +10,7 @@ class ButtonManager extends Component {
       buttons: [],
       materias: [],
       unidades: [],
+      temp: [],
     };
   }
 
@@ -18,24 +19,32 @@ class ButtonManager extends Component {
       .then((res) => {
         let data = [];
         let mat = [];
+        let uni = [];
+        let tempMat = [];
         console.log("b", res.data)
+
+        for (var i in res.data) {
+          data.push({ materia: res.data[i].materia,unidade: res.data[i].unidade, titulo: res.data[i].titulo, url: res.data[i].url, id: res.data[i].id })
+        }
 
         for (var j in res.data) {
           mat.push(res.data[j].materia)
         }
-
         mat = mat.filter((este, ind) => mat.indexOf(este) === ind);
         console.log("mat[]", mat)
 
-        for (var i in mat) {
-          axios.get('https://profdantas.herokuapp.com/mat', { params: res.data[i].materia })
+        for (var z in mat) {
+          axios.get('https://profdantas.herokuapp.com/mat', { params: res.data[z].materia })
             .then((res) => {
-              console.log("mat", res.data)
+              tempMat.push( res.data)
             })
-            axios.get('https://profdantas.herokuapp.com/uni', { params: [res.data[i].materia, res.data[i].unidade] })
-            .then((res) => {
-              console.log("uni", res.data)
-            })
+          console.log(tempMat)
+          for (var k in mat) {
+            axios.get('https://profdantas.herokuapp.com/uni', { params: [res.data[z].materia, res.data[k].unidade] })
+              .then((res) => {
+                console.log("uni", res.data)
+              })
+          }
         }
 
         this.setState({ buttons: data })
@@ -76,18 +85,19 @@ class ButtonManager extends Component {
         <h1>Botões do blog</h1><Button block variant="success" size="lg" onClick={this.addButton}>Adicionar</Button>
         {
           this.state.buttons.map((list, index) => (
-            <form key={index + 1} onSubmit={this.submitIntro} className="text-center" id={index}>
-              <div className="col-lg-6 col-md-6 float-left fill">
-                <input key={index + 2} id={index} name="materia" type="text" defaultValue={list.materia} />
-                <input key={index + 3} id={index} name="materia" type="text" defaultValue={list.unidade} />
-                <input key={index + 4} id={index} name="materia" type="text" defaultValue={list.titulo} />
-                <input key={index + 5} id={index} name="materia" type="text" defaultValue={list.url} />
-              </div>
-              <Button id={list.id} name={index} variant="danger" onClick={this.rmButton}>Remover</Button>
-              <Button block variant="success" size="lg" type="submit">Salvar</Button>
-              <br />
-              <br />
-            </form>
+            <div>
+              <form key={index + 1} onSubmit={this.submitIntro} className="text-center" id={index}>
+                <div className="col-lg-6 col-md-6 float-left fill">
+                  <input key={index + 3} id={index} name="materia" type="text" defaultValue={list.unidade} />
+                  <input key={index + 4} id={index} name="materia" type="text" defaultValue={list.titulo} />
+                  <input key={index + 5} id={index} name="materia" type="text" defaultValue={list.url} />
+                </div>
+                <Button id={list.id} name={index} variant="danger" onClick={this.rmButton}>Remover</Button>
+                <Button block variant="success" size="lg" type="submit">Salvar</Button>
+                <br />
+                <br />
+              </form>
+            </div>
           ))
         }
       </div>
