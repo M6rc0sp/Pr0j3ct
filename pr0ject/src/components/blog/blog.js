@@ -322,7 +322,7 @@ class Blog extends Component {
                                 Bolsista do(a): Conselho Nacional de Desenvolvimento Científico e Tecnológico, CNPq, Brasil.
                                 Palavras-chave: Pontas e Ponteiros; Guiné-Bissau; Ajustamento Estrutural.
                                 Grande área: Ciências Humanas
-                                    Setores de atividade: Produtos e Serviços Recreativos, Culturais, Artísticos e Desportivos.</p>
+                                Setores de atividade: Produtos e Serviços Recreativos, Culturais, Artísticos e Desportivos.</p>
                             </div>
                           </div>
                         </li>
@@ -491,10 +491,6 @@ class Blog extends Component {
                 {
                   this.state.buttons.map((list, index) => (
                     <div className="row">
-                      <div className="col-md-12 text-center">
-                        <h4>{list.materia}</h4>
-                        <p className="text-muted">Materiais De Aula</p>
-                      </div>
                       <div className="col-lg-12 col-md-12">
                         <div className="team-member">
                           <div className="col-md-4 float-left">
