@@ -486,22 +486,39 @@ class Blog extends Component {
           <div className="container">
             <h1>Em construção, os botões podem não conter os links corretos no momento. Mas estamos trabalhando nisso...</h1>
             <div className="row">
-              <div className="col-lg-12 text-center">
-                <h1>Buttons</h1>
+              <div className="col-lg-12 text-center" style={{ margin: 'auto' }}>
+                <h1>Botões do blog</h1>
+                <div className="row">
+                  <div className="col-lg-12 text-center">
+                    <h2 className="section-heading text-uppercase">Matérias Ministradas</h2>
+                  </div>
+                </div>
                 {
                   this.state.buttons.map((list, index) => (
-                    <div className="row">
-                      <div className="col-lg-12 col-md-12">
-                        <div className="team-member">
-                          <div className="col-md-4 float-left">
-                            <p>Unidade {list.unidade}</p>
-                            <Button href={list.url} target="_blank" onClick={this.clicked}>{list.titulo}</Button>
-                          </div>
-                        </div>
+                    <div className="col-lg-12 col-md-12 float-left fill">
+                      <div className="col-sm-12 text-center">
+                        <h4>{list.materia}</h4>
+                        <p className="text-muted">Materiais De Aula</p>
+                      </div>
+                      <div className="team-member">
+                        {
+                          list.unidade.map((b, index) => (
+                            <div className="col-lg-4 col-md-4 float-left fill">
+                              <p>Unidade {index + 1}</p>
+                              {
+                                b.button.map((b, index) => (
+                                  <div className="float-left fill">
+                                    <Button block href={b.url}>{b.titulo}</Button>
+                                    <br />
+                                  </div>
+                                ))}
+                            </div>
+                          ))}
                       </div>
                     </div>
                   ))
                 }
+                <br /><br />
               </div>
             </div>
 

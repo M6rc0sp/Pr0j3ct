@@ -75,13 +75,17 @@ app.post('/post', route);
 app.put('/post', route);
 app.delete('/post', route);
 
+//button routes
 app.use('/button', route);
-app.get('/button', route);
-app.get('/uni', route);
-app.post('/uni', route);
 app.post('/button', route);
+app.get('/button', route);
 app.put('/button', route);
 app.delete('/button', route);
+app.post('/uni', route);
+app.delete('/uni', route);
+app.post('/mat', route);
+app.put('/mat', route);
+app.delete('/mat', route);
 
 app.use('/abs', route);
 app.get('/abs', route);
