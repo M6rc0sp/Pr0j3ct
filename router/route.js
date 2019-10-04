@@ -243,9 +243,15 @@ router.post('/button', async (req, res) => {
   console.log(req.body);
   const data = new button({
     materia: 'Matéria',
-    unidade: 1,
-    titulo: 'Título',
-    url: 'http://google.com.br',
+    unidade: [{
+      button: [{
+        titulo: 'Título',
+        url: 'http://google.com.br',
+      }, {
+        titulo: 'Título 2',
+        url: 'http://drive.google.com.br',
+      }],
+    }]
   });
 
   try {
@@ -293,7 +299,7 @@ router.get('/button', async (req, res) => {
   let data = [];
   let lst = [];
   for (var i in bjson) {
-      data.push({ materia: bjson[i].materia, unidade: bjson[i].unidade, titulo: bjson[i].titulo, url: bjson[i].url, id: bjson[i]._id })
+    data.push({ materia: bjson[i].materia, unidade: bjson[i].unidade, titulo: bjson[i].titulo, url: bjson[i].url, id: bjson[i]._id })
   }
   try {
     return res.status(201).json(data);
