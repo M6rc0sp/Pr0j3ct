@@ -10,7 +10,7 @@ class ButtonManager extends Component {
       materia: [],
     };
 
-    this.handleChange = this.handleChange.bind(this)
+    //this.handleChange = this.handleChange.bind(this)
   }
 
   getButton() {
@@ -47,14 +47,14 @@ class ButtonManager extends Component {
   // }
 
   submitIntro = e => {
-    const { id } = e.target;
+    // const { id } = e.target;
     e.preventDefault();
     axios.put('https://profdantas.herokuapp.com/post',
       {
-        'titulo': this.state.list[id].titulo,
-        'texto': this.state.list[id].texto,
-        'img': this.state.list[id].img,
-        'id': id
+        // 'titulo': this.state.list[id].titulo,
+        // 'texto': this.state.list[id].texto,
+        // 'img': this.state.list[id].img,
+        // 'id': id
       })
       .then((res) => {
         console.log(res)
