@@ -245,10 +245,10 @@ router.post('/button', async (req, res) => {
   let uni = req.body.uni;
   let arr = [];
   const bData = await button.find({});
-  console.log('b',bData);
+  console.log('b', bData);
   arr = bData[mat].unidade[uni].button;
   console.log('barr', arr)
-  arr.push({titulo: 'Título', url: 'http://google.com.br'})
+  arr.push({ titulo: 'Título', url: 'http://google.com.br' })
   console.log('aarr', arr)
   bData[mat].unidade[uni].button = arr;
   bData[mat].save();
@@ -257,7 +257,7 @@ router.post('/button', async (req, res) => {
     return res.sendStatus(204);
   } catch (err) {
     return res.sendStatus(500);
-  }  
+  }
 });
 
 router.get('/button', async (req, res) => {
@@ -275,13 +275,16 @@ router.get('/button', async (req, res) => {
 });
 
 router.put('/button', async (req, res) => {
-  console.log("aqui começa ", req.body)
-  let id = req.body.id;
-  const eData = await email.find({});
-  eData[id].email = req.body.email;
-  eData[id].permission = req.body.permission;
-  eData[id].save();
-  console.log(eData);
+  console.log("Aqui vem o req.body:");
+  console.log(req.body);
+  let mat = req.body.mat;
+  let uni = req.body.uni;
+  let but = req.body.but;
+  const bData = await button.find({});
+  bData[mat].unidade[uni].button[but].titulo = req.body.titulo;
+  bData[mat].unidade[uni].button[but].url = req.body.url;
+  bData[mat].save();
+  console.log(bData);
   try {
     return res.sendStatus(204);
   } catch (err) {
@@ -290,6 +293,20 @@ router.put('/button', async (req, res) => {
 });
 
 router.delete('/button', async (req, res) => {
+  console.log("Aqui vem o req.body:");
+  console.log(req.body);
+  let mat = req.body.mat;
+  let uni = req.body.uni;
+  const bData = await button.find({});
+  console.log('b', bData);
+  bData[mat].unidade[uni].button.pop();
+  bData[mat].save();
+  console.log(bData);
+  try {
+    return res.sendStatus(204);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
 });
 
 router.post('/uni', async (req, res) => {
@@ -299,7 +316,7 @@ router.post('/uni', async (req, res) => {
   let arr = [];
   const bData = await button.find({});
   arr = bData[id].unidade;
-  arr.push({button: [{titulo: 'Título', url: 'http://google.com.br',}]})
+  arr.push({ button: [{ titulo: 'Título', url: 'http://google.com.br', }] })
   bData[id].unidade = arr;
   bData[id].save();
   console.log(bData);
@@ -308,10 +325,25 @@ router.post('/uni', async (req, res) => {
   } catch (err) {
     return res.sendStatus(500);
   }
-  
+
 });
 
 router.delete('/uni', async (req, res) => {
+  console.log("Aqui vem o req.body:");
+  console.log(req.body);
+  let mat = req.body.mat;
+  let arr = [];
+  const bData = await button.find({});
+  console.log('b', bData);
+  arr = bData[mat].unidade.pop();
+  bData[mat].unidade = arr;
+  bData[mat].save();
+  console.log(bData);
+  try {
+    return res.sendStatus(204);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
 });
 
 router.post('/mat', async (req, res) => {
@@ -330,21 +362,6 @@ router.post('/mat', async (req, res) => {
   try {
     const newModel = await data.save();
     return res.status(201).json(newModel);
-  } catch (err) {
-    return res.sendStatus(500);
-  }
-});
-
-router.put('/mat', async (req, res) => {
-  console.log("Aqui vem o req.body:");
-  console.log(req.body);
-  let id = req.body.id;
-  const bData = await button.find({});
-  bData[id].materia = req.body.materia;
-  bData[id].save();
-  console.log(bData);
-  try {
-    return res.sendStatus(204);
   } catch (err) {
     return res.sendStatus(500);
   }

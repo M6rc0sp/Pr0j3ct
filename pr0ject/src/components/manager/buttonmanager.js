@@ -9,6 +9,8 @@ class ButtonManager extends Component {
     this.state = {
       materia: [],
     };
+
+    this.handleChange = this.handleChange.bind(this)
   }
 
   getButton() {
@@ -31,6 +33,46 @@ class ButtonManager extends Component {
       .then((res) => {
         console.log(res);
       })
+    window.location.reload();
+  }
+
+  // handleChange = e => {
+  //   const { name, value, id } = e.target
+  //   const newList = this.state.list.slice();
+  //   newList[id][name] = value;
+  //   console.log("this is me", newList, "index", id)
+  //   this.setState({ list: newList });
+  //   console.log("pingos nos is", [name], value)
+  //   console.log(this.state)
+  // }
+
+  submitIntro = e => {
+    const { id } = e.target;
+    e.preventDefault();
+    axios.put('https://profdantas.herokuapp.com/post',
+      {
+        'titulo': this.state.list[id].titulo,
+        'texto': this.state.list[id].texto,
+        'img': this.state.list[id].img,
+        'id': id
+      })
+      .then((res) => {
+        console.log(res)
+      })
+  }
+
+  rmMat = (e) => {
+    e.preventDefault();
+    const { id } = e.target;
+    console.log('id é', id)
+    axios.delete('https://profdantas.herokuapp.com/button',
+      {
+        data: { 'id': id }
+      })
+      .then((res) => {
+        console.log(res)
+      })
+    window.location.reload();
   }
 
   addUnity = e => {
@@ -39,21 +81,46 @@ class ButtonManager extends Component {
       .then((res) => {
         console.log(res);
       })
+    window.location.reload();
   }
 
-  rmButton = (e) => {
+  rmUnity = (e) => {
     e.preventDefault();
-    const { id, name } = e.target;
-    console.log(e.target)
-    console.log('id é', id, "num é", name)
-    axios.delete('https://profdantas.herokuapp.com/button',
+    const { id } = e.target;
+    let mat = id;
+    console.log(mat)
+    axios.delete('https://profdantas.herokuapp.com/uni',
       {
-        data: { 'id': id }
+        data: { 'mat': mat }
       })
       .then((res) => {
         console.log(res)
       })
-    //window.location.reload();
+    window.location.reload();
+  }
+
+  addButton = e => {
+    const { id, name } = e.target;
+    let mat = id;
+    let uni = name;
+    console.log(mat, uni)
+    axios.post('https://profdantas.herokuapp.com/button', { 'mat': mat, 'uni': uni })
+      .then((res) => {
+        console.log(res);
+      })
+    window.location.reload();
+  }
+
+  rmButton = e => {
+    const { id, name } = e.target;
+    let mat = id;
+    let uni = name;
+    console.log(mat, uni)
+    axios.delete('https://profdantas.herokuapp.com/button', { 'mat': mat, 'uni': uni })
+      .then((res) => {
+        console.log(res);
+      })
+    window.location.reload();
   }
 
   componentWillMount() {
@@ -65,30 +132,32 @@ class ButtonManager extends Component {
     return (
       <div className="col-lg-8 text-center" style={{ margin: 'auto' }}>
         <h1>Botões do blog</h1>
-        <br/>
+        <br />
         <h2>Matérias</h2>
         <Button onClick={this.addMat}>Adicionar matéria</Button>
-        <br/><br/>
+        <br /><br />
         {
           this.state.materia.map((list, index) => (
             <form key={index + 1} onSubmit={this.submitIntro} className="text-center" id={index}>
               <div className="col-lg-12 col-md-12 float-left fill">
                 <input className="col-lg-8" key={index + 2} id={index} name="email" onChange={this.handleChange} type="text" defaultValue={list.materia} />
-                <Button key={index+6} variant='danger' id={list.id} name={index} onClick={this.rmButton}>Remover matéria</Button>
+                <Button key={index + 6} variant='danger' id={list.id} name={index} onClick={this.rmMat}>Remover matéria</Button>
                 <Button id={index} onClick={this.addUnity}>Adicionar unidade</Button>
               </div>
               {
-                list.unidade.map((b, index) => (
+                list.unidade.map((b, indexu) => (
                   <div className="col-lg-4 col-md-4 float-left fill">
-                    <h4 key={index + 3} id={index} name="email" onChange={this.handleChange} type="text">{index + 1}</h4>
+                    <h4 key={indexu + 3} id={indexu} onChange={this.handleChange} type="text">{indexu + 1}</h4>
+                    <Button id={index} onClick={this.rmUnity}>Remover unidade</Button>
                     {
-                      b.button.map((b, index) => (
+                      b.button.map((b, indexb) => (
                         <div className="float-left fill">
-                          <input key={index + 4} id={index} name="email" onChange={this.handleChange} type="text" defaultValue={b.titulo} />
-                          <input key={index + 5} id={index} name="email" onChange={this.handleChange} type="text" defaultValue={b.url} />
-                          <br/><br/>
+                          <input key={indexb + 4} id={index} onChange={this.handleChange} type="text" defaultValue={b.titulo} />
+                          <input key={indexb + 5} id={index} onChange={this.handleChange} type="text" defaultValue={b.url} />
+                          <br /><br />
                         </div>
                       ))}
+                    <Button id={index} name={indexu} onClick={this.addButton}>Adicionar botão</Button>
                   </div>
                 ))}
               <Button block variant="success" size="lg" type="submit">Salvar</Button>

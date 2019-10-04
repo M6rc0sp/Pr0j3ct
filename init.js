@@ -65,10 +65,12 @@ app.post('/auth', auth);
 app.get('/auth', auth);
 app.put('/auth', route)
 
+//header routes
 app.use('/hdr', route);
 app.put('/hdr', route);
 app.get('/hdr', route);
 
+//post routes
 app.use('/post', route);
 app.get('/post', route);
 app.post('/post', route);
@@ -84,13 +86,14 @@ app.delete('/button', route);
 app.post('/uni', route);
 app.delete('/uni', route);
 app.post('/mat', route);
-app.put('/mat', route);
 app.delete('/mat', route);
 
+//abstract routes
 app.use('/abs', route);
 app.get('/abs', route);
 app.put('/abs', route);
 
+//email routes
 app.use('/emailsender', emailsender);
 app.post('/emailsender', emailsender);
 
