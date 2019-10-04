@@ -266,10 +266,16 @@ router.post('/uni', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
   let id = req.body.id;
+  let arr = [];
   const bData = await button.find({});
-  bData[id].unidade = bData[id].unidade.push({button: [{titulo: 'Título', url: 'http://google.com.br',}]});
+  console.log('b', bData);
+  arr = bData[id].unidade;
+  console.log('barr', arr)
+  arr.push({button: [{titulo: 'Título', url: 'http://google.com.br',}]})
+  console.log('aarr', arr)
+  bData[id].unidade = arr;
   bData[id].save();
-  console.log(bData);
+  console.log('a', bData);
   try {
     return res.sendStatus(204);
   } catch (err) {
