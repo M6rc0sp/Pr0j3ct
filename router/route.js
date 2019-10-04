@@ -262,19 +262,20 @@ router.post('/button', async (req, res) => {
   }
 });
 
-router.get('/mat', async (req, res) => {
-  console.log('req.query:', req.query[0])
-  const bjson = await button.find({ materia: req.query[0] });
-  console.log(bjson);
-  let data = [];
-  for (var i in bjson) {
-    data.push({ unidade: bjson[i].unidade, titulo: bjson[i].titulo, url: bjson[i].url, id: bjson[i]._id })
-  }
+router.post('/uni', async (req, res) => {
+  console.log("Aqui vem o req.body:");
+  console.log(req.body);
+  let id = req.body.id;
+  const bData = await button.find({});
+  bData[id].unidade = bData[id].unidade.push({button: [{titulo: 'Título', url: 'http://google.com.br',}]});
+  bData[id].save();
+  console.log(eData);
   try {
-    return res.status(201).json(data);
+    return res.sendStatus(204);
   } catch (err) {
     return res.sendStatus(500);
   }
+  
 });
 
 router.get('/uni', async (req, res) => {
