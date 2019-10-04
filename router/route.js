@@ -269,7 +269,7 @@ router.post('/uni', async (req, res) => {
   const bData = await button.find({});
   bData[id].unidade = bData[id].unidade.push({button: [{titulo: 'Título', url: 'http://google.com.br',}]});
   bData[id].save();
-  console.log(eData);
+  console.log(bData);
   try {
     return res.sendStatus(204);
   } catch (err) {

@@ -60,6 +60,13 @@ class ButtonManager extends Component {
       })
   }
 
+  addUnity() {
+    axios.post('https://profdantas.herokuapp.com/uni', {'id': 0})
+      .then((res) => {
+        console.log(res);
+      })
+  }
+
   rmButton = (e) => {
     e.preventDefault();
     const { id, name } = e.target;
@@ -111,7 +118,9 @@ class ButtonManager extends Component {
     //<Button block variant="success" size="lg" onClick={this.addButton}>Adicionar</Button>
     return (
       <div className="col-lg-8 text-center" style={{ margin: 'auto' }}>
-        <h1>Botões do blog</h1><Button onClick={this.addButton}>Adicionar botão</Button>
+        <h1>Botões do blog</h1>
+        <Button onClick={this.addButton}>Adicionar matéria</Button>
+        <Button onClick={this.addUnity}>Adicionar unidade</Button>
         {this.bots()}
       </div>
     );
