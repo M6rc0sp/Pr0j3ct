@@ -79,14 +79,19 @@ app.delete('/post', route);
 
 //button routes
 app.use('/button', route);
-app.post('/button', route);
 app.get('/button', route);
 app.put('/button', route);
-app.delete('/button', route);
 app.post('/uni', route);
 app.delete('/uni', route);
 app.post('/mat', route);
 app.delete('/mat', route);
+
+//videos routes
+app.use('/video', route);
+app.post('/video', route);
+app.get('/video', route);
+app.put('/video', route);
+app.delete('/video', route);
 
 //abstract routes
 app.use('/abs', route);

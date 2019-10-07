@@ -238,28 +238,6 @@ router.put('/auth', async (req, res) => {
 });
 
 //buttons routes
-router.post('/button', async (req, res) => {
-  console.log("Aqui vem o req.body:");
-  console.log(req.body);
-  let mat = req.body.mat;
-  let uni = req.body.uni;
-  let arr = [];
-  const bData = await button.find({});
-  console.log('b', bData);
-  arr = bData[mat].unidade[uni].button;
-  console.log('barr', arr)
-  arr.push({ titulo: 'Título', url: 'http://google.com.br' })
-  console.log('aarr', arr)
-  bData[mat].unidade[uni].button = arr;
-  bData[mat].save();
-  console.log(bData);
-  try {
-    return res.sendStatus(204);
-  } catch (err) {
-    return res.sendStatus(500);
-  }
-});
-
 router.get('/button', async (req, res) => {
   const bjson = await button.find({});
   console.log(bjson);
@@ -287,23 +265,6 @@ router.put('/button', async (req, res) => {
   try {
     bData[mat].save();
     console.log(bData);
-    return res.sendStatus(204);
-  } catch (err) {
-    return res.sendStatus(500);
-  }
-});
-
-router.delete('/button', async (req, res) => {
-  console.log("Aqui vem o req.body:");
-  console.log(req.body);
-  let mat = req.body.mat;
-  let uni = req.body.uni;
-  const bData = await button.find({});
-  console.log('b', bData);
-  bData[mat].unidade[uni].button.pop();
-  bData[mat].save();
-  console.log(bData);
-  try {
     return res.sendStatus(204);
   } catch (err) {
     return res.sendStatus(500);
@@ -382,6 +343,40 @@ router.delete('/mat', async (req, res) => {
     return res.sendStatus(204);
   } catch (err) {
     console.log(err);
+    return res.sendStatus(500);
+  }
+});
+
+//videos routes
+router.get('/video', async (req, res) => {
+  const bjson = await button.find({});
+  console.log(bjson);
+  let data = [];
+  for (var i in bjson) {
+    data.push({ materia: bjson[i].materia, unidade: bjson[i].unidade, id: bjson[i]._id })
+  }
+  try {
+    return res.status(201).json(data);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+});
+
+router.put('/video', async (req, res) => {
+  console.log("Aqui vem o req.body:");
+  console.log(req.body);
+  let mat = req.body.mat;
+  const bData = await button.find({});
+  let bBody = req.body.json
+  console.log('u.send', bBody[mat]);
+  console.log('bd.has', bData[mat]);
+  bData[mat].materia = bBody[mat].materia;
+  bData[mat].unidade = bBody[mat].unidade;
+  try {
+    bData[mat].save();
+    console.log(bData);
+    return res.sendStatus(204);
+  } catch (err) {
     return res.sendStatus(500);
   }
 });

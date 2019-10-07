@@ -94,6 +94,7 @@ class ButtonManager extends Component {
       })
   }
 
+
   rmUnity = (e) => {
     e.preventDefault();
     const { id } = e.target;
@@ -121,16 +122,42 @@ class ButtonManager extends Component {
       })
   }
 
-  rmButton = e => {
+  addButton = e => {
     const { id, name } = e.target;
+    console.log(id, name)
     let mat = id;
     let uni = name;
-    console.log(mat, uni)
-    axios.delete('https://profdantas.herokuapp.com/button', { data: { 'mat': mat, 'uni': uni } })
-      .then(async (res) => {
-        console.log(res);
-        await window.location.reload();
-      })
+    const newList = this.state.materia.slice();
+    let cont = newList[mat].unidade[uni].button.length + 1;
+    newList[mat].unidade[uni].button.push({ titulo: 'Título ' + cont, url: 'http://google.com.br' });
+    this.setState({ materia: newList });
+  }
+
+  rmButton = e => {
+    const { id, name } = e.target;
+    console.log(id, name)
+    const newList = this.state.materia.slice();
+    newList[id].unidade[name].button.pop();
+    this.setState({ materia: newList });
+  }
+
+  addVideo = e => {
+    const { id, name } = e.target;
+    console.log(id, name)
+    const newList = this.state.materia.slice();
+    let cont = newList[id].unidade[name].video.length + 1;
+    newList[id].unidade[name].video.push({ titulo: 'Vídeo ' + cont, url: 'http://youtube.com.br' });
+    console.log(newList[id].unidade[name].video)
+    this.setState({ materia: newList });
+  }
+
+  rmVideo = e => {
+    const { id, name } = e.target;
+    console.log(id, name)
+    const newList = this.state.materia.slice();
+    newList[id].unidade[name].video.pop();
+    console.log(newList[id].unidade[name].video)
+    this.setState({ materia: newList });
   }
 
   componentWillMount() {
@@ -151,13 +178,14 @@ class ButtonManager extends Component {
               <div className="col-lg-12 col-md-12 float-left fill">
                 <input className="col-lg-8" key={index + 2} id={index} name="materia" onChange={this.handleChange} type="text" defaultValue={list.materia} />
                 <Button key={index + 6} variant='danger' id={list.id} name={index} onClick={this.rmMat}>Remover matéria</Button>
-                <Button id={index} onClick={this.addUnity}>Adicionar unidade</Button>
+                <br /><br />
+                <Button id={index} name={index} onClick={this.addUnity}>Adicionar unidade</Button>
+                <Button variant='danger' id={index} onClick={this.rmUnity}>Remover unidade</Button>
               </div>
               {
                 list.unidade.map((b, indexu) => (
                   <div className="col-lg-4 col-md-4 float-left fill">
-                    <h4 key={indexu + 3} id={indexu} onChange={this.handleChange} type="text">{indexu + 1}</h4>
-                    <Button id={index} onClick={this.rmUnity}>Remover unidade</Button>
+                    <h4 key={indexu + 3} id={indexu} onChange={this.handleChange} type="text">{"Unidade " + (indexu + 1)}</h4>
                     {
                       b.button.map((b, indexb) => (
                         <div className="float-left fill">
@@ -166,8 +194,29 @@ class ButtonManager extends Component {
                           <br /><br />
                         </div>
                       ))}
-                    <Button variant="danger" id={index} name={indexu} onClick={this.rmButton}>Remover botão</Button>
-                    <Button id={index} name={indexu} onClick={this.addButton}>Adicionar botão</Button>
+                    {b.button.length === 0 ?
+                      <Button id={index} name={indexu} onClick={this.addButton}>Adicionar botão</Button>
+                      :
+                      <div>
+                        <Button variant="danger" id={index} name={indexu} onClick={this.rmButton}>Remover botão</Button>
+                        <Button id={index} name={indexu} onClick={this.addButton}>Adicionar botão</Button>
+                      </div>}
+                    <br /><br />
+                    {
+                      b.video.map((b, indexb) => (
+                        <div className="float-left fill">
+                          <input key={indexb + 4} id={index} name={'titulo.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.titulo} />
+                          <input key={indexb + 5} id={index} name={'url.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.url} />
+                          <br /><br />
+                        </div>
+                      ))}
+                    {b.video.length === 0 ?
+                      <Button id={index} name={indexu} onClick={this.addVideo}>Adicionar video</Button>
+                      :
+                      <div>
+                        <Button variant="danger" id={index} name={indexu} onClick={this.rmVideo}>Remover video</Button>
+                        <Button id={index} name={indexu} onClick={this.addVideo}>Adicionar video</Button>
+                      </div>}
                   </div>
                 ))}
               <Button block variant="success" size="lg" type="submit">Salvar</Button>

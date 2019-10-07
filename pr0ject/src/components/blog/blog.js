@@ -508,9 +508,21 @@ class Blog extends Component {
                               {
                                 b.button.map((b, index) => (
                                   <div className="float-left fill">
-                                    <Button block href={b.url}>{b.titulo}</Button>
+                                    <Button className="btn bn-300 btn-dark js-scroll-trigger text-center" block target="_Blank" href={b.url}>{b.titulo}</Button>
                                     <br />
                                   </div>
+                                ))}
+
+                              {
+                                b.video.map((b, indexb) => (
+                                  (indexb === 0)
+                                    ? <div className="float-left fill">
+                                      <h6>Vídeos para complementar o conteúdo</h6>
+                                      <Button className="btn bn-300 btn-dark js-scroll-trigger text-center" block target="_Blank" href={b.url}>{b.titulo}</Button>
+                                    </div> :
+                                    <div className="float-left fill">
+                                      <Button className="btn bn-300 btn-dark js-scroll-trigger text-center" block target="_Blank" href={b.url}>{b.titulo}</Button>
+                                    </div>
                                 ))}
                             </div>
                           ))}

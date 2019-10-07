@@ -4,7 +4,7 @@ var connect = require('connect'),
 // Connect to a mongo database via URI
 // With the MongoLab addon the MONGOLAB_URI config variable is added to your
 // Heroku environment.  It can be accessed as process.env.MONGOLAB_URI
-mongo.connect(process.env.MONGOLAB_URI, {}, function (error, db) {
+mongo.connect(process.env.MONGOLAB_URI, { useUnifiedTopology: true }, function (error, db) {
 
   // console.log will write to the heroku log which can be accessed via the 
   // command line as "heroku logs"
