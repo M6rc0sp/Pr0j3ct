@@ -283,7 +283,7 @@ router.put('/button', async (req, res) => {
   console.log('u.send', bBody[mat]);
   console.log('bd.has', bData[mat]);
   bData[mat] = bBody[mat];
-  bData.save();
+  bData[mat].save();
   console.log(bData);
   try {
     return res.sendStatus(204);

@@ -62,6 +62,7 @@ class ButtonManager extends Component {
     axios.put('https://profdantas.herokuapp.com/button',
       {
         json: this.state.materia,
+        mat: id
       })
       .then(async (res) => {
         console.log(res);
