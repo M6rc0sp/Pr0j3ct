@@ -19,8 +19,8 @@
     "yarn": "^1.19.0"
   },
   "scripts": {
-    "start": "yarn && nodemon init.js",
-    "heroku-postbuild": "cd pr0ject && yarn && yarn run build"
+    "start": "nodemon init.js",
+    "heroku-postbuild": "yarn && cd pr0ject && yarn && yarn run build"
   },
   "engines": {
     "node": "^10.16.1",
