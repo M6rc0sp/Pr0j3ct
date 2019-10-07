@@ -20,8 +20,8 @@
   },
   "scripts": {
     "start": "nodemon init.js",
-    "heroku-prebuild": "yarn && cd pr0ject && yarn",
-    "heroku-postbuild": "yarn run build"
+    "heroku-prebuild": "yarn",
+    "heroku-postbuild": "cd pr0ject && yarn run build"
   },
   "engines": {
     "node": "^10.16.1",
