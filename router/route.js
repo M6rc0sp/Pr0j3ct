@@ -277,13 +277,9 @@ router.get('/button', async (req, res) => {
 router.put('/button', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
-  let mat = req.body.mat;
-  let uni = req.body.uni;
-  let but = req.body.but;
   const bData = await button.find({});
-  bData[mat].unidade[uni].button[but].titulo = req.body.titulo;
-  bData[mat].unidade[uni].button[but].url = req.body.url;
-  bData[mat].save();
+  bData = req.body.json;
+  bData.save();
   console.log(bData);
   try {
     return res.sendStatus(204);

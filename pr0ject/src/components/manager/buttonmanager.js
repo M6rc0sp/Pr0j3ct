@@ -37,25 +37,31 @@ class ButtonManager extends Component {
 
   }
 
-  // handleChange = e => {
-  //   const { name, value, id } = e.target
-  //   const newList = this.state.list.slice();
-  //   newList[id][name] = value;
-  //   console.log("this is me", newList, "index", id)
-  //   this.setState({ list: newList });
-  //   console.log("pingos nos is", [name], value)
-  //   console.log(this.state)
-  // }
+  handleChange = e => {
+    console.log(e.target)
+    let { name, value, id } = e.target
+    let idu = name.split('.')[1];
+    let idb = name.split('.')[2];
+    name = name.split('.')[0];
+    const newList = this.state.materia.slice();
+    if (name === "materia") {
+      newList[id][name] = value;
+    } else {
+      newList[id].unidade[idu].button[idb][name] = value;
+    }
+    console.log("this is me", newList, "index", id, 'indexu', idu, 'indexb', idb)
+    this.setState({ materia: newList });
+    console.log("pingos nos is", [name], value)
+    console.log(this.state)
+  }
 
-  submitIntro = e => {
-    // const { id } = e.target;
+  submitButton = e => {
+    const { id } = e.target;
+    console.log(id)
     e.preventDefault();
-    axios.put('https://profdantas.herokuapp.com/post',
+    axios.put('https://profdantas.herokuapp.com/button',
       {
-        // 'titulo': this.state.list[id].titulo,
-        // 'texto': this.state.list[id].texto,
-        // 'img': this.state.list[id].img,
-        // 'id': id
+        json: this.state.materia,
       })
       .then(async (res) => {
         console.log(res);
@@ -131,7 +137,6 @@ class ButtonManager extends Component {
   }
 
   render() {
-    //<Button block variant="success" size="lg" onClick={this.addButton}>Adicionar</Button>
     return (
       <div className="col-lg-8 text-center" style={{ margin: 'auto' }}>
         <h1>Botões do blog</h1>
@@ -141,9 +146,9 @@ class ButtonManager extends Component {
         <br /><br />
         {
           this.state.materia.map((list, index) => (
-            <form key={index + 1} onSubmit={this.submitIntro} className="text-center" id={index}>
+            <form key={index + 1} onSubmit={this.submitButton} className="text-center" id={index}>
               <div className="col-lg-12 col-md-12 float-left fill">
-                <input className="col-lg-8" key={index + 2} id={index} name="email" onChange={this.handleChange} type="text" defaultValue={list.materia} />
+                <input className="col-lg-8" key={index + 2} id={index} name="materia" onChange={this.handleChange} type="text" defaultValue={list.materia} />
                 <Button key={index + 6} variant='danger' id={list.id} name={index} onClick={this.rmMat}>Remover matéria</Button>
                 <Button id={index} onClick={this.addUnity}>Adicionar unidade</Button>
               </div>
@@ -155,8 +160,8 @@ class ButtonManager extends Component {
                     {
                       b.button.map((b, indexb) => (
                         <div className="float-left fill">
-                          <input key={indexb + 4} id={index} onChange={this.handleChange} type="text" defaultValue={b.titulo} />
-                          <input key={indexb + 5} id={index} onChange={this.handleChange} type="text" defaultValue={b.url} />
+                          <input key={indexb + 4} id={index} name={'titulo.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.titulo} />
+                          <input key={indexb + 5} id={index} name={'url.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.url} />
                           <br /><br />
                         </div>
                       ))}
