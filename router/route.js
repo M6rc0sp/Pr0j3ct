@@ -332,11 +332,11 @@ router.delete('/uni', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
   let mat = req.body.mat;
-  let arr = [];
+
   const bData = await button.find({});
-  console.log('b', bData);
-  arr = bData[mat].unidade.pop();
-  bData[mat].unidade = arr;
+  console.log('b', bData[mat].unidade);
+  bData[mat].unidade.pop();
+  console.log('a', bData[mat].unidade)
   bData[mat].save();
   console.log(bData);
   try {

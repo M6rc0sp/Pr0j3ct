@@ -29,11 +29,12 @@ class ButtonManager extends Component {
   }
 
   addMat() {
-    axios.post('https://profdantas.herokuapp.com/button')
-      .then((res) => {
+    axios.post('https://profdantas.herokuapp.com/mat')
+      .then(async (res) => {
         console.log(res);
+        await window.location.reload();
       })
-    window.location.reload();
+
   }
 
   // handleChange = e => {
@@ -56,8 +57,9 @@ class ButtonManager extends Component {
         // 'img': this.state.list[id].img,
         // 'id': id
       })
-      .then((res) => {
-        console.log(res)
+      .then(async (res) => {
+        console.log(res);
+        await window.location.reload();
       })
   }
 
@@ -65,23 +67,24 @@ class ButtonManager extends Component {
     e.preventDefault();
     const { id } = e.target;
     console.log('id é', id)
-    axios.delete('https://profdantas.herokuapp.com/button',
+    axios.delete('https://profdantas.herokuapp.com/mat',
       {
         data: { 'id': id }
       })
-      .then((res) => {
-        console.log(res)
+      .then(async (res) => {
+        console.log(res);
+        await window.location.reload();
       })
-    window.location.reload();
   }
 
   addUnity = e => {
+    e.preventDefault();
     const { id } = e.target;
     axios.post('https://profdantas.herokuapp.com/uni', { 'id': id })
-      .then((res) => {
+      .then(async (res) => {
         console.log(res);
+        await window.location.reload();
       })
-    window.location.reload();
   }
 
   rmUnity = (e) => {
@@ -93,10 +96,10 @@ class ButtonManager extends Component {
       {
         data: { 'mat': mat }
       })
-      .then((res) => {
-        console.log(res)
+      .then(async (res) => {
+        console.log(res);
+        await window.location.reload();
       })
-    window.location.reload();
   }
 
   addButton = e => {
@@ -105,10 +108,10 @@ class ButtonManager extends Component {
     let uni = name;
     console.log(mat, uni)
     axios.post('https://profdantas.herokuapp.com/button', { 'mat': mat, 'uni': uni })
-      .then((res) => {
+      .then(async (res) => {
         console.log(res);
+        await window.location.reload();
       })
-    window.location.reload();
   }
 
   rmButton = e => {
@@ -116,11 +119,11 @@ class ButtonManager extends Component {
     let mat = id;
     let uni = name;
     console.log(mat, uni)
-    axios.delete('https://profdantas.herokuapp.com/button', { 'mat': mat, 'uni': uni })
-      .then((res) => {
+    axios.delete('https://profdantas.herokuapp.com/button', { data: { 'mat': mat, 'uni': uni } })
+      .then(async (res) => {
         console.log(res);
+        await window.location.reload();
       })
-    window.location.reload();
   }
 
   componentWillMount() {
@@ -157,6 +160,7 @@ class ButtonManager extends Component {
                           <br /><br />
                         </div>
                       ))}
+                    <Button variant="danger" id={index} name={indexu} onClick={this.rmButton}>Remover botão</Button>
                     <Button id={index} name={indexu} onClick={this.addButton}>Adicionar botão</Button>
                   </div>
                 ))}
