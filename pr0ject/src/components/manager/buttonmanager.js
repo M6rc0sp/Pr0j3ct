@@ -37,24 +37,6 @@ class ButtonManager extends Component {
 
   }
 
-  handleChange = e => {
-    console.log(e.target)
-    let { name, value, id } = e.target
-    let idu = name.split('.')[1];
-    let idb = name.split('.')[2];
-    name = name.split('.')[0];
-    const newList = this.state.materia.slice();
-    if (name === "materia") {
-      newList[id][name] = value;
-    } else {
-      newList[id].unidade[idu].button[idb][name] = value;
-    }
-    console.log("this is me", newList, "index", id, 'indexu', idu, 'indexb', idb)
-    this.setState({ materia: newList });
-    console.log("pingos nos is", [name], value)
-    console.log(this.state)
-  }
-
   submitButton = e => {
     const { id } = e.target;
     console.log(id)
@@ -94,7 +76,6 @@ class ButtonManager extends Component {
       })
   }
 
-
   rmUnity = (e) => {
     e.preventDefault();
     const { id } = e.target;
@@ -112,24 +93,12 @@ class ButtonManager extends Component {
 
   addButton = e => {
     const { id, name } = e.target;
-    let mat = id;
-    let uni = name;
-    console.log(mat, uni)
-    axios.post('https://profdantas.herokuapp.com/button', { 'mat': mat, 'uni': uni })
-      .then(async (res) => {
-        console.log(res);
-        await window.location.reload();
-      })
-  }
-
-  addButton = e => {
-    const { id, name } = e.target;
     console.log(id, name)
     let mat = id;
     let uni = name;
     const newList = this.state.materia.slice();
     let cont = newList[mat].unidade[uni].button.length + 1;
-    newList[mat].unidade[uni].button.push({ titulo: 'Título ' + cont, url: 'http://google.com.br' });
+    newList[mat].unidade[uni].button.push({ titulo: 'Aula ' + cont, url: 'http://google.com.br' });
     this.setState({ materia: newList });
   }
 
@@ -158,6 +127,27 @@ class ButtonManager extends Component {
     newList[id].unidade[name].video.pop();
     console.log(newList[id].unidade[name].video)
     this.setState({ materia: newList });
+  }
+
+  handleChange = e => {
+    console.log(e.target)
+    let { name, value, id } = e.target
+    let type = name.split('.')[0];
+    let idu = name.split('.')[2];
+    let idb = name.split('.')[3];
+    name = name.split('.')[1];
+    const newList = this.state.materia.slice();
+    if (name === "materia") {
+      newList[id][name] = value;
+    } else if(type==='v'){
+      newList[id].unidade[idu].video[idb][name] = value;
+    }else{
+      newList[id].unidade[idu].button[idb][name] = value;
+    }
+    console.log("this is me", newList, "index", id, 'indexu', idu, 'indexb', idb)
+    this.setState({ materia: newList });
+    console.log("pingos nos is", [name], value)
+    console.log(this.state)
   }
 
   componentWillMount() {
@@ -189,8 +179,8 @@ class ButtonManager extends Component {
                     {
                       b.button.map((b, indexb) => (
                         <div className="float-left fill">
-                          <input key={indexb + 4} id={index} name={'titulo.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.titulo} />
-                          <input key={indexb + 5} id={index} name={'url.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.url} />
+                          <input key={indexb + 4} id={index} name={'b.titulo.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.titulo} />
+                          <input key={indexb + 5} id={index} name={'b.url.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.url} />
                           <br /><br />
                         </div>
                       ))}
@@ -201,12 +191,13 @@ class ButtonManager extends Component {
                         <Button variant="danger" id={index} name={indexu} onClick={this.rmButton}>Remover botão</Button>
                         <Button id={index} name={indexu} onClick={this.addButton}>Adicionar botão</Button>
                       </div>}
-                    <br /><br />
+                    <br />
+                    <h4>Vídeos Complementares</h4>
                     {
                       b.video.map((b, indexb) => (
                         <div className="float-left fill">
-                          <input key={indexb + 4} id={index} name={'titulo.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.titulo} />
-                          <input key={indexb + 5} id={index} name={'url.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.url} />
+                          <input key={indexb + 4} id={index} name={'v.titulo.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.titulo} />
+                          <input key={indexb + 5} id={index} name={'v.url.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.url} />
                           <br /><br />
                         </div>
                       ))}
