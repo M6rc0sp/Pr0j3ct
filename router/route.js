@@ -282,10 +282,11 @@ router.put('/button', async (req, res) => {
   let bBody = req.body.json
   console.log('u.send', bBody[mat]);
   console.log('bd.has', bData[mat]);
-  bData[mat] = bBody[mat];
-  bData[mat].save();
-  console.log(bData);
+  bData[mat].materia = bBody[mat].materia;
+  bData[mat].unidade = bBody[mat].unidade;
   try {
+    bData[mat].save();
+    console.log(bData);
     return res.sendStatus(204);
   } catch (err) {
     return res.sendStatus(500);
