@@ -277,8 +277,9 @@ router.get('/button', async (req, res) => {
 router.put('/button', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
-  let bData = await button.find({});
-  bData = req.body.json;
+  const bData = await button.find({});
+  let bBody = req.body.json
+  bData = bBody;
   bData.save();
   console.log(bData);
   try {
