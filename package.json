@@ -21,7 +21,7 @@
   "scripts": {
     "start": "nodemon init.js",
     "heroku-prebuild": "yarn",
-    "heroku-postbuild": "cd pr0ject && yarn run build"
+    "heroku-postbuild": "cd pr0ject && yarn && yarn run build"
   },
   "engines": {
     "node": "^10.16.1",
