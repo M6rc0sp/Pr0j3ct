@@ -1,13 +1,12 @@
 const mongoose = require('mongoose');
 const config = require('../config');
 
-const buttonSchema = new mongoose.Schema({
+const videoSchema = new mongoose.Schema({
 
-  materia: {
+  tema: {
     type: String,
     required: true,
   },
-  unidade: [{
     button: [{
       titulo: {
         type: String,
@@ -17,21 +16,10 @@ const buttonSchema = new mongoose.Schema({
         type: String,
         required: true,
       },
-    }],
-    video: [{
-      titulo: {
-        type: String,
-        required: true,
-      },
-      url: {
-        type: String,
-        required: true,
-      },
     }]
-  }],
 });
 
 mongoose.connect(`mongodb://heroku_8g99fd99:ja612kvpqutitn96tup42ic955@ds217438.mlab.com:17438/${config.database}`, { useNewUrlParser: true });
-const button = mongoose.model('button', buttonSchema);
+const video = mongoose.model('video', videoSchema);
 
-module.exports = button;
+module.exports = video;

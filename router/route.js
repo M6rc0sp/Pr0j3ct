@@ -277,7 +277,7 @@ router.get('/button', async (req, res) => {
 router.put('/button', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
-  const bData = await button.find({});
+  let bData = await button.find({});
   bData = req.body.json;
   bData.save();
   console.log(bData);
@@ -328,7 +328,6 @@ router.delete('/uni', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
   let mat = req.body.mat;
-
   const bData = await button.find({});
   console.log('b', bData[mat].unidade);
   bData[mat].unidade.pop();
@@ -352,6 +351,10 @@ router.post('/mat', async (req, res) => {
         titulo: 'Título',
         url: 'http://google.com.br',
       }],
+      video: [{
+        titulo: 'Video',
+        url: 'http://youtube.com.br',
+      }]
     }]
   });
 
