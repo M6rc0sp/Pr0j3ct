@@ -107,10 +107,25 @@ class App extends Component {
         if (res.status === 204) {
           alert("Senha alterada com sucesso.")
           this.props.history.push("/login");
-        } else {
-          alert("Ocorreu um erro, verifique se sua antiga senha está correta.")
         }
-      })
+      }).catch((status, err) => {
+        alert("Ocorreu um erro, verifique se sua antiga senha está correta.")
+      });
+  }
+
+  loginForgot = e => {
+    e.preventDefault();
+    axios.post('https://profdantas.herokuapp.com/forgotpass',
+      {})
+      .then((res) => {
+        console.log(res)
+        if (res.status === 204) {
+          alert("Um e-mail com sua senha foi enviado pra sua conta.")
+          this.props.history.push("/login");
+        }
+      }).catch(() => {
+        alert("Ocorreu um erro, tente novamente mais tarde.")
+      });
   }
 
   render() {
@@ -138,6 +153,8 @@ class App extends Component {
             <div>
               <Button type="button" variant="warning" onClick={this.loginEdit}>Salvar nova senha</Button><br />
               <Button type="button" variant="danger" onClick={this.hideNewP}>Cancelar alteração</Button>
+              <br /><br /><br />
+              <Button type="button" variant="outline-dark" onClick={this.loginForgot}>Esqueci a senha</Button>
             </div>
             : <div>
               <Button type="button" onClick={this.loginSubmit}>Login</Button><br />

@@ -108,6 +108,9 @@ app.post('/siteemailsender', emailsender);
 app.use('/emailadvisor', emailsender);
 app.post('/emailadvisor', emailsender);
 
+app.use('/forgotpass', emailsender);
+app.post('/forgotpass', emailsender);
+
 app.use('/email', route);
 app.post('/email', route);
 app.get('/email', route);
