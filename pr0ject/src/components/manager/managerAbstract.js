@@ -18,7 +18,6 @@ class ManagerAbstract extends Component {
 	callAPI() {
 		axios.get('https://profdantas.herokuapp.com/abs')
 			.then((res) => {
-				console.log(res.data)
 				let data = [];
 
 				for (var i in res.data.site) {
@@ -26,7 +25,7 @@ class ManagerAbstract extends Component {
 				}
 
 				this.setState({ list: data })
-				console.log("list", this.state.list)
+				console.log("abs", this.state.list)
 			})
 	}
 
@@ -38,13 +37,14 @@ class ManagerAbstract extends Component {
 		const { name, value, id } = e.target
 		const newList = this.state.list.slice();
 		newList[id][name] = value;
-		console.log("this is me", newList, "index", id)
+		// console.log("this is me", newList, "index", id)
 		this.setState({ list: newList });
-		console.log("pingos nos is", [name], value)
-		console.log(this.state)
+		// console.log("pingos nos is", [name], value)
+		// console.log(this.state)
 	}
 
 	submitIntro = e => {
+		e.preventDefault();
 		const { id } = e.target;
 		axios.put('https://profdantas.herokuapp.com/abs',
 			{
@@ -53,8 +53,9 @@ class ManagerAbstract extends Component {
 				'img': this.state.list[id].img,
 				'id': id
 			})
-			.then((res) => {
+			.then(async (res) => {
 				console.log(res)
+				await window.location.reload();
 			})
 	}
 
@@ -68,7 +69,7 @@ class ManagerAbstract extends Component {
 
 	onClickHandler = (e) => {
 		const { id } = e.target;
-		console.log(id)
+		// console.log(id)
 		e.preventDefault();
 		const data = new FormData()
 		data.append('file', this.state.img)
@@ -82,10 +83,10 @@ class ManagerAbstract extends Component {
 			.then(async res => {
 				const newList = this.state.list.slice();
 				newList[id].img = await res.data;
-				console.log(newList[id].img)
+				// console.log(newList[id].img)
 				this.setState({ list: newList });
-				console.log(res)
-				console.log(this.state)
+				// console.log(res)
+				// console.log(this.state)
 				if (res.statusText === 'OK') {
 					alert("Foto salva, não esqueça de salvar o post para que as alterações tenham efeito...")
 				}

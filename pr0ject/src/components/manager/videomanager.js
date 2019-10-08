@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 
-class ButtonManager extends Component {
+class VideoManager extends Component {
 
   constructor(props) {
     super(props);
@@ -11,7 +11,7 @@ class ButtonManager extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getVideo();
   }
 
@@ -20,13 +20,11 @@ class ButtonManager extends Component {
       .then(async (res) => {
         let data = [];
 
-        console.log("v", res.data)
-
         for (var i in res.data) {
           await data.push({ tema: res.data[i].tema, button: res.data[i].button, id: res.data[i].id })
         }
         this.setState({ videos: data })
-        console.log("videos", this.state.videos)
+        // console.log("videos", this.state.videos)
       });
   }
 
@@ -56,7 +54,6 @@ class ButtonManager extends Component {
   rmVid = (e) => {
     e.preventDefault();
     const { id } = e.target;
-    console.log('id é', id)
     axios.delete('https://profdantas.herokuapp.com/video',
       {
         data: { 'id': id }
@@ -69,25 +66,21 @@ class ButtonManager extends Component {
 
   addButton = e => {
     const { id } = e.target;
-    console.log(id)
     let t = id;
     const newList = this.state.videos.slice();
     let cont = newList[t].button.length + 1;
     newList[t].button.push({ titulo: 'Vídeo ' + cont, url: 'http://google.com.br' });
-    console.log(newList)
     this.setState({ videos: newList });
   }
 
   rmButton = e => {
-    const { id, name } = e.target;
-    console.log(id, name)
+    const { id } = e.target;
     const newList = this.state.videos.slice();
     newList[id].button.pop();
     this.setState({ videos: newList });
   }
 
   handleChange = e => {
-    console.log(e.target)
     let { name, value, id } = e.target
     let type = name.split('.')[0];
     let idv = name.split('.')[2];
@@ -98,10 +91,10 @@ class ButtonManager extends Component {
       name = name.split('.')[1];
       newList[id].button[idv][name] = value;
     }
-    console.log("this is me", newList, "index", id, 'indexv', idv)
+    // console.log("this is me", newList, "index", id, 'indexv', idv)
     this.setState({ videos: newList });
-    console.log("pingos nos is", [name], value)
-    console.log(this.state)
+    // console.log("pingos nos is", [name], value)
+    // console.log(this.state)
   }
 
   render() {
@@ -144,4 +137,4 @@ class ButtonManager extends Component {
   }
 }
 
-export default ButtonManager;
+export default VideoManager;

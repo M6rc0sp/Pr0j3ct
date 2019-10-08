@@ -17,16 +17,15 @@ class EmailManager extends Component {
     axios.get('https://profdantas.herokuapp.com/email')
       .then((res) => {
         let data = [];
-        console.log("entrei", res.data)
         for (var i in res.data) {
           data.push({ email: res.data[i].email, permission: res.data[i].permission, id: res.data[i].id })
         }
         this.setState({ list: data })
-        console.log("list", this.state.list)
+        // console.log("e-mails", this.state.list)
       });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getEmail();
   }
 
@@ -37,10 +36,10 @@ class EmailManager extends Component {
       value = document.getElementsByName("permission")[id].checked
     }
     newList[id][name] = value;
-    console.log("this is me", newList, "index", id)
+    // console.log("this is me", newList, "index", id)
     this.setState({ list: newList });
-    console.log("pingos nos is", [name], value)
-    console.log(this.state)
+    // console.log("pingos nos is", [name], value)
+    // console.log(this.state)
   }
 
   submitIntro = e => {

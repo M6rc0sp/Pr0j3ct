@@ -18,15 +18,13 @@ class ManagerMainLoader extends Component {
   callAPI() {
     axios.get('https://profdantas.herokuapp.com/post')
       .then((res) => {
-        console.log(res.data)
         let data = [];
 
         for (var i in res.data.site) {
           data.push({ titulo: res.data.site[i].titulo, texto: res.data.site[i].texto, img: res.data.site[i].img, id: res.data.site[i].id })
         }
-
         this.setState({ list: data })
-        console.log("list", this.state.list)
+        console.log("posts", this.state.list)
       })
   }
 
@@ -38,10 +36,10 @@ class ManagerMainLoader extends Component {
     const { name, value, id } = e.target
     const newList = this.state.list.slice();
     newList[id][name] = value;
-    console.log("this is me", newList, "index", id)
+    // console.log("this is me", newList, "index", id)
     this.setState({ list: newList });
-    console.log("pingos nos is", [name], value)
-    console.log(this.state)
+    // console.log("pingos nos is", [name], value)
+    // console.log(this.state)
   }
 
   submitIntro = e => {
@@ -54,8 +52,9 @@ class ManagerMainLoader extends Component {
         'img': this.state.list[id].img,
         'id': id
       })
-      .then((res) => {
+      .then(async (res) => {
         console.log(res)
+        await window.location.reload();
       })
   }
 
@@ -69,7 +68,6 @@ class ManagerMainLoader extends Component {
 
   onClickHandler = (e) => {
     const { id } = e.target;
-    console.log(id)
     e.preventDefault();
     const data = new FormData()
     data.append('file', this.state.img)
@@ -83,10 +81,8 @@ class ManagerMainLoader extends Component {
       .then(async res => {
         const newList = this.state.list.slice();
         newList[id].img = await res.data;
-        console.log(newList[id].img)
+        // console.log(newList[id].img)
         this.setState({ list: newList });
-        console.log(res)
-        console.log(this.state)
         if (res.statusText === 'OK') {
           alert("Foto salva, não esqueça de salvar o post para que as alterações tenham efeito...")
         }
@@ -96,9 +92,6 @@ class ManagerMainLoader extends Component {
   rmPost = (e) => {
     e.preventDefault();
     const { id, name } = e.target;
-    console.log(e.target)
-    console.log(this.state.list[name])
-    console.log('id é', id, "num é", name)
     axios.delete('https://profdantas.herokuapp.com/post',
       {
         data: { 'id': id, 'img': this.state.list[name].img }

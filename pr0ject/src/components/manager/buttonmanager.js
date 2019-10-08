@@ -13,16 +13,14 @@ class ButtonManager extends Component {
 
   getButton() {
     axios.get('https://profdantas.herokuapp.com/button')
-      .then((res) => {
+      .then(async (res) => {
         let data = [];
 
-        console.log("b", res.data)
-
         for (var i in res.data) {
-          data.push({ materia: res.data[i].materia, unidade: res.data[i].unidade, id: res.data[i].id })
+          await data.push({ materia: res.data[i].materia, unidade: res.data[i].unidade, id: res.data[i].id })
         }
         this.setState({ materia: data })
-        console.log("materia", this.state.materia)
+        // console.log("materia", this.state.materia)
       });
   }
 
@@ -142,13 +140,13 @@ class ButtonManager extends Component {
     } else {
       newList[id].unidade[idu].button[idb][name] = value;
     }
-    console.log("this is me", newList, "index", id, 'indexu', idu, 'indexb', idb)
+    // console.log("this is me", newList, "index", id, 'indexu', idu, 'indexb', idb)
     this.setState({ materia: newList });
-    console.log("pingos nos is", [name], value)
-    console.log(this.state)
+    // console.log("pingos nos is", [name], value)
+    // console.log(this.state)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getButton();
   }
 

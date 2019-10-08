@@ -18,7 +18,6 @@ class Manager extends Component {
   }
 
   blog = () => {
-    console.log(window.sessionStorage.getItem('expanded'))
     window.sessionStorage.setItem('expanded', true);
     this.setState({ expanded: window.sessionStorage.getItem('expanded') });
   }

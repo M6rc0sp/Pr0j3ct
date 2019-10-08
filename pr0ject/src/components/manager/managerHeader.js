@@ -32,7 +32,7 @@ class ManagerHeader extends Component {
 
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.callAPI();
   }
 

@@ -96,21 +96,24 @@ class App extends Component {
 
   loginEdit = e => {
     e.preventDefault();
-    axios.put('https://profdantas.herokuapp.com/auth',
-      {
-        'user': this.state.user,
-        'password': this.state.password,
-        'newpass': this.state.newpass
-      })
-      .then((res) => {
-        console.log(res)
-        if (res.status === 204) {
-          alert("Senha alterada com sucesso.")
-          this.props.history.push("/login");
-        }
-      }).catch((status, err) => {
-        alert("Ocorreu um erro, verifique se sua antiga senha está correta.")
-      });
+    if (this.state.newpass === "") {
+      alert("A nova senha não pode ser vazia.")
+    } else {
+      axios.put('https://profdantas.herokuapp.com/auth',
+        {
+          'user': this.state.user,
+          'password': this.state.password,
+          'newpass': this.state.newpass
+        })
+        .then((res) => {
+          if (res.status === 204) {
+            alert("Senha alterada com sucesso.")
+            this.props.history.push("/login");
+          }
+        }).catch((status, err) => {
+          alert("Ocorreu um erro, verifique se sua antiga senha está correta.")
+        });
+    }
   }
 
   loginForgot = e => {
@@ -118,7 +121,6 @@ class App extends Component {
     axios.post('https://profdantas.herokuapp.com/forgotpass',
       {})
       .then((res) => {
-        console.log(res)
         if (res.status === 204) {
           alert("Um e-mail com sua senha foi enviado pra sua conta.")
           this.props.history.push("/login");

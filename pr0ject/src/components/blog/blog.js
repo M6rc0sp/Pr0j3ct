@@ -32,7 +32,6 @@ class Blog extends Component {
     const { id, value } = e.target
     switch (id) {
       case 'email':
-        console.log('email')
         this.setState({ email2: value });
         break;
       case 'phone':
@@ -48,8 +47,6 @@ class Blog extends Component {
         console.log('this was not expected.')
         break;
     }
-    console.log("pingos nos is", id, value)
-    console.log(this.state)
   }
 
   submitEmail = e => {
@@ -81,7 +78,6 @@ class Blog extends Component {
   getEmail() {
     axios.get('https://profdantas.herokuapp.com/email')
       .then((res) => {
-        console.log(res.data)
         let data = [];
 
         for (var i in res.data) {
@@ -89,23 +85,18 @@ class Blog extends Component {
         }
 
         this.setState({ list: data })
-        console.log("list", this.state.list)
       })
   }
 
   getButtons() {
     axios.get('https://profdantas.herokuapp.com/button')
       .then((res) => {
-        console.log(res.data)
         let buttons = [];
 
         for (var i in res.data) {
           buttons.push({ materia: res.data[i].materia, unidade: res.data[i].unidade, titulo: res.data[i].titulo, url: res.data[i].url, id: res.data[i].id })
         }
-
         this.setState({ buttons: buttons })
-        console.log("buttons", this.state.buttons)
-
       })
   }
 
@@ -114,25 +105,21 @@ class Blog extends Component {
       .then((res) => {
         let data = [];
 
-        console.log("v", res.data)
-
         for (var i in res.data) {
           data.push({ tema: res.data[i].tema, button: res.data[i].button, id: res.data[i].id })
         }
         this.setState({ videos: data })
-        console.log("videos", this.state.videos)
       });
   }
 
   notifyEmail = (e, email) => {
-    console.log(this.state.nomeModal, e.href, email)
-    console.log(e)
-    axios.post('https://profdantas.herokuapp.com/emailadvisor', { 'nome': this.state.nomeModal, 'email': email, 'url': e.href }).then((res) => {
-      console.log(res)
-    });
+    axios.post('https://profdantas.herokuapp.com/emailadvisor', { 'nome': this.state.nomeModal, 'email': email, 'url': e.href })
+      .then((res) => {
+        console.log(res)
+      });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getEmail();
     this.getButtons();
     this.getVideos();
@@ -168,10 +155,8 @@ class Blog extends Component {
               exist = true;
               if (this.state.list[i].permission === true) {
                 p = true;
-                console.log('permission?', p)
               } else {
                 p = false
-                console.log('permission?', p)
               }
               break;
             }
@@ -199,20 +184,17 @@ class Blog extends Component {
 
   clicked = e => {
     var usuario = window.sessionStorage.getItem('e-mail');
-    console.log(usuario)
     if (usuario === "jotarn08@gmail.com" | usuario === "jotarn@hotmail.com" | usuario === "jotarn03@yahoo.com") {
       //window.open(e.target.href, '_blank');
     } else {
       this.setState({ show: true });
       e.preventDefault();
-      console.log(e.target)
       this.setState({ e: e.target });
     }
   }
 
   confirmed = e => {
     window.sessionStorage.setItem('e-mail', this.state.email3);
-    console.log(this.state.email3)
     e.preventDefault();
     this.verifyEmail3(this.state.e)
   }
@@ -563,7 +545,7 @@ class Blog extends Component {
                         <div className="col-lg-4 col-md-4 float-left fill">
                           <div className="team-member">
                             <h4>{list.tema}</h4>
-                            <br/>
+                            <br />
                             {
                               list.button.map((v) => (
                                 <div className="float-left fill">
