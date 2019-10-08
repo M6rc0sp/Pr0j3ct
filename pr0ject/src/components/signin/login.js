@@ -107,8 +107,7 @@ class App extends Component {
         if (res.status === 204) {
           alert("Senha alterada com sucesso.")
           this.props.history.push("/login");
-        }
-        else {
+        } else {
           alert("Ocorreu um erro, verifique se sua antiga senha está correta.")
         }
       })
