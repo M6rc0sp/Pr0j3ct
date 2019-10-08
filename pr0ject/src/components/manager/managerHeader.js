@@ -23,10 +23,10 @@ class ManagerHeader extends Component {
 
   callAPI() {
     axios.get('https://profdantas.herokuapp.com/hdr')
-      .then((res) => {
+      .then(async (res) => {
         this.setState({
-          titulo: res.data.titulo,
-          subtitulo: res.data.subtitulo
+          titulo: await res.data.titulo,
+          subtitulo: await res.data.subtitulo
         });
       })
 

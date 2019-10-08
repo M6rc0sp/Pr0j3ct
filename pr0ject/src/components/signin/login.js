@@ -104,10 +104,11 @@ class App extends Component {
       })
       .then((res) => {
         console.log(res)
-        if(res.status===204){
+        if (res.status === 204) {
           alert("Senha alterada com sucesso.")
           this.props.history.push("/login");
-        } else {
+        }
+        else {
           alert("Ocorreu um erro, verifique se sua antiga senha está correta.")
         }
       })
@@ -127,22 +128,22 @@ class App extends Component {
                 <input placeholder="Senha" type="password" value={this.state.password} onChange={this.textoPassword} />
               </ListGroupItem>
               {this.state.showNewP &&
-              <ListGroupItem>
-                <input placeholder="Nova senha" type="password" value={this.state.newpass} onChange={this.textoOld} />
-              </ListGroupItem>
+                <ListGroupItem>
+                  <input placeholder="Nova senha" type="password" value={this.state.newpass} onChange={this.textoOld} />
+                </ListGroupItem>
               }
             </form>
           </ListGroup>
-          {this.state.showNewP 
-          ?
-          <div>
-          <Button type="button" variant="warning" onClick={this.loginEdit}>Salvar nova senha</Button><br/>
-          <Button type="button" variant="danger" onClick={this.hideNewP}>Cancelar alteração</Button>
-          </div>
-          :<div>
-          <Button type="button" onClick={this.loginSubmit}>Login</Button><br/>
-          <Button type="button" variant="warning" onClick={this.showNewP}>Alterar login</Button>
-          </div>
+          {this.state.showNewP
+            ?
+            <div>
+              <Button type="button" variant="warning" onClick={this.loginEdit}>Salvar nova senha</Button><br />
+              <Button type="button" variant="danger" onClick={this.hideNewP}>Cancelar alteração</Button>
+            </div>
+            : <div>
+              <Button type="button" onClick={this.loginSubmit}>Login</Button><br />
+              <Button type="button" variant="warning" onClick={this.showNewP}>Alterar login</Button>
+            </div>
           }
           <span id="menErro"> {this.state.erro} </span>
         </Card.Body>

@@ -8,10 +8,10 @@ class ManagerMain extends Component {
   addPost(e) {
     e.preventDefault();
     axios.post('https://profdantas.herokuapp.com/post')
-      .then((res) => {
+      .then(async (res) => {
         console.log(res)
+        await window.location.reload();
       })
-    window.location.reload();
   }
 
 

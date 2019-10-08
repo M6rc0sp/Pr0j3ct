@@ -67,22 +67,22 @@ class EmailManager extends Component {
       {
         data: { 'id': id }
       })
-      .then((res) => {
+      .then(async (res) => {
         console.log(res)
+        await window.location.reload();
       })
-    window.location.reload();
   }
 
   render() {
     return (
       <div className="col-lg-8 text-center" style={{ margin: 'auto' }}>
-        <br/><br/><br/>
+        <br /><br /><br />
         <h1>E-mails</h1>
         {
           this.state.list.map((list, index) => (
             <form key={index + 1} onSubmit={this.submitIntro} className="text-center" id={index}>
               <div className="col-lg-6 col-md-6 float-left fill">
-              <input key={index + 2} id={index} name="email" onChange={this.handleChange} type="text" defaultValue={list.email} />
+                <input key={index + 2} id={index} name="email" onChange={this.handleChange} type="text" defaultValue={list.email} />
               </div>
               <label style={{ padding: '0px 10px' }}>Permissão:</label>
               <input style={{ marginRight: '10px' }} key={index + 3} id={index} name="permission" onChange={this.handleChange} type="checkbox" defaultChecked={list.permission} />

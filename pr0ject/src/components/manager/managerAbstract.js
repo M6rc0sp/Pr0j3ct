@@ -79,9 +79,9 @@ class ManagerAbstract extends Component {
 		axios.post("https://profdantas.herokuapp.com/upload", formData, {
 			//receive two parameter endpoint url ,form data
 		})
-			.then(res => {
+			.then(async res => {
 				const newList = this.state.list.slice();
-				newList[id].img = res.data;
+				newList[id].img = await res.data;
 				console.log(newList[id].img)
 				this.setState({ list: newList });
 				console.log(res)

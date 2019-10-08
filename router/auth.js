@@ -8,25 +8,16 @@ router.post('/', (req, res) => {
   console.log(req.body)
   if (req.body.user && req.body.password) {
     let dados;
-    if (req.body.user === "admin") {
-      console.log("entrei")
 
-      dados = {
-        user: req.body.user,
-        password: req.body.password,
-      };
-    } else {
-      dados = {
-        user: req.body.user,
-        password: req.body.password,
-      };
-    }
+    dados = {
+      user: req.body.user,
+      password: req.body.password,
+    };
 
     user.create(dados, (err, small) => {
       if (err) {
         return res.sendStatus(500);
       }
-
       return res.sendStatus(201);
     });
   } else {
