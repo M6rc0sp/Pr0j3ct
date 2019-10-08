@@ -139,9 +139,9 @@ class ButtonManager extends Component {
     const newList = this.state.materia.slice();
     if (name === "materia") {
       newList[id][name] = value;
-    } else if(type==='v'){
+    } else if (type === 'v') {
       newList[id].unidade[idu].video[idb][name] = value;
-    }else{
+    } else {
       newList[id].unidade[idu].button[idb][name] = value;
     }
     console.log("this is me", newList, "index", id, 'indexu', idu, 'indexb', idb)
@@ -157,8 +157,7 @@ class ButtonManager extends Component {
   render() {
     return (
       <div className="col-lg-8 text-center" style={{ margin: 'auto' }}>
-        <h1>Botões do blog</h1>
-        <br />
+        <h1>Materiais de Aula</h1>
         <h2>Matérias</h2>
         <Button onClick={this.addMat}>Adicionar matéria</Button>
         <br /><br />
@@ -172,46 +171,49 @@ class ButtonManager extends Component {
                 <Button id={index} name={index} onClick={this.addUnity}>Adicionar unidade</Button>
                 <Button variant='danger' id={index} onClick={this.rmUnity}>Remover unidade</Button>
               </div>
-              {
-                list.unidade.map((b, indexu) => (
-                  <div className="col-lg-4 col-md-4 float-left fill">
-                    <h4 key={indexu + 3} id={indexu} onChange={this.handleChange} type="text">{"Unidade " + (indexu + 1)}</h4>
-                    {
-                      b.button.map((b, indexb) => (
-                        <div className="float-left fill">
-                          <input key={indexb + 4} id={index} name={'b.titulo.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.titulo} />
-                          <input key={indexb + 5} id={index} name={'b.url.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.url} />
-                          <br /><br />
-                        </div>
-                      ))}
-                    {b.button.length === 0 ?
-                      <Button id={index} name={indexu} onClick={this.addButton}>Adicionar botão</Button>
-                      :
-                      <div>
-                        <Button variant="danger" id={index} name={indexu} onClick={this.rmButton}>Remover botão</Button>
+              <div className="col-lg-12 col-md-12 float-left fill">
+                {
+                  list.unidade.map((b, indexu) => (
+                    <div className="col-lg-4 col-md-4 float-left fill">
+                      <h4 key={indexu + 3} id={indexu} onChange={this.handleChange} type="text">{"Unidade " + (indexu + 1)}</h4>
+                      {
+                        b.button.map((b, indexb) => (
+                          <div className="float-left fill">
+                            <input key={indexb + 4} id={index} name={'b.titulo.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.titulo} />
+                            <input key={indexb + 5} id={index} name={'b.url.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.url} />
+                            <br /><br />
+                          </div>
+                        ))}
+                      {b.button.length === 0 ?
                         <Button id={index} name={indexu} onClick={this.addButton}>Adicionar botão</Button>
-                      </div>}
-                    <br />
-                    <h4>Vídeos Complementares</h4>
-                    {
-                      b.video.map((b, indexb) => (
-                        <div className="float-left fill">
-                          <input key={indexb + 4} id={index} name={'v.titulo.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.titulo} />
-                          <input key={indexb + 5} id={index} name={'v.url.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.url} />
-                          <br /><br />
-                        </div>
-                      ))}
-                    {b.video.length === 0 ?
-                      <Button id={index} name={indexu} onClick={this.addVideo}>Adicionar video</Button>
-                      :
-                      <div>
-                        <Button variant="danger" id={index} name={indexu} onClick={this.rmVideo}>Remover video</Button>
+                        :
+                        <div>
+                          <Button variant="danger" id={index} name={indexu} onClick={this.rmButton}>Remover botão</Button>
+                          <Button id={index} name={indexu} onClick={this.addButton}>Adicionar botão</Button>
+                        </div>}
+                      <br />
+                      <h4>Vídeos Complementares</h4>
+                      {
+                        b.video.map((b, indexb) => (
+                          <div className="float-left fill">
+                            <input key={indexb + 4} id={index} name={'v.titulo.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.titulo} />
+                            <input key={indexb + 5} id={index} name={'v.url.' + indexu + '.' + indexb} onChange={this.handleChange} type="text" defaultValue={b.url} />
+                            <br /><br />
+                          </div>
+                        ))}
+                      {b.video.length === 0 ?
                         <Button id={index} name={indexu} onClick={this.addVideo}>Adicionar video</Button>
-                      </div>}
-                  </div>
-                ))}
-              <Button block variant="success" size="lg" type="submit">Salvar</Button>
-              <br />
+                        :
+                        <div>
+                          <Button variant="danger" id={index} name={indexu} onClick={this.rmVideo}>Remover video</Button>
+                          <Button id={index} name={indexu} onClick={this.addVideo}>Adicionar video</Button>
+                        </div>}
+                    </div>
+                  ))}
+              </div>
+              <div>
+                <Button block variant="success" size="lg" type="submit">Salvar</Button>
+              </div>
               <br />
             </form>
           ))

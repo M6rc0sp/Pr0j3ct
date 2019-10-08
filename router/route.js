@@ -5,7 +5,8 @@ var abs = require('../models/abstract');
 var post = require('../models/post');
 var email = require('../models/email');
 var auth = require('../models/user');
-var button = require('../models/buttons')
+var button = require('../models/buttons');
+var video = require('../models/videos');
 var cloudinary = require('cloudinary').v2;
 
 
@@ -348,12 +349,33 @@ router.delete('/mat', async (req, res) => {
 });
 
 //videos routes
+router.post('/video', async (req, res) => {
+  console.log("Aqui vem o req.body:");
+  console.log(req.body);
+  const data = new video({
+    tema: 'Tema',
+    unidade: [{
+      button: [{
+        titulo: 'Título',
+        url: 'http://google.com.br',
+      }]
+    }]
+  });
+
+  try {
+    const newModel = await data.save();
+    return res.status(201).json(newModel);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+});
+
 router.get('/video', async (req, res) => {
-  const bjson = await button.find({});
-  console.log(bjson);
+  const vjson = await video.find({});
+  console.log(vjson);
   let data = [];
-  for (var i in bjson) {
-    data.push({ materia: bjson[i].materia, unidade: bjson[i].unidade, id: bjson[i]._id })
+  for (var i in vjson) {
+    data.push({ tema: vjson[i].tema, button: vjson[i].button, id: vjson[i]._id })
   }
   try {
     return res.status(201).json(data);
@@ -365,18 +387,33 @@ router.get('/video', async (req, res) => {
 router.put('/video', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
-  let mat = req.body.mat;
-  const bData = await button.find({});
-  let bBody = req.body.json
-  console.log('u.send', bBody[mat]);
-  console.log('bd.has', bData[mat]);
-  bData[mat].materia = bBody[mat].materia;
-  bData[mat].unidade = bBody[mat].unidade;
+  let t = req.body.t;
+  const vData = await video.find({});
+  let vBody = req.body.json
+  console.log('u.send', vBody[t]);
+  console.log('bd.has', vData[t]);
+  vData[t].tema = vBody[t].tema;
+  vData[t].button = vBody[t].button;
   try {
-    bData[mat].save();
-    console.log(bData);
+    vData[t].save();
+    console.log(vData);
     return res.sendStatus(204);
   } catch (err) {
+    return res.sendStatus(500);
+  }
+});
+
+router.delete('/video', async (req, res) => {
+  console.log('executed');
+  try {
+    console.log(req.body)
+    const deletedService = await video.findByIdAndRemove(req.body.id);
+    if (!deletedService) {
+      return res.sendStatus(404);
+    }
+    return res.sendStatus(204);
+  } catch (err) {
+    console.log(err);
     return res.sendStatus(500);
   }
 });
