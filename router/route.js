@@ -279,7 +279,7 @@ router.post('/uni', async (req, res) => {
   let arr = [];
   const bData = await button.find({});
   arr = bData[id].unidade;
-  arr.push({ button: [{ titulo: 'Título', url: 'http://google.com.br', }] })
+  arr.push({})
   bData[id].unidade = arr;
   bData[id].save();
   console.log(bData);
@@ -313,16 +313,6 @@ router.post('/mat', async (req, res) => {
   console.log(req.body);
   const data = new button({
     materia: 'Matéria',
-    unidade: [{
-      button: [{
-        titulo: 'Título',
-        url: 'http://google.com.br',
-      }],
-      video: [{
-        titulo: 'Video',
-        url: 'http://youtube.com.br',
-      }]
-    }]
   });
 
   try {
@@ -354,12 +344,6 @@ router.post('/video', async (req, res) => {
   console.log(req.body);
   const data = new video({
     tema: 'Tema',
-    unidade: [{
-      button: [{
-        titulo: 'Título',
-        url: 'http://google.com.br',
-      }]
-    }]
   });
 
   try {

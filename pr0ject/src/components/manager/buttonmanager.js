@@ -9,8 +9,6 @@ class ButtonManager extends Component {
     this.state = {
       materia: [],
     };
-
-    //this.handleChange = this.handleChange.bind(this)
   }
 
   getButton() {
@@ -115,7 +113,7 @@ class ButtonManager extends Component {
     console.log(id, name)
     const newList = this.state.materia.slice();
     let cont = newList[id].unidade[name].video.length + 1;
-    newList[id].unidade[name].video.push({ titulo: 'Vídeo ' + cont, url: 'http://youtube.com.br' });
+    newList[id].unidade[name].video.push({ titulo: 'Vídeo Aula ' + cont, url: 'http://youtube.com.br' });
     console.log(newList[id].unidade[name].video)
     this.setState({ materia: newList });
   }
@@ -156,7 +154,7 @@ class ButtonManager extends Component {
 
   render() {
     return (
-      <div className="col-lg-8 text-center" style={{ margin: 'auto' }}>
+      <div className="col-lg-12 text-center" style={{ margin: 'auto' }}>
         <h1>Materiais de Aula</h1>
         <h2>Matérias</h2>
         <Button onClick={this.addMat}>Adicionar matéria</Button>
@@ -216,8 +214,7 @@ class ButtonManager extends Component {
               </div>
               <br />
             </form>
-          ))
-        }
+          ))}
       </div>
     );
   }

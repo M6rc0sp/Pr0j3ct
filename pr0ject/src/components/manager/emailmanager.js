@@ -76,6 +76,7 @@ class EmailManager extends Component {
   render() {
     return (
       <div className="col-lg-8 text-center" style={{ margin: 'auto' }}>
+        <br/><br/><br/>
         <h1>E-mails</h1>
         {
           this.state.list.map((list, index) => (

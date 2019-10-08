@@ -6,6 +6,7 @@ import ManagerMain from './managerMain';
 import ManagerAbstract from './managerAbstract';
 import EmailManager from './emailmanager';
 import ButtonManager from './buttonmanager';
+import VideoManager from './videomanager';
 
 class Manager extends Component {
 
@@ -37,16 +38,17 @@ class Manager extends Component {
             <Button onClick={this.blog}>Blog</Button>
             <br /><br />
           </div>
-          {(this.state.expanded!=='true')
+          {(this.state.expanded !== 'true')
             ?
-              <div className="row">
-                <ManagerAbstract />
-                <ManagerMain />
-              </div>
+            <div className="row">
+              <ManagerAbstract />
+              <ManagerMain />
+            </div>
             :
             <div className="container">
               <div className="row">
                 <ButtonManager />
+                <VideoManager />
                 <EmailManager />
               </div>
             </div>

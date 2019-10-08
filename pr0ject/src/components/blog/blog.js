@@ -14,6 +14,7 @@ class Blog extends Component {
     this.state = {
       list: [],
       buttons: [],
+      videos: [],
       already: false,
       email: '',
       email2: '',
@@ -108,6 +109,21 @@ class Blog extends Component {
       })
   }
 
+  getVideos() {
+    axios.get('https://profdantas.herokuapp.com/video')
+      .then((res) => {
+        let data = [];
+
+        console.log("v", res.data)
+
+        for (var i in res.data) {
+          data.push({ tema: res.data[i].tema, button: res.data[i].button, id: res.data[i].id })
+        }
+        this.setState({ videos: data })
+        console.log("videos", this.state.videos)
+      });
+  }
+
   notifyEmail = (e, email) => {
     console.log(this.state.nomeModal, e.href, email)
     console.log(e)
@@ -119,6 +135,7 @@ class Blog extends Component {
   componentWillMount() {
     this.getEmail();
     this.getButtons();
+    this.getVideos();
   }
 
   //modal init
@@ -508,7 +525,7 @@ class Blog extends Component {
                               {
                                 b.button.map((b, index) => (
                                   <div className="float-left fill">
-                                    <Button block target="_Blank" href={b.url}>{b.titulo}</Button>
+                                    <Button onClick={this.clicked} block target="_Blank" href={b.url}>{b.titulo}</Button>
                                     <br />
                                   </div>
                                 ))}
@@ -518,10 +535,12 @@ class Blog extends Component {
                                   (indexb === 0)
                                     ? <div className="float-left fill">
                                       <h6>Vídeos para complementar o conteúdo</h6>
-                                      <Button block target="_Blank" href={b.url}>{b.titulo}</Button>
+                                      <Button block onClick={this.clicked} target="_Blank" href={b.url}>{b.titulo}</Button>
+                                      <br />
                                     </div> :
                                     <div className="float-left fill">
-                                      <Button block target="_Blank" href={b.url}>{b.titulo}</Button>
+                                      <Button block onClick={this.clicked} target="_Blank" href={b.url}>{b.titulo}</Button>
+                                      <br />
                                     </div>
                                 ))}
                             </div>
@@ -533,6 +552,30 @@ class Blog extends Component {
                 <br /><br />
               </div>
             </div>
+
+            <section id="videos">
+              <div className="container">
+                <div className="col-lg-12 mx-auto text-center">
+                  <h2 className="section-heading text-uppercase">Vídeos</h2>
+                  <div className="row">
+                    {
+                      this.state.videos.map((list) => (
+                        <div className="col-lg-4 col-md-4 float-left fill">
+                          <div className="team-member">
+                            <h4>{list.tema}</h4>
+                            <br/>
+                            {
+                              list.button.map((v) => (
+                                <div className="float-left fill">
+                                  <Button block onClick={this.clicked} target="_Blank" href={v.url}>{v.titulo}</Button>
+                                  <br />
+                                </div>
+                              ))}
+                          </div>
+                        </div>
+                      ))
+                    }
+                  </div></div></div></section>
 
             <div className="row">
               <div className="col-lg-12 text-center">
