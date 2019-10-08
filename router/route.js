@@ -222,17 +222,18 @@ router.delete('/email', async (req, res) => {
 //auth routes
 router.put('/auth', async (req, res) => {
   console.log("aqui começa ", req.body)
+
+  const usData = await auth.find({});
+  if (req.body.password === usData[0].password) {
+    usData[0].user = req.body.user;
+    usData[0].password = req.body.newpass;
+    usData[0].save();
+    console.log(usData);
+  } else {
+    return res.sendStatus(304);
+  }
   try {
-    const usData = await auth.find({});
-    if (req.body.password === usData[0].password) {
-      usData[0].user = req.body.user;
-      usData[0].password = req.body.newpass;
-      usData[0].save();
-      console.log(usData);
-      return res.sendStatus(204);
-    } else {
-      return res.status(200);
-    }
+    return res.sendStatus(204);
   } catch (err) {
     return res.sendStatus(500);
   }
