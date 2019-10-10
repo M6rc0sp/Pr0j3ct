@@ -326,7 +326,7 @@ router.post('/mat', async (req, res) => {
   console.log('all', bData);
   console.log("n", n, bData[n]);
   try {
-    bData[n].materia.save();
+    await bData.save();
     return res.status(204);
   } catch (err) {
     console.log(err)
