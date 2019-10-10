@@ -312,10 +312,10 @@ router.delete('/uni', async (req, res) => {
 router.post('/mat', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
-  // const data = new button({
-  //   materia: 'Matéria',
-  // });
-  const bData = new button({});
+  const data = new button({
+    materia: 'Matéria',
+  });
+  const bData = data;
   let n = bData.length - 1;
   console.log('b', bData);
   bData[n].materia = 'Matéria';
@@ -386,7 +386,7 @@ router.put('/video', async (req, res) => {
   vData[t].tema = vBody[t].tema;
   vData[t].button = vBody[t].button;
   try {
-    vData[t].save();
+    await vData[t].save();
     console.log(vData);
     return res.sendStatus(204);
   } catch (err) {
