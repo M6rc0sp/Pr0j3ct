@@ -312,13 +312,12 @@ router.delete('/uni', async (req, res) => {
 router.post('/mat', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
-  const data = new button({
-    materia: 'Matéria',
-  });
 
-  for (var i in data) {
-    data[i] = data[i]
-  }
+  button.update({
+    "$push": {
+      "materia": "Matéria",
+    }
+  });
 
   try {
     const newModel = await data.save();
