@@ -322,8 +322,8 @@ router.post('/mat', async (req, res) => {
   arr.push({ materia: 'Matéria' })
   bData = arr;
   console.log(bData);
+  bData.save();
   try {
-    bData.save();
     return res.status(204);
   } catch (err) {
     return res.sendStatus(500);
