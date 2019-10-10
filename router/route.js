@@ -316,13 +316,15 @@ router.post('/mat', async (req, res) => {
   //   materia: 'Matéria',
   // });
   let arr = [];
+  let n = bData.length;
   let bData = await button.find({});
   console.log('b', bData);
   arr = bData;
-  arr.push({ materia: 'Matéria' })
-  bData = arr;
-  console.log(bData);
-  bData.save();
+  arr.push({ materia: 'Matéria' });
+  bData[n] = arr[n];
+  console.log('all', bData);
+  console.log("n", bData[n]);
+  bData[n].save();
   try {
     return res.status(204);
   } catch (err) {
