@@ -312,23 +312,16 @@ router.delete('/uni', async (req, res) => {
 router.post('/mat', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
-  var ObjectID = require('mongodb').ObjectID;
-  // const data = new button({
-  //   materia: 'Matéria',
-  // });
+  const data = new button({
+    materia: 'Matéria',
+  });
+
+  for (var i in data) {
+    data[i] = data[i]
+  }
+  
   try {
-    button.find({}, function (error, bData) {
-      if (error) { console.error(error); }
-      var arr = bData;
-      let n = bData.length;
-      arr.push({ _id: new ObjectID(), materia: 'Matéria', unidade: [] });
-      console.log('b', bData);
-      bData.push()
-      bData[n] = arr[n];
-      console.log('all', bData);
-      console.log("n", n, bData[n]);
-      bData[n].save();
-    });
+    await data.save();
     return res.status(204);
   } catch (err) {
     return res.sendStatus(500);
