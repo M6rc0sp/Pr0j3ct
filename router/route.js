@@ -313,7 +313,7 @@ router.post('/mat', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
 
-  button.update({
+  const data = button.update({
     "$push": {
       "materia": "Matéria",
     }
