@@ -312,10 +312,16 @@ router.delete('/uni', async (req, res) => {
 router.post('/mat', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
-  const data = new button({
-    materia: 'Matéria',
-  });
-
+  // const data = new button({
+  //   materia: 'Matéria',
+  // });
+  let arr = [];
+  let bData = button.find({});
+  console.log('b', bData);
+  arr = bData;
+  arr.push({})
+  bData = arr;
+  console.log(bData);
   try {
     const newModel = await data.save();
     return res.status(201).json(newModel);
