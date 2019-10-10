@@ -323,8 +323,8 @@ router.post('/mat', async (req, res) => {
   bData = arr;
   console.log(bData);
   try {
-    const newModel = await data.save();
-    return res.status(201).json(newModel);
+    bData.save();
+    return res.status(204);
   } catch (err) {
     return res.sendStatus(500);
   }
