@@ -313,16 +313,15 @@ router.post('/mat', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
 
-  const data = button.update({
-    "$push": {
-      "materia": "Matéria",
-    }
+  const data = new button({
+      materia: "Matéria",
   });
 
   try {
     const newModel = await data.save();
     return res.status(201).json(newModel);
   } catch (err) {
+    console.log(err);
     return res.sendStatus(500);
   }
 });
