@@ -319,10 +319,10 @@ router.post('/mat', async (req, res) => {
   for (var i in data) {
     data[i] = data[i]
   }
-  
+
   try {
-    await data.save();
-    return res.status(204);
+    const newModel = await data.save();
+    return res.status(201).json(newModel);
   } catch (err) {
     return res.sendStatus(500);
   }
