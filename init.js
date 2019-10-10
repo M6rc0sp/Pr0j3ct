@@ -16,12 +16,12 @@ app.use(bodyParser.json())
 app.use(cors());
 
 //ready
-app.use(express.static(path.join(__dirname, '/pr0ject/src/public/img')));
+app.use(express.static(path.join(__dirname, '/pr0ject/src/static/images')));
 
 //files upload by multer
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '/pr0ject/src/public/img'))
+    cb(null, path.join(__dirname, '/pr0ject/src/static/images'))
   },
   filename: function (req, file, cb) {
     cb(null, Date.now()+file.originalname)
