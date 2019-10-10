@@ -316,19 +316,18 @@ router.post('/mat', async (req, res) => {
   // const data = new button({
   //   materia: 'Matéria',
   // });
-  const but = await button;
-  const bData = await button.find({});
-  var arr = bData;
-  let n = bData.length;
-  arr.push({ _id: new ObjectID(), materia: 'Matéria', unidade: []});
-  console.log('b', bData);
-  bData.push()
-  bData[n] = arr[n];
-  console.log('all', bData);
-  console.log("n", n, bData[n]);
-  console.log('but', but);
   try {
-    await bData[n].save();
+    button.find({}, function (bData) {
+      var arr = bData;
+      let n = bData.length;
+      arr.push({ _id: new ObjectID(), materia: 'Matéria', unidade: [] });
+      console.log('b', bData);
+      bData.push()
+      bData[n] = arr[n];
+      console.log('all', bData);
+      console.log("n", n, bData[n]);
+      bData[n].save();
+    });
     return res.status(204);
   } catch (err) {
     console.log(err)
