@@ -320,11 +320,10 @@ router.post('/mat', async (req, res) => {
   const bData = await button.find({});
   var arr = bData;
   let n = bData.length;
-  arr.push({ materia: 'Matéria', _id: new ObjectID() });
+  arr.push({ _id: new ObjectID(), materia: 'Matéria', unidade: []});
   console.log('b', bData);
   bData.push()
   bData[n] = arr[n];
-  bData[n].unidade.push();
   console.log('all', bData);
   console.log("n", n, bData[n]);
   console.log('but', but);
