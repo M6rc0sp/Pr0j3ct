@@ -321,10 +321,10 @@ router.post('/mat', async (req, res) => {
   console.log('b', bData);
   arr = bData;
   arr.push({ materia: 'Matéria' });
-  bData[n] = arr[n];
+  bData[n].materia = arr[n].materia;
   console.log('all', bData);
-  console.log("n", bData[n]);
-  bData[n].save();
+  console.log("n", n, bData[n]);
+  bData[n].materia.save();
   try {
     return res.status(204);
   } catch (err) {
