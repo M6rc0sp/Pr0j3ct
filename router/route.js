@@ -312,15 +312,21 @@ router.delete('/uni', async (req, res) => {
 router.post('/mat', async (req, res) => {
   console.log("Aqui vem o req.body:");
   console.log(req.body);
-  const data = new button({
-    materia: 'Matéria',
-  });
-  const bData = data;
-  let n = bData.length - 1;
+  // const data = new button({
+  //   materia: 'Matéria',
+  // });
+  const but = button;
+  const bData = await button.find({});
+  var arr = bData;
+  let n = bData.length;
+  arr.push({ materia: 'Matéria', _id: new ObjectID() });
   console.log('b', bData);
-  bData[n].materia = 'Matéria';
+  console.log('barr', arr);
+  bData.push()
+  bData[n] = arr[n];
   console.log('all', bData);
   console.log("n", n, bData[n]);
+  console.log('but', but);
   try {
     await bData.save();
     return res.status(204);
