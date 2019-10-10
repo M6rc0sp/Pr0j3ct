@@ -317,7 +317,8 @@ router.post('/mat', async (req, res) => {
   //   materia: 'Matéria',
   // });
   try {
-    button.find({}, function (bData) {
+    button.find({}, function (err, bData) {
+      if (err) { console.error(err); }
       var arr = bData;
       let n = bData.length;
       arr.push({ _id: new ObjectID(), materia: 'Matéria', unidade: [] });
