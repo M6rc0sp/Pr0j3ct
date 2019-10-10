@@ -97,10 +97,12 @@ router.delete('/post', async (req, res) => {
   console.log(req.body);
   let link = req.body.img;
   console.log(link);
-  var l = link.split("/");
-  var li = l[7].split('.')[0];
-  console.log(li);
-  cloudinary.uploader.destroy(li, function (result) { console.log(result) });
+  if (link !== "abc") {
+    var l = link.split("/");
+    var li = l[7].split('.')[0];
+    console.log(li);
+    cloudinary.uploader.destroy(li, function (result) { console.log(result) });
+  }
   try {
     const deletedService = await post.findByIdAndRemove(req.body.id);
     if (!deletedService) {
