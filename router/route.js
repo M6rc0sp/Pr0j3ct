@@ -319,7 +319,7 @@ router.post('/mat', async (req, res) => {
   let bData = await button.find({});
   console.log('b', bData);
   arr = bData;
-  arr.push({})
+  arr.push({ materia: 'Matéria' })
   bData = arr;
   console.log(bData);
   try {
