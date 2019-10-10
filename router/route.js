@@ -322,9 +322,9 @@ router.post('/mat', async (req, res) => {
   let n = bData.length;
   arr.push({ materia: 'Matéria', _id: new ObjectID() });
   console.log('b', bData);
-  console.log('barr', arr);
   bData.push()
   bData[n] = arr[n];
+  bData[n].unidade.push();
   console.log('all', bData);
   console.log("n", n, bData[n]);
   console.log('but', but);
