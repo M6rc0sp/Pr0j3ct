@@ -316,7 +316,7 @@ router.post('/mat', async (req, res) => {
   // const data = new button({
   //   materia: 'Matéria',
   // });
-  const but = button;
+  const but = await button;
   const bData = await button.find({});
   var arr = bData;
   let n = bData.length;
@@ -329,7 +329,7 @@ router.post('/mat', async (req, res) => {
   console.log("n", n, bData[n]);
   console.log('but', but);
   try {
-    await bData.save();
+    await bData[n].save();
     return res.status(204);
   } catch (err) {
     console.log(err)
