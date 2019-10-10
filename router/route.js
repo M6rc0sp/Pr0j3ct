@@ -315,14 +315,10 @@ router.post('/mat', async (req, res) => {
   // const data = new button({
   //   materia: 'Matéria',
   // });
-  let arr = [];
-  let bData = await button.find({});
+  const bData = await button.find({});
   let n = bData.length;
   console.log('b', bData);
-  arr = bData;
-  arr.push({ materia: 'Matéria' });
-  bData = arr;
-  bData[n].materia = arr[n].materia;
+  bData.push({ materia: 'Matéria' });
   console.log('all', bData);
   console.log("n", n, bData[n]);
   try {
