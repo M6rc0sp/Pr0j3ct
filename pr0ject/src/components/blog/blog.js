@@ -487,7 +487,6 @@ class Blog extends Component {
             <h1>Em construção, os botões podem não conter os links corretos no momento. Mas estamos trabalhando nisso...</h1>
             <div className="row">
               <div className="col-lg-12 text-center" style={{ margin: 'auto' }}>
-                <h1>Botões do blog</h1>
                 <div className="row">
                   <div className="col-lg-12 text-center">
                     <h2 className="section-heading text-uppercase">Matérias Ministradas</h2>

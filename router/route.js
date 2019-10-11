@@ -320,13 +320,17 @@ router.post('/mat', async (req, res) => {
         {
           titulo: "Aula 1",
           url: "http://google.com.br"
-        },
-        {
+        }, {
           titulo: "Aula 2",
           url: "http://google.com.br"
-        },
-        {
+        }, {
           titulo: "Aula 3",
+          url: "http://google.com.br"
+        }, {
+          titulo: "Aula 4",
+          url: "http://google.com.br"
+        }, {
+          titulo: "Aula 5",
           url: "http://google.com.br"
         },
       ], video: [{
@@ -344,13 +348,17 @@ router.post('/mat', async (req, res) => {
         {
           titulo: "Aula 1",
           url: "http://google.com.br"
-        },
-        {
+        }, {
           titulo: "Aula 2",
           url: "http://google.com.br"
-        },
-        {
+        }, {
           titulo: "Aula 3",
+          url: "http://google.com.br"
+        }, {
+          titulo: "Aula 4",
+          url: "http://google.com.br"
+        }, {
+          titulo: "Aula 5",
           url: "http://google.com.br"
         },
       ], video: [{
@@ -368,13 +376,17 @@ router.post('/mat', async (req, res) => {
         {
           titulo: "Aula 1",
           url: "http://google.com.br"
-        },
-        {
+        }, {
           titulo: "Aula 2",
           url: "http://google.com.br"
-        },
-        {
+        }, {
           titulo: "Aula 3",
+          url: "http://google.com.br"
+        }, {
+          titulo: "Aula 4",
+          url: "http://google.com.br"
+        }, {
+          titulo: "Aula 5",
           url: "http://google.com.br"
         },
       ], video: [{
