@@ -51,6 +51,13 @@ class Footer extends Component {
       })
       .then((res) => {
         console.log(res)
+        if (res.status === 204) {
+          alert('Mensagem enviada.')
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        alert('Algo deu errado, tente novamente mais tarde.')
       })
   }
 
