@@ -314,7 +314,80 @@ router.post('/mat', async (req, res) => {
   console.log(req.body);
 
   const data = new button({
-      materia: "Matéria",
+    materia: "Matéria",
+    unidade: [{
+      button: [
+        {
+          titulo: "Aula 1",
+          url: "http://google.com.br"
+        },
+        {
+          titulo: "Aula 2",
+          url: "http://google.com.br"
+        },
+        {
+          titulo: "Aula 3",
+          url: "http://google.com.br"
+        },
+      ], video: [{
+        titulo: "Vídeo Aula 1",
+        url: "http://youtube.com.br"
+      }, {
+        titulo: "Vídeo Aula 2",
+        url: "http://youtube.com.br"
+      }, {
+        titulo: "Vídeo Aula 3",
+        url: "http://youtube.com.br"
+      }]
+    }, {
+      button: [
+        {
+          titulo: "Aula 1",
+          url: "http://google.com.br"
+        },
+        {
+          titulo: "Aula 2",
+          url: "http://google.com.br"
+        },
+        {
+          titulo: "Aula 3",
+          url: "http://google.com.br"
+        },
+      ], video: [{
+        titulo: "Vídeo Aula 1",
+        url: "http://youtube.com.br"
+      }, {
+        titulo: "Vídeo Aula 2",
+        url: "http://youtube.com.br"
+      }, {
+        titulo: "Vídeo Aula 3",
+        url: "http://youtube.com.br"
+      }]
+    }, {
+      button: [
+        {
+          titulo: "Aula 1",
+          url: "http://google.com.br"
+        },
+        {
+          titulo: "Aula 2",
+          url: "http://google.com.br"
+        },
+        {
+          titulo: "Aula 3",
+          url: "http://google.com.br"
+        },
+      ], video: [{
+        titulo: "Vídeo Aula 1",
+        url: "http://youtube.com.br"
+      }, {
+        titulo: "Vídeo Aula 2",
+        url: "http://youtube.com.br"
+      }, {
+        titulo: "Vídeo Aula 3",
+        url: "http://youtube.com.br"
+      }]
+    }]
   });
 
   try {

@@ -97,6 +97,7 @@ class Blog extends Component {
           buttons.push({ materia: res.data[i].materia, unidade: res.data[i].unidade, titulo: res.data[i].titulo, url: res.data[i].url, id: res.data[i].id })
         }
         this.setState({ buttons: buttons })
+        console.log(this.state.buttons)
       })
   }
 

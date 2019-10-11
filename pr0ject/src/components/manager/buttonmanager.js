@@ -13,24 +13,23 @@ class ButtonManager extends Component {
 
   getButton() {
     axios.get('https://profdantas.herokuapp.com/button')
-      .then(async (res) => {
+      .then((res) => {
         let data = [];
 
         for (var i in res.data) {
-          await data.push({ materia: res.data[i].materia, unidade: res.data[i].unidade, id: res.data[i].id })
+          data.push({ materia: res.data[i].materia, unidade: res.data[i].unidade, id: res.data[i].id })
         }
         this.setState({ materia: data })
-        // console.log("materia", this.state.materia)
+        console.log("materia", this.state.materia)
       });
   }
 
   addMat() {
     axios.post('https://profdantas.herokuapp.com/mat')
-      .then(async (res) => {
+      .then((res) => {
         console.log(res);
-        await window.location.reload();
+        window.location.reload();
       })
-
   }
 
   submitButton = e => {
@@ -127,23 +126,26 @@ class ButtonManager extends Component {
 
   handleChange = e => {
     console.log(e.target)
+    const newList = this.state.materia.slice();
     let { name, value, id } = e.target
+    if (name === "materia") {
+      newList[id][name] = value;
+    }
     let type = name.split('.')[0];
     let idu = name.split('.')[2];
     let idb = name.split('.')[3];
     name = name.split('.')[1];
-    const newList = this.state.materia.slice();
-    if (name === "materia") {
-      newList[id][name] = value;
-    } else if (type === 'v') {
+    if (type === 'v') {
+      console.log(type)
       newList[id].unidade[idu].video[idb][name] = value;
-    } else {
+    } else if (type === 'b') {
+      console.log(type)
       newList[id].unidade[idu].button[idb][name] = value;
     }
-    // console.log("this is me", newList, "index", id, 'indexu', idu, 'indexb', idb)
+    console.log("this is me", newList, "index", id, 'indexu', idu, 'indexb', idb)
     this.setState({ materia: newList });
-    // console.log("pingos nos is", [name], value)
-    // console.log(this.state)
+    console.log("pingos nos is", [name], value)
+    console.log(this.state)
   }
 
   componentDidMount() {
