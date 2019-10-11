@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import photo from './../../images/header.jpg';
+import { Button } from 'react-bootstrap';
+import { logout } from '../../services/auth';
 
 var background = {
   backgroundImage: "url(" + photo + ")",
@@ -55,6 +57,11 @@ class ManagerHeader extends Component {
   render() {
     return (
       <header className="site-head" style={background}>
+        <div className="container">
+          <div className="site-mast">
+            <Button className="float-right" variant="danger" onClick={logout}>Logout</Button>
+          </div>
+        </div>
         <div className="container">
           <div className="row">
             <div className="col-lg-8 mx-auto text-justify word-spacing: 10px">

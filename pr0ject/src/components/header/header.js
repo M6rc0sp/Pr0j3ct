@@ -42,7 +42,7 @@ class Header extends Component {
       <header className="site-head" style={background}>
         <div className="container">
           <div className="site-mast">
-            <div className="site-mast-left ">
+            <div className="site-mast-left">
               <a aria-current="page" className="site-nav-item" href="/">Home</a>
               <a className="site-nav-item" href="#about">Timeline</a>
               <a className="site-nav-item" href="#contact">Contato</a>

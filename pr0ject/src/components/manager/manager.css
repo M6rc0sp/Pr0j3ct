@@ -19,9 +19,15 @@ textarea{
     min-width: 67px;
     font-size: 30px;
 }
+
 input[type=text], input[type=submit]{
     width: inherit;
     text-align: center
+}
+
+.float-right {
+    float: right !important;
+    margin-left: 100%;
 }
 
 input[name=img]{
