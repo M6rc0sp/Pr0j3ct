@@ -529,34 +529,37 @@ class Blog extends Component {
                           ))}
                       </div>
                     </div>
-                  ))
-                }
+                  ))}
                 <br /><br />
               </div>
             </div>
 
-            <section id="videos">
+            <section className="bg-light" id="videos">
               <div className="container">
-                <div className="col-lg-12 mx-auto text-center">
-                  <h2 className="section-heading text-uppercase">Vídeos</h2>
-                  <div className="row">
-                    {
-                      this.state.videos.map((list) => (
-                        <div className="col-lg-4 col-md-4 float-left fill">
-                          <div className="team-member">
-                            <h4>{list.tema}</h4>
-                            <br />
-                            {
-                              list.button.map((v) => (
-                                <div className="float-left fill">
-                                  <Button block onClick={this.clicked} target="_Blank" href={v.url}>{v.titulo}</Button>
-                                  <br />
-                                </div>
-                              ))}
+                <div className="row">
+                  <div className="col-lg-12 mx-auto text-center" style={{ margin: 'auto' }}>
+                    <div className="row">
+                      <div className="col-lg-12 text-center">
+                        <br />
+                        <h2 className="section-heading text-uppercase">Vídeos</h2>
+                      </div>
+                      {
+                        this.state.videos.map((list) => (
+                          <div className="col-lg-4 col-md-4 float-left fill">
+                            <div className="team-member">
+                              <h4>{list.tema}</h4>
+                              <br />
+                              {
+                                list.button.map((v) => (
+                                  <div className="float-left fill">
+                                    <Button block onClick={this.clicked} target="_Blank" href={v.url}>{v.titulo}</Button>
+                                    <br />
+                                  </div>
+                                ))}
+                            </div>
                           </div>
-                        </div>
-                      ))
-                    }
+                        ))}
+                    </div>
                   </div>
                 </div>
               </div>
