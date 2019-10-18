@@ -400,6 +400,11 @@ header.masthead .intro-text .intro-heading {
   text-align: left;
 }
 
+.text-muted {
+  color: #041533 !important;
+  font-weight: 500;
+}
+
 .timeline > li .timeline-panel:before {
   right: auto;
   left: -15px;

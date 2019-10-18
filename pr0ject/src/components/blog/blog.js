@@ -521,7 +521,7 @@ class Blog extends Component {
                                 b.video.map((b, indexb) => (
                                   (indexb === 0)
                                     ? <div className="float-left fill">
-                                      <h6>Vídeos para complementar o conteúdo</h6>
+                                      <h5>Vídeos para complementar o conteúdo</h5>
                                       <Button block onClick={this.clicked} target="_Blank" href={b.url}>{b.titulo}</Button>
                                       <br />
                                     </div> :
