@@ -108,7 +108,7 @@ class VideoManager extends Component {
         {
           this.state.videos.map((list, index) => (
             <form key={index + 1} onSubmit={this.submitButton} className="text-center" id={index}>
-              <div className="col-lg-4 col-md-4 float-left fill">
+              <div className={"col-lg-"+parseInt(12/this.state.videos.length, 10)+" col-md-"+parseInt(12/this.state.videos.length, 10)+" float-left fill"}>
                 <input className="col-lg-8" key={index + 2} id={index} name="tema" onChange={this.handleChange} type="text" defaultValue={list.tema} />
                 <Button key={index + 6} variant='danger' id={list.id} name={index} onClick={this.rmVid}>Remover tema</Button>
                 <br /><br />
