@@ -43,7 +43,12 @@ class ButtonManager extends Component {
       })
       .then(async (res) => {
         console.log(res);
-        await window.location.reload();
+        await this.getButton();
+        if (res.status === 204) {
+          alert("Alterações salvas.");
+        } else {
+          alert("Pode ter ocorrido um problema e não pode salvar.");
+        }
       })
   }
 
@@ -57,7 +62,8 @@ class ButtonManager extends Component {
       })
       .then(async (res) => {
         console.log(res);
-        await window.location.reload();
+        //await window.location.reload();
+        await this.getButton();
       })
   }
 

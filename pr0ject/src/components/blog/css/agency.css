@@ -554,7 +554,6 @@ header.masthead .intro-text .intro-heading {
 }
 
 .team-member {
-  margin-bottom: 50px;
   text-align: center;
 }
 
@@ -565,7 +564,6 @@ header.masthead .intro-text .intro-heading {
 }
 
 .team-member h4 {
-  margin-top: 25px;
   margin-bottom: 0;
   text-transform: none;
 }

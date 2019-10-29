@@ -506,7 +506,6 @@ h4 {
 }
 
 h5 {
-    margin: 1.5em 0 0.5em 0;
     font-size: 1.4rem;
     font-weight: 500;
 }
@@ -660,7 +659,6 @@ section#contact .form-group {
 
 .content-body h5 {
     display: block;
-    margin: 0.5em 0;
     padding: 1em 0 1.5em;
     border: 0;
     font-family: Georgia,serif;

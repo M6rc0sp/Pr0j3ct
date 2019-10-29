@@ -28,7 +28,7 @@ class VideoManager extends Component {
       });
   }
 
-  addVid() {
+  addVid = () => {
     axios.post('https://profdantas.herokuapp.com/video')
       .then(async (res) => {
         console.log(res);
@@ -47,7 +47,12 @@ class VideoManager extends Component {
       })
       .then(async (res) => {
         console.log(res);
-        await window.location.reload();
+        await this.getVideo();
+        if (res.status === 204) {
+          alert("Alterações salvas.");
+        } else {
+          alert("Pode ter ocorrido um problema e não pode salvar.");
+        }
       })
   }
 
@@ -100,7 +105,7 @@ class VideoManager extends Component {
   render() {
     return (
       <div className="col-lg-12 text-center" style={{ margin: 'auto' }}>
-        <br/><br/><br/>
+        <br /><br /><br />
         <h1>Vídeos</h1>
         <h2>Temas</h2>
         <Button onClick={this.addVid}>Adicionar tema</Button>
@@ -108,7 +113,7 @@ class VideoManager extends Component {
         {
           this.state.videos.map((list, index) => (
             <form key={index + 1} onSubmit={this.submitButton} className="text-center" id={index}>
-              <div style={{padding: '5px', flex: "0 0 "+parseInt(100/this.state.videos.length, 10)+"%", maxWidth: ""+parseInt(100/this.state.videos.length, 10)+"%"}} className={"float-left fill"}>
+              <div style={{ padding: '5px', flex: "0 0 " + parseInt(100 / this.state.videos.length, 10) + "%", maxWidth: "" + parseInt(100 / this.state.videos.length, 10) + "%" }} className={"float-left fill"}>
                 <input className="col-lg-8" key={index + 2} id={index} name="tema" onChange={this.handleChange} type="text" defaultValue={list.tema} />
                 <Button key={index + 6} variant='danger' id={list.id} name={index} onClick={this.rmVid}>Remover tema</Button>
                 <br /><br />

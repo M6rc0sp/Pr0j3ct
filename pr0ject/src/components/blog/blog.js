@@ -492,23 +492,23 @@ class Blog extends Component {
         <section className="bg-light" id="edu">
           <div className="container">
             <div className="row">
-              <div className="col-lg-12 text-center" style={{ margin: 'auto' }}>
+              <div className="col-lg-12 col-md-12 col-sm-12 text-center" style={{ margin: 'auto' }}>
                 <div className="row">
-                  <div className="col-lg-12 text-center">
+                  <div className="col-lg-12 col-md-12 col-sm-12 text-center">
                     <h2 className="section-heading text-uppercase">Matérias Ministradas</h2>
                   </div>
                 </div>
                 {
                   this.state.buttons.map((list, index) => (
-                    <div className="col-lg-12 col-md-12 float-left fill">
-                      <div className="col-sm-12 text-center">
+                    <div className="col-lg-12 col-md-12 col-sm-12 float-left fill">
+                      <div className="col-lg-12 col-md-12 col-sm-12 text-center">
                         <h4>{list.materia}</h4>
                         <p className="text-muted">Materiais De Aula</p>
                       </div>
                       <div className="team-member">
                         {
                           list.unidade.map((b, index) => (
-                            <div className="col-lg-4 col-md-4 float-left fill">
+                            <div className={"col-lg-"+parseInt(12/list.unidade.length, 10)+" col-md-"+parseInt(12/list.unidade.length, 10)+" float-left fill"}>
                               <p>Unidade {index + 1}</p>
                               {
                                 b.button.map((b, index) => (
