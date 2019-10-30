@@ -192,8 +192,8 @@ class ButtonManager extends Component {
                         <Button id={index} name={indexu} onClick={this.addButton}>Adicionar botão</Button>
                         :
                         <div>
-                          <Button variant="danger" id={index} name={indexu} onClick={this.rmButton}>Remover botão</Button>
                           <Button id={index} name={indexu} onClick={this.addButton}>Adicionar botão</Button>
+                          <Button variant="danger" id={index} name={indexu} onClick={this.rmButton}>Remover botão</Button>                          
                         </div>}
                       <br />
                       <h4>Vídeos Complementares</h4>
@@ -209,8 +209,8 @@ class ButtonManager extends Component {
                         <Button id={index} name={indexu} onClick={this.addVideo}>Adicionar video</Button>
                         :
                         <div>
-                          <Button variant="danger" id={index} name={indexu} onClick={this.rmVideo}>Remover video</Button>
                           <Button id={index} name={indexu} onClick={this.addVideo}>Adicionar video</Button>
+                          <Button variant="danger" id={index} name={indexu} onClick={this.rmVideo}>Remover video</Button>                        
                         </div>}
                     </div>
                   ))}

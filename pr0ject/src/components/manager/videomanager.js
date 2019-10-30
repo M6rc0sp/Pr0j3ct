@@ -129,8 +129,8 @@ class VideoManager extends Component {
                   <Button id={index} onClick={this.addButton}>Adicionar vídeo</Button>
                   :
                   <div>
-                    <Button variant="danger" id={index} onClick={this.rmButton}>Remover vídeo</Button>
                     <Button id={index} onClick={this.addButton}>Adicionar vídeo</Button>
+                    <Button variant="danger" id={index} onClick={this.rmButton}>Remover vídeo</Button>                    
                   </div>}
                 <br />
                 <Button block variant="success" size="lg" type="submit">Salvar</Button>
