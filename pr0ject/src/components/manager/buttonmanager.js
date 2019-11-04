@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 
-class ButtonManager extends Component {
+class ButtonManager extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       materia: [],
+      unsaved: []
     };
   }
 
@@ -32,23 +33,25 @@ class ButtonManager extends Component {
       })
   }
 
-  submitButton = e => {
+  submitButton = async e => {
     const { id } = e.target;
     console.log(id)
     e.preventDefault();
-    axios.put('https://profdantas.herokuapp.com/button',
+    let empty = [];
+    await axios.put('https://profdantas.herokuapp.com/button',
       {
         json: this.state.materia,
         mat: id
       })
       .then(async (res) => {
         console.log(res);
-        await this.getButton();
         if (res.status === 204) {
-          alert("Alterações salvas.");
+          await alert("Alterações salvas.");
+          this.setState({ unsaved: empty })
         } else {
           alert("Pode ter ocorrido um problema e não pode salvar.");
         }
+        await this.getButton();
       })
   }
 
@@ -67,29 +70,45 @@ class ButtonManager extends Component {
       })
   }
 
-  addUnity = e => {
-    e.preventDefault();
-    const { id } = e.target;
-    axios.post('https://profdantas.herokuapp.com/uni', { 'id': id })
-      .then(async (res) => {
-        console.log(res);
-        await window.location.reload();
-      })
-  }
+  addUnity = (e) => {
+    let willSave = false;
+    if (this.state.unsaved[e.target.id]) {
+      willSave = window.confirm("Alguma alteração não foi salva ainda, quer salvar agora?")
+    }
+    if (willSave) {
+      this.submitButton(e);
+      e.preventDefault();
+    } else {
+      const { id } = e.target;
+      axios.post('https://profdantas.herokuapp.com/uni', { 'id': id })
+        .then(async (res) => {
+          console.log(res);
+          await this.getButton();
+        })
+    }
+  };
 
   rmUnity = (e) => {
-    e.preventDefault();
-    const { id } = e.target;
-    let mat = id;
-    console.log(mat)
-    axios.delete('https://profdantas.herokuapp.com/uni',
-      {
-        data: { 'mat': mat }
-      })
-      .then(async (res) => {
-        console.log(res);
-        await window.location.reload();
-      })
+    let willSave = false;
+    if (this.state.unsaved[e.target.id]) {
+      willSave = window.confirm("Alguma alteração não foi salva ainda, quer salvar agora?")
+    }
+    if (willSave) {
+      this.submitButton(e);
+      e.preventDefault();
+    } else {
+      const { id } = e.target;
+      let mat = id;
+      console.log(mat)
+      axios.delete('https://profdantas.herokuapp.com/uni',
+        {
+          data: { 'mat': mat }
+        })
+        .then(async (res) => {
+          console.log(res);
+          await this.getButton();
+        })
+    }
   }
 
   addButton = e => {
@@ -101,6 +120,9 @@ class ButtonManager extends Component {
     let cont = newList[mat].unidade[uni].button.length + 1;
     newList[mat].unidade[uni].button.push({ titulo: 'Aula ' + cont, url: 'http://google.com.br' });
     this.setState({ materia: newList });
+    let nUnsaved = []
+    nUnsaved[id] = true;
+    this.setState({ unsaved: nUnsaved })
   }
 
   rmButton = e => {
@@ -109,6 +131,9 @@ class ButtonManager extends Component {
     const newList = this.state.materia.slice();
     newList[id].unidade[name].button.pop();
     this.setState({ materia: newList });
+    let nUnsaved = []
+    nUnsaved[id] = true;
+    this.setState({ unsaved: nUnsaved })
   }
 
   addVideo = e => {
@@ -150,6 +175,9 @@ class ButtonManager extends Component {
     }
     console.log("this is me", newList, "index", id, 'indexu', idu, 'indexb', idb)
     this.setState({ materia: newList });
+    let nUnsaved = []
+    nUnsaved[id] = true;
+    this.setState({ unsaved: nUnsaved })
     console.log("pingos nos is", [name], value)
     console.log(this.state)
   }
@@ -178,7 +206,7 @@ class ButtonManager extends Component {
               <div className="col-lg-12 col-md-12 float-left fill">
                 {
                   list.unidade.map((b, indexu) => (
-                    <div className="col-lg-4 col-md-4 float-left fill">
+                    <div style={{ padding: '5px', flex: "0 0 " + parseInt(100 / list.unidade.length, 10) + "%", maxWidth: "" + parseInt(100 / list.unidade.length, 10) + "%" }} className={"float-left fill"}>
                       <h4 key={indexu + 3} id={indexu} onChange={this.handleChange} type="text">{"Unidade " + (indexu + 1)}</h4>
                       {
                         b.button.map((b, indexb) => (
@@ -193,7 +221,7 @@ class ButtonManager extends Component {
                         :
                         <div>
                           <Button id={index} name={indexu} onClick={this.addButton}>Adicionar botão</Button>
-                          <Button variant="danger" id={index} name={indexu} onClick={this.rmButton}>Remover botão</Button>                          
+                          <Button variant="danger" id={index} name={indexu} onClick={this.rmButton}>Remover botão</Button>
                         </div>}
                       <br />
                       <h4>Vídeos Complementares</h4>
@@ -210,7 +238,7 @@ class ButtonManager extends Component {
                         :
                         <div>
                           <Button id={index} name={indexu} onClick={this.addVideo}>Adicionar video</Button>
-                          <Button variant="danger" id={index} name={indexu} onClick={this.rmVideo}>Remover video</Button>                        
+                          <Button variant="danger" id={index} name={indexu} onClick={this.rmVideo}>Remover video</Button>
                         </div>}
                     </div>
                   ))}

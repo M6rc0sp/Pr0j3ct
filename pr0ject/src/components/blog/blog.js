@@ -508,7 +508,7 @@ class Blog extends Component {
                       <div className="team-member">
                         {
                           list.unidade.map((b, index) => (
-                            <div className={"col-lg-"+parseInt(12/list.unidade.length, 10)+" col-md-"+parseInt(12/list.unidade.length, 10)+" float-left fill"}>
+                            <div style={{ padding: '5px', flex: "0 0 " + parseInt(100 / list.unidade.length, 10) + "%", maxWidth: "" + parseInt(100 / list.unidade.length, 10) + "%" }} className={"float-left fill"}>
                               <p>Unidade {index + 1}</p>
                               {
                                 b.button.map((b, index) => (
